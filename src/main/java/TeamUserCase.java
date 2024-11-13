@@ -39,21 +39,21 @@ public class TeamUserCase {
 
     public JSONObject getPlayer(int playerId){
 
-    };
+    }
 
     public JSONArray getAllPlayers(){
 
-    };
+    }
 
     public JSONObject getGame(int gameId){
 
-    };
+    }
 
     public JSONArray getGamesByDate(String date){
 
-    };
+    }
 
     public JSONObject getSeasonInfo (int year){
 
-    };
+    }
 }

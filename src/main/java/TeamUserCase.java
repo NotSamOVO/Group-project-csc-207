@@ -37,7 +37,7 @@ public class TeamUserCase {
         }
     }
 
-    public JSONObject getPlayer(String playerName){
+    public JSONObject getPlayer(int playerId){
 
     };
 
@@ -45,11 +45,11 @@ public class TeamUserCase {
 
     };
 
-    public JSONObject getGame ( int gameId){
+    public JSONObject getGame(int gameId){
 
     };
 
-    public JSONArray getGamesByDate (String date){
+    public JSONArray getGamesByDate(String date){
 
     };
 

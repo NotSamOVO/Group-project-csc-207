@@ -20,11 +20,11 @@ public interface BasketBallDataBase {
     /**
      * A method that returns a specific player by their ID.
      *
-     * @param playerName is the ID of the player.
+     * @param playerId is the ID of the player.
      * @return the player with the specified ID.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getPlayer(String playerName) throws JSONException;
+    JSONObject getPlayer(int playerId) throws JSONException;
 
     /**
      * A method that returns all players in the league.

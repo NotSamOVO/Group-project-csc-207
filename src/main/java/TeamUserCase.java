@@ -37,6 +37,10 @@ public class TeamUserCase {
         }
     }
 
+    public JSONArray getAllTeams(){
+
+    }
+
     public JSONObject getPlayer(int playerId){
 
     }

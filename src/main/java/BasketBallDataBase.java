@@ -18,6 +18,13 @@ public interface BasketBallDataBase {
     JSONObject getTeam(int teamId) throws JSONException;
 
     /**
+     * A method that returns all teams in the league.
+     * @return JSONArray of all teams.
+     * @throws JSONException if an error occurs while parsing the JSON response.
+     */
+    JSONArray getAllTeams() throws JSONException;
+
+    /**
      * A method that returns a specific player by their ID.
      *
      * @param playerId is the ID of the player.

@@ -8,16 +8,18 @@ import org.json.JSONObject;
 
 import java.io.StringReader;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TeamUserCase {
-    private static final String team = "full_name";
-    public JSONObject getTeam(String teamName){
+    private static final String BASE_URL = "https://balldontlie.io/api/v1";
+    private static final String team = "id";
+    public JSONObject getTeam(int teamId){
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url("https://balldontlie.io/api/v1/teams")
+                .url(BASE_URL + "/teams/" + teamId)
                 .method("GET", null)
                 .build();
 
@@ -25,21 +27,15 @@ public class TeamUserCase {
             final Response response = client.newCall(request).execute();
             final JSONObject responseBody = new JSONObject(response.body().string());
 
-            if (responseBody.getString(team) == teamName) {
+            if (responseBody.getInt(team) == teamId) {
                 return responseBody;
             } else {
-                throw new RuntimeException("TeamName not found");
+                throw new RuntimeException("Team not found");
             }
         } catch (IOException | JSONException event) {
             throw new RuntimeException(event);
         }
     }
-
-
-    public JSONArray getAllTeams (){
-
-    };
-
 
     public JSONObject getPlayer(String playerName){
 

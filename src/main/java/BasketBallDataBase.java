@@ -11,16 +11,15 @@ public interface BasketBallDataBase {
     /**
      * A method that returns a specific team by its ID.
      *
-     * @param teamName is the ID of the team.
+     * @param teamId is the ID of the team.
      * @return the team with the specified ID.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getTeam(String teamName) throws JSONException;
+    JSONObject getTeam(int teamId) throws JSONException;
 
     /**
      * A method that returns all teams in the league.
-     *
-     * @return an array of all teams.
+     * @return JSONArray of all teams.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
     JSONArray getAllTeams() throws JSONException;
@@ -28,11 +27,11 @@ public interface BasketBallDataBase {
     /**
      * A method that returns a specific player by their ID.
      *
-     * @param playerName is the ID of the player.
+     * @param playerId is the ID of the player.
      * @return the player with the specified ID.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getPlayer(String playerName) throws JSONException;
+    JSONObject getPlayer(int playerId) throws JSONException;
 
     /**
      * A method that returns all players in the league.

@@ -8,16 +8,18 @@ import org.json.JSONObject;
 
 import java.io.StringReader;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TeamUserCase {
-    private static final String team = "full_name";
-    public JSONObject getTeam(String teamName){
+    private static final String BASE_URL = "https://balldontlie.io/api/v1";
+    private static final String team = "id";
+    public JSONObject getTeam(int teamId){
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url("https://balldontlie.io/api/v1/teams")
+                .url(BASE_URL + "/teams/" + teamId)
                 .method("GET", null)
                 .build();
 
@@ -25,39 +27,61 @@ public class TeamUserCase {
             final Response response = client.newCall(request).execute();
             final JSONObject responseBody = new JSONObject(response.body().string());
 
-            if (responseBody.getString(team) == teamName) {
-                return responseBody;
-            } else {
-                throw new RuntimeException("TeamName not found");
-            }
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+            return responseBody;
         } catch (IOException | JSONException event) {
             throw new RuntimeException(event);
         }
     }
 
+    public JSONArray getAllTeams(){
+        final OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        final Request request = new Request.Builder()
+                .url(BASE_URL + "/teams")
+                .method("GET", null)
+                .build();
+        
+        try {
+            final Response response = client.newCall(request).execute();
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+            String responseBody = response.body().string();
+            JSONObject jsonResponse = new JSONObject(responseBody);
+            JSONArray teamsArray = jsonResponse.getJSONArray("data");
+            JSONArray result = new JSONArray();
 
-    public JSONArray getAllTeams (){
+            for (int i = 0; i < teamsArray.length(); i++) {
+                JSONObject team = teamsArray.getJSONObject(i);
+                JSONObject teamInfo = new JSONObject();
+                teamInfo.put("id", team.getInt("id"));
+                teamInfo.put("name", team.getString("full_name"));
+                result.put(teamInfo);
+            }
 
-    };
+            return result;
+        } catch (IOException | JSONException event) {
+            throw new RuntimeException(event);
+        }
+    }
+    }
 
+    public JSONObject getPlayer(int playerId){
 
-    public JSONObject getPlayer(String playerName){
-
-    };
+    }
 
     public JSONArray getAllPlayers(){
 
-    };
+    }
 
-    public JSONObject getGame ( int gameId){
+    public JSONObject getGame(int gameId){
 
-    };
+    }
 
-    public JSONArray getGamesByDate (String date){
+    public JSONArray getGamesByDate(String date){
 
-    };
+    }
 
     public JSONObject getSeasonInfo (int year){
 
-    };
+    }
 }

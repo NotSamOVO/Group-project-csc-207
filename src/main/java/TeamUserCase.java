@@ -12,9 +12,10 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamUserCase {
+public class TeamUserCase implements BasketBallDataBase {
     private static final String BASE_URL = "https://balldontlie.io/api/v1";
-    private static final String team = "id";
+
+    @Override
     public JSONObject getTeam(int teamId){
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -34,6 +35,7 @@ public class TeamUserCase {
         }
     }
 
+    @Override
     public JSONArray getAllTeams(){
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -41,7 +43,7 @@ public class TeamUserCase {
                 .url(BASE_URL + "/teams")
                 .method("GET", null)
                 .build();
-        
+
         try {
             final Response response = client.newCall(request).execute();
             if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
@@ -63,24 +65,28 @@ public class TeamUserCase {
             throw new RuntimeException(event);
         }
     }
-    }
 
+    @Override
     public JSONObject getPlayer(int playerId){
 
     }
 
+    @Override
     public JSONArray getAllPlayers(){
 
     }
 
+    @Override
     public JSONObject getGame(int gameId){
 
     }
 
+    @Override
     public JSONArray getGamesByDate(String date){
 
     }
 
+    @Override
     public JSONObject getSeasonInfo (int year){
 
     }

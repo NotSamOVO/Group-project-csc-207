@@ -54,15 +54,6 @@ public class TeamUserCase implements BasketBallDataBase {
             final JSONArray result = new JSONArray();
 
             for (int i = 0; i < teamsArray.length(); i++) {
-                final JSONObject team = teamsArray.getJSONObject(i);
-                final JSONObject teamInfo = new JSONObject();
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-            String responseBody = response.body().string();
-            JSONObject jsonResponse = new JSONObject(responseBody);
-            JSONArray teamsArray = jsonResponse.getJSONArray("data");
-            JSONArray result = new JSONArray();
-
-            for (int i = 0; i < teamsArray.length(); i++) {
                 JSONObject team = teamsArray.getJSONObject(i);
                 JSONObject teamInfo = new JSONObject();
                 teamInfo.put("id", team.getInt("id"));
@@ -140,11 +131,6 @@ public class TeamUserCase implements BasketBallDataBase {
     }
 
     @Override
-    public JSONObject getSeasonInfo(int year) {
-
-    }
-
-    @Override
     public JSONArray getGamesByDate(String date) throws JSONException {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -165,5 +151,10 @@ public class TeamUserCase implements BasketBallDataBase {
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);
         }
+    }
+
+    @Override
+    public JSONObject getSeasonInfo(int year) {
+
     }
 }

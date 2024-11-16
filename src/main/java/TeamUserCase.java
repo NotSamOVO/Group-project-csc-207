@@ -10,7 +10,6 @@ import java.io.IOException;
 
 public class TeamUserCase implements BasketBallDataBase {
     private static final String BASE_URL = "https://balldontlie.io/api/v1";
-    private static final String team = "id";
 
     @Override
     public JSONObject getTeam(int teamId) {
@@ -25,12 +24,10 @@ public class TeamUserCase implements BasketBallDataBase {
             final Response response = client.newCall(request).execute();
             final JSONObject responseBody = new JSONObject(response.body().string());
 
-            if (responseBody.getInt(team) == teamId) {
-                return responseBody;
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
             }
-            else {
-                throw new RuntimeException("Team not found");
-            }
+            return responseBody;
         }
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);
@@ -39,7 +36,36 @@ public class TeamUserCase implements BasketBallDataBase {
 
     @Override
     public JSONArray getAllTeams() {
+        final OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        final Request request = new Request.Builder()
+                .url(BASE_URL + "/teams")
+                .method("GET", null)
+                .build();
 
+        try {
+            final Response response = client.newCall(request).execute();
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected code " + response);
+            }
+            final String responseBody = response.body().string();
+            final JSONObject jsonResponse = new JSONObject(responseBody);
+            final JSONArray teamsArray = jsonResponse.getJSONArray("data");
+            final JSONArray result = new JSONArray();
+
+            for (int i = 0; i < teamsArray.length(); i++) {
+                final JSONObject team = teamsArray.getJSONObject(i);
+                final JSONObject teamInfo = new JSONObject();
+                teamInfo.put("id", team.getInt("id"));
+                teamInfo.put("name", team.getString("full_name"));
+                result.put(teamInfo);
+            }
+
+            return result;
+        }
+        catch (IOException | JSONException event) {
+            throw new RuntimeException(event);
+        }
     }
 
     @Override
@@ -110,7 +136,7 @@ public class TeamUserCase implements BasketBallDataBase {
 
     @Override
     public JSONObject getSeasonInfo(int year) throws JSONException {
-        return null;
+
     }
 
     @Override

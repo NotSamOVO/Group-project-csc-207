@@ -12,7 +12,7 @@ public class TeamUserCase implements BasketBallDataBase {
     private static final String BASE_URL = "https://balldontlie.io/api/v1";
 
     @Override
-    public JSONObject getTeam(int teamId) {
+    public JSONObject getTeam(int teamId){
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -35,7 +35,7 @@ public class TeamUserCase implements BasketBallDataBase {
     }
 
     @Override
-    public JSONArray getAllTeams() {
+    public JSONArray getAllTeams(){
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -56,14 +56,21 @@ public class TeamUserCase implements BasketBallDataBase {
             for (int i = 0; i < teamsArray.length(); i++) {
                 final JSONObject team = teamsArray.getJSONObject(i);
                 final JSONObject teamInfo = new JSONObject();
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+            String responseBody = response.body().string();
+            JSONObject jsonResponse = new JSONObject(responseBody);
+            JSONArray teamsArray = jsonResponse.getJSONArray("data");
+            JSONArray result = new JSONArray();
+
+            for (int i = 0; i < teamsArray.length(); i++) {
+                JSONObject team = teamsArray.getJSONObject(i);
+                JSONObject teamInfo = new JSONObject();
                 teamInfo.put("id", team.getInt("id"));
                 teamInfo.put("name", team.getString("full_name"));
                 result.put(teamInfo);
             }
-
             return result;
-        }
-        catch (IOException | JSONException event) {
+        } catch (IOException | JSONException event) {
             throw new RuntimeException(event);
         }
     }
@@ -97,7 +104,6 @@ public class TeamUserCase implements BasketBallDataBase {
                 .url(BASE_URL + "/players")
                 .method("GET", null)
                 .build();
-
         try {
             final Response response = client.newCall(request).execute();
             final JSONObject responseBody = new JSONObject(response.body().string());
@@ -123,7 +129,6 @@ public class TeamUserCase implements BasketBallDataBase {
         try {
             final Response response = client.newCall(request).execute();
             final JSONObject responseBody = new JSONObject(response.body().string());
-
             if (!response.isSuccessful()) {
                 throw new RuntimeException("Error getting game");
             }
@@ -135,7 +140,7 @@ public class TeamUserCase implements BasketBallDataBase {
     }
 
     @Override
-    public JSONObject getSeasonInfo(int year) throws JSONException {
+    public JSONObject getSeasonInfo(int year) {
 
     }
 

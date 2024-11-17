@@ -32,37 +32,33 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
     private final JPasswordField repeatPasswordInputField = new JPasswordField(15);
     private SignupController signupController;
 
-    private final JButton signUp;
-    private final JButton cancel;
-    private final JButton toLogin;
+    private final JButton leaguestanding;
+    private final JButton matchresults;
+    private final JButton historicalseasons;
+    private final JButton playerstats;
 
     public SignupView(SignupViewModel signupViewModel) {
         this.signupViewModel = signupViewModel;
         signupViewModel.addPropertyChangeListener(this);
 
-        final JLabel title = new JLabel(SignupViewModel.TITLE_LABEL);
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         final LabelTextPanel usernameInfo = new LabelTextPanel(
-                new JLabel(SignupViewModel.USERNAME_LABEL), usernameInputField);
-        final LabelTextPanel passwordInfo = new LabelTextPanel(
-                new JLabel(SignupViewModel.PASSWORD_LABEL), passwordInputField);
-        final LabelTextPanel repeatPasswordInfo = new LabelTextPanel(
-                new JLabel(SignupViewModel.REPEAT_PASSWORD_LABEL), repeatPasswordInputField);
+                new JLabel(SignupViewModel.TEAMSEARCH_LABEL), usernameInputField);
 
         final JPanel buttons = new JPanel();
-        toLogin = new JButton(SignupViewModel.TO_LOGIN_BUTTON_LABEL);
-        buttons.add(toLogin);
-        signUp = new JButton(SignupViewModel.SIGNUP_BUTTON_LABEL);
-        buttons.add(signUp);
-        cancel = new JButton(SignupViewModel.CANCEL_BUTTON_LABEL);
-        buttons.add(cancel);
+        historicalseasons = new JButton(SignupViewModel.HISTORICAL_SEANSONS_BUTTON_LABEL);
+        buttons.add(historicalseasons);
+        leaguestanding = new JButton(SignupViewModel.LEAGUE_STANDING_BUTTON_LABEL);
+        buttons.add(leaguestanding);
+        matchresults = new JButton(SignupViewModel.MATCH_RESULTS_BUTTON_LABEL);
+        buttons.add(matchresults);
+        playerstats = new JButton(SignupViewModel.PLAYER_STATS_BUTTON_LABEL);
+        buttons.add(playerstats);
 
-        signUp.addActionListener(
+        leaguestanding.addActionListener(
                 // This creates an anonymous subclass of ActionListener and instantiates it.
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(signUp)) {
+                        if (evt.getSource().equals(leaguestanding)) {
                             final SignupState currentState = signupViewModel.getState();
 
                             signupController.execute(
@@ -75,7 +71,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                 }
         );
 
-        toLogin.addActionListener(
+        historicalseasons.addActionListener(
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         signupController.switchToLoginView();
@@ -83,7 +79,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                 }
         );
 
-        cancel.addActionListener(this);
+        matchresults.addActionListener(this);
 
         addUsernameListener();
         addPasswordListener();
@@ -91,10 +87,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        this.add(title);
         this.add(usernameInfo);
-        this.add(passwordInfo);
-        this.add(repeatPasswordInfo);
         this.add(buttons);
     }
 

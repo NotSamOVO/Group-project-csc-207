@@ -7,12 +7,15 @@ import interface_adapter.ViewModel;
  */
 public class SignupViewModel extends ViewModel<SignupState> {
 
-    public static final String TEAMSEARCH_LABEL = "Team Search(ID)";
+    public static final String TITLE_LABEL = "Sign Up View";
+    public static final String USERNAME_LABEL = "Choose username";
+    public static final String PASSWORD_LABEL = "Choose password";
+    public static final String REPEAT_PASSWORD_LABEL = "Enter password again";
 
-    public static final String LEAGUE_STANDING_BUTTON_LABEL = "League Standing";
-    public static final String MATCH_RESULTS_BUTTON_LABEL = "Match Results";
-    public static final String PLAYER_STATS_BUTTON_LABEL = "Player Stats";
-    public static final String HISTORICAL_SEANSONS_BUTTON_LABEL = "Historical Seasons";
+    public static final String SIGNUP_BUTTON_LABEL = "Sign up";
+    public static final String CANCEL_BUTTON_LABEL = "Cancel";
+
+    public static final String TO_LOGIN_BUTTON_LABEL = "Go to Login";
 
     public SignupViewModel() {
         super("sign up");

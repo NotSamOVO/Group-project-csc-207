@@ -4,73 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="Added relevant files in accordance to the Lab 5 template">
+    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="Created Team Search panel with a search bar and the four feature buttons from Lab 5 Template. Cleaned up unnecessary files (57 deleted)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/teamsearch/TeamSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/teamsearch/TeamSearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/teamsearch/TeamSearchState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/teamsearch/TeamSearchState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/teamsearch/TeamSearchViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/teamsearch/TeamSearchViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/LabelTextPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LabelTextPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/TeamSearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TeamSearchView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/AppBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/AppBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data_access/DBUserDataAccessObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data_access/FileUserDataAccessObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data_access/InMemoryUserDataAccessObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/CommonUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/CommonUserFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/entity/UserFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/change_password/ChangePasswordController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/change_password/ChangePasswordPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/change_password/LoggedInState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/change_password/LoggedInViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/login/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/login/LoginPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/login/LoginState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/login/LoginViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/logout/LogoutController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/logout/LogoutPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/signup/SignupController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/signup/SignupPresenter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/signup/SignupState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/signup/SignupViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/change_password/ChangePasswordInputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/change_password/ChangePasswordInputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/change_password/ChangePasswordInteractor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/change_password/ChangePasswordOutputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/change_password/ChangePasswordOutputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/change_password/ChangePasswordUserDataAccessInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/login/LoginInputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/login/LoginInputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/login/LoginInteractor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/login/LoginOutputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/login/LoginOutputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/login/LoginUserDataAccessInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/logout/LogoutInputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/logout/LogoutInputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/logout/LogoutInteractor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/logout/LogoutOutputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/logout/LogoutOutputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/logout/LogoutUserDataAccessInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/signup/SignupInputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/signup/SignupInputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/signup/SignupInteractor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/signup/SignupOutputBoundary.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/signup/SignupOutputData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/use_case/signup/SignupUserDataAccessInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/LoggedInView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/LoggedInView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/LoginView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/LoginView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/LoginView$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/LoginView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/SignupView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/SignupView$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/SignupView$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/SignupView$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/SignupView$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/SignupView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,12 +34,12 @@
     &quot;assignee&quot;: &quot;NotSamOVO&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/NotSamOVO/Group-project-csc-207.git",
-    "accountId": "e7b9ffe3-d18d-452b-b4bc-59b33d7e6885"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NotSamOVO/Group-project-csc-207.git&quot;,
+    &quot;accountId&quot;: &quot;e7b9ffe3-d18d-452b-b4bc-59b33d7e6885&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -118,7 +54,7 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "notexploiting",
+    "git-widget-placeholder": "#11 on notexploiting",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -167,7 +103,8 @@
       <workItem from="1729524256854" duration="3767000" />
       <workItem from="1729565879189" duration="13000" />
       <workItem from="1729568941578" duration="612000" />
-      <workItem from="1731878892903" duration="8245000" />
+      <workItem from="1731878892903" duration="8926000" />
+      <workItem from="1731947635264" duration="3006000" />
     </task>
     <task id="LOCAL-00001" summary="tianle.xu">
       <option name="closed" value="true" />
@@ -201,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731894863187</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Created Team Search panel with a search bar and the four feature buttons from Lab 5 Template. Cleaned up unnecessary files (57 deleted)">
+      <option name="closed" value="true" />
+      <created>1731898228573</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731898228573</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +179,7 @@
     <MESSAGE value="tianle.xu" />
     <MESSAGE value="Deleted irrelevant files (data_access, entity, signup, log in) and added relevant folders to the project, such the teamsearch interface_adapter files and the teamsearch use_case" />
     <MESSAGE value="Added relevant files in accordance to the Lab 5 template" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added relevant files in accordance to the Lab 5 template" />
+    <MESSAGE value="Created Team Search panel with a search bar and the four feature buttons from Lab 5 Template. Cleaned up unnecessary files (57 deleted)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Team Search panel with a search bar and the four feature buttons from Lab 5 Template. Cleaned up unnecessary files (57 deleted)" />
   </component>
 </project>

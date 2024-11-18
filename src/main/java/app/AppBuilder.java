@@ -7,6 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import interface_adapter.ViewManagerModel;
+import interface_adapter.teamsearch.TeamSearchController;
+import interface_adapter.teamsearch.TeamSearchViewModel;
+import use_case.teamsearch.TeamSearchInputBoundary;
+import use_case.teamsearch.TeamSearchInteractor;
+import use_case.teamsearch.TeamSearchOutputBoundary;
 import view.TeamSearchView;
 import view.ViewManager;
 
@@ -50,10 +55,11 @@ public class AppBuilder {
      * @return this builder
      */
     public AppBuilder addTeamSearchUseCase() {
+        return this;
     }
 
     /**
-     * Creates the JFrame for the application and initially sets the SignupView to be displayed.
+     * Creates the JFrame for the application and initially sets the TeamSearchView to be displayed.
      * @return the application
      */
     public JFrame build() {
@@ -62,7 +68,7 @@ public class AppBuilder {
 
         application.add(cardPanel);
 
-        viewManagerModel.setState(signupView.getViewName());
+        viewManagerModel.setState(teamSearchView.getViewName());
         viewManagerModel.firePropertyChanged();
 
         return application;

@@ -9,7 +9,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class TeamUserCase implements BasketBallDataBase {
-    private static final String BASE_URL = "https://balldontlie.io/api/v1";
+    private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
 
     @Override
     public JSONObject getTeam(int teamId){

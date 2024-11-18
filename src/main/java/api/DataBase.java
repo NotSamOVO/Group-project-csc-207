@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class TeamUserCase implements BasketBallDataBase {
+public class DataBase implements NFLDataBase {
     private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
 
     @Override

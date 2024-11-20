@@ -1,3 +1,5 @@
+package api;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -8,8 +10,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class TeamUserCase implements BasketBallDataBase {
-    private static final String BASE_URL = "https://balldontlie.io/api/v1";
+public class NFLTeamDataBase implements NFLDataBase {
+    private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
 
     @Override
     public JSONObject getTeam(int teamId){

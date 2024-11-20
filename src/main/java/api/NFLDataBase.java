@@ -1,3 +1,5 @@
+package api;
+
 import org.json.JSONException;
 
 import org.json.JSONObject;
@@ -6,7 +8,7 @@ import org.json.JSONArray;
 /**
  * BasketBallDataBase is an interface that defines the methods for interacting with the TeamUserCase API.
  */
-public interface BasketBallDataBase {
+public interface NFLDataBase {
     /**
      * A method that returns a specific team by its ID.
      *

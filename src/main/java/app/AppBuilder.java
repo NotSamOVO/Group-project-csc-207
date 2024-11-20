@@ -7,11 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import interface_adapter.ViewManagerModel;
-import interface_adapter.teamsearch.TeamSearchController;
 import interface_adapter.teamsearch.TeamSearchViewModel;
-import use_case.teamsearch.TeamSearchInputBoundary;
-import use_case.teamsearch.TeamSearchInteractor;
-import use_case.teamsearch.TeamSearchOutputBoundary;
 import view.TeamSearchView;
 import view.ViewManager;
 

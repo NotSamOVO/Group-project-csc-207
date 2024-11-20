@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import interface_adapter.teamsearch.TeamSearchController;
 import interface_adapter.teamsearch.TeamSearchViewModel;
 
 /**
@@ -26,6 +27,7 @@ public class TeamSearchView extends JPanel implements ActionListener {
 
     private final TeamSearchViewModel teamSearchViewModel;
     private final JTextField teamIdInputField = new JTextField(15);
+    private TeamSearchController teamSearchController;
 
     private final JButton leagueStanding;
     private final JButton matchResults;
@@ -51,15 +53,27 @@ public class TeamSearchView extends JPanel implements ActionListener {
         playerStats = new JButton(teamSearchViewModel.PLAYER_STATS_BUTTON_LABEL);
         buttonPanel.add(playerStats);
 
+        leagueStanding.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        teamSearchController.switchLeagueStandingView();
+                    }
+                }
+        );
         this.add(buttonPanel);
     }
 
     @Override
     public void actionPerformed(ActionEvent evt) {
+
         JOptionPane.showMessageDialog(this, "Cancel not implemented yet.");
     }
 
     public String getViewName() {
         return viewName;
+    }
+
+    public void setTeamSearchController(TeamSearchController teamSearchController) {
+        this.teamSearchController = teamSearchController;
     }
 }

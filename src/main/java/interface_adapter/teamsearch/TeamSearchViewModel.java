@@ -14,7 +14,7 @@ public class TeamSearchViewModel extends ViewModel<TeamSearchState> {
     public static final String HISTORICAL_SEANSONS_BUTTON_LABEL = "Historical Seasons";
 
     public TeamSearchViewModel() {
-        super("team search");
+        super("Team Search");
         setState(new TeamSearchState());
     }
 }

@@ -15,6 +15,9 @@ public class Main {
 
         final JFrame application = appBuilder
                                             .addTeamSearchView()
+                                            .addLeagueStandingView()
+                                            .addTeamSearchUseCase()
+                                            .addLeagueStandingUseCase()
                                             .build();
 
         application.pack();

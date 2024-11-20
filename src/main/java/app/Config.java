@@ -3,7 +3,7 @@ package app;
 import api.NFLTeamDataBase;
 import api.NFLDataBase;
 import use_case.PlayerStatusUseCase;
-import use_case.TeamSearchUseCase;
+import use_case.teamsearch.TeamSearchUseCase;
 
 public class Config {
     private final NFLTeamDataBase dataBase = new NFLTeamDataBase();

@@ -2,7 +2,7 @@ package use_case.leaguestanding;
 
 import java.time.Year;
 
-import org.json.JSONArray;
+import org.json.JSONObject;
 
 import api.NFLTeamDataBase;
 /**
@@ -21,7 +21,7 @@ public final class LeagueStandingUseCase {
      * @return The team performances in current year.
      */
 
-    public JSONArray getLeagueStanding() {
+    public JSONObject getLeagueStanding() {
         return teamstandingDataBase.getSeasonInfo(year);
     }
 }

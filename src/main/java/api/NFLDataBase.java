@@ -1,9 +1,8 @@
 package api;
 
-import org.json.JSONException;
-
-import org.json.JSONObject;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * BasketBallDataBase is an interface that defines the methods for interacting with the TeamUserCase API.
@@ -67,5 +66,5 @@ public interface NFLDataBase {
      * @return the Season object containing information about the specified season.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getSeasonInfo(int year) throws JSONException;
+    JSONArray getSeasonInfo(int year) throws JSONException;
 }

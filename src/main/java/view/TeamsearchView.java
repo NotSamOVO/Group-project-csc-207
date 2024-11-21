@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -10,124 +11,69 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import interface_adapter.teamsearch.SignupController;
-import interface_adapter.teamsearch.SignupState;
-import interface_adapter.teamsearch.TeamsearchViewModel;
+import interface_adapter.teamsearch.TeamSearchController;
+import interface_adapter.teamsearch.TeamSearchViewModel;
 
 /**
- * The View for the Signup Use Case.
+ *  The View for the Team Search and Selection Use Case.
  */
-public class TeamsearchView extends JPanel implements ActionListener, PropertyChangeListener {
-    private final String viewName = "team search";
+public class TeamSearchView extends JPanel implements ActionListener {
+    private final String viewName = "Team Search";
 
-    private final TeamsearchViewModel teamsearchViewModel;
-    private final JTextField teamsearchInputField = new JTextField(15);
-    private SignupController signupController;
+    private final TeamSearchViewModel teamSearchViewModel;
+    private final JTextField teamIdInputField = new JTextField(15);
+    private TeamSearchController teamSearchController;
 
-    private final JButton leaguestanding;
-    private final JButton matchresults;
-    private final JButton historicalseasons;
-    private final JButton playerstats;
+    private final JButton leagueStanding;
+    private final JButton matchResults;
+    private final JButton historicalSeasons;
+    private final JButton playerStats;
 
-    public TeamsearchView(TeamsearchViewModel teamsearchViewModel) {
-        this.teamsearchViewModel = teamsearchViewModel;
-        teamsearchViewModel.addPropertyChangeListener(this);
-
-        final LabelTextPanel usernameInfo = new LabelTextPanel(
-                new JLabel(TeamsearchViewModel.TEAMSEARCH_LABEL), teamsearchInputField);
-
-        final JPanel buttons = new JPanel();
-        historicalseasons = new JButton(TeamsearchViewModel.HISTORICAL_SEANSONS_BUTTON_LABEL);
-        buttons.add(historicalseasons);
-        leaguestanding = new JButton(TeamsearchViewModel.LEAGUE_STANDING_BUTTON_LABEL);
-        buttons.add(leaguestanding);
-        matchresults = new JButton(TeamsearchViewModel.MATCH_RESULTS_BUTTON_LABEL);
-        buttons.add(matchresults);
-        playerstats = new JButton(TeamsearchViewModel.PLAYER_STATS_BUTTON_LABEL);
-        buttons.add(playerstats);
-
-        leaguestanding.addActionListener(
-                // This creates an anonymous subclass of ActionListener and instantiates it.
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(leaguestanding)) {
-                            final SignupState currentState = teamsearchViewModel.getState();
-
-                            signupController.execute(
-                                    currentState.getUsername(),
-                                    currentState.getPassword(),
-                                    currentState.getRepeatPassword()
-                            );
-                        }
-                    }
-                }
-        );
-
-        historicalseasons.addActionListener(
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent evt) {
-                        signupController.switchToLoginView();
-                    }
-                }
-        );
-
-        matchresults.addActionListener(this);
-
-        addTeamsearchListener();
+    public TeamSearchView(TeamSearchViewModel teamSearchViewModel) {
+        this.teamSearchViewModel = teamSearchViewModel;
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.add(usernameInfo);
-        this.add(buttons);
-    }
 
-    private void addTeamsearchListener() {
-        teamsearchInputField.getDocument().addDocumentListener(new DocumentListener() {
+        final LabelTextPanel teamSearchPanel = new LabelTextPanel(
+                new JLabel(TeamSearchViewModel.TEAMSEARCH_LABEL), teamIdInputField);
+        this.add(teamSearchPanel);
 
-            private void documentListenerHelper() {
-                final SignupState currentState = teamsearchViewModel.getState();
-                currentState.setUsername(teamsearchInputField.getText());
-                teamsearchViewModel.setState(currentState);
-            }
+        final JPanel buttonPanel = new JPanel();
+        historicalSeasons = new JButton(teamSearchViewModel.HISTORICAL_SEANSONS_BUTTON_LABEL);
+        buttonPanel.add(historicalSeasons);
+        leagueStanding = new JButton(teamSearchViewModel.LEAGUE_STANDING_BUTTON_LABEL);
+        buttonPanel.add(leagueStanding);
+        matchResults = new JButton(teamSearchViewModel.MATCH_RESULTS_BUTTON_LABEL);
+        buttonPanel.add(matchResults);
+        playerStats = new JButton(teamSearchViewModel.PLAYER_STATS_BUTTON_LABEL);
+        buttonPanel.add(playerStats);
 
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                documentListenerHelper();
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                documentListenerHelper();
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                documentListenerHelper();
-            }
-        });
+        leagueStanding.addActionListener(
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        teamSearchController.switchLeagueStandingView();
+                    }
+                }
+        );
+        this.add(buttonPanel);
     }
 
     @Override
     public void actionPerformed(ActionEvent evt) {
-        JOptionPane.showMessageDialog(this, "Cancel not implemented yet.");
-    }
 
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        final SignupState state = (SignupState) evt.getNewValue();
-        if (state.getUsernameError() != null) {
-            JOptionPane.showMessageDialog(this, state.getUsernameError());
-        }
+        JOptionPane.showMessageDialog(this, "Cancel not implemented yet.");
     }
 
     public String getViewName() {
         return viewName;
     }
 
-    public void setSignupController(SignupController controller) {
-        this.signupController = controller;
+    public void setTeamSearchController(TeamSearchController teamSearchController) {
+        this.teamSearchController = teamSearchController;
     }
 }

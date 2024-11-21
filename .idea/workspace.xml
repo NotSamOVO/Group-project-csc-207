@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu added in the usecase for TeamSearchUseCase">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/use_case/PlayerStatusUseCase.java" afterDir="false" />
+    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="updating">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/leaguestanding/LeagueStandingViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/leaguestanding/LeagueStandingViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/teamsearch/TeamsearchViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/teamsearch/TeamsearchViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/leaguestanding/LeagueStandingUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/leaguestanding/LeagueStandingUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/LeagueStandingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LeagueStandingView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/TeamsearchView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/TeamsearchView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/AppBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/AppBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +30,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -55,7 +68,7 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "tianle.xu",
+    "git-widget-placeholder": "Park",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -81,6 +94,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -157,13 +173,26 @@
       <option name="project" value="LOCAL" />
       <updated>1731981183201</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="updating">
+      <option name="closed" value="true" />
+      <created>1732145774483</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732145774483</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="f646eef8-0f4b-4c0a-818f-7354120c885a" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -183,6 +212,11 @@
             </State>
           </value>
         </entry>
+        <entry key="f646eef8-0f4b-4c0a-818f-7354120c885a">
+          <value>
+            <State />
+          </value>
+        </entry>
       </map>
     </option>
   </component>
@@ -192,6 +226,21 @@
     <MESSAGE value="Added relevant files in accordance to the Lab 5 template" />
     <MESSAGE value="Created Team Search panel with a search bar and the four feature buttons from Lab 5 Template. Cleaned up unnecessary files (57 deleted)" />
     <MESSAGE value="tianle.xu added in the usecase for TeamSearchUseCase" />
-    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu added in the usecase for TeamSearchUseCase" />
+    <MESSAGE value="updating" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.json.JSONException" package="org.json" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

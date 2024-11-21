@@ -7,8 +7,6 @@ import interface_adapter.ViewModel;
  */
 public class LeagueStandingViewModel extends ViewModel<LeagueStandingState> {
 
-    public static final String CANCEL_BUTTON_LABEL = "Cancel";
-
     public LeagueStandingViewModel() {
         super("League Standing");
         setState(new LeagueStandingState());

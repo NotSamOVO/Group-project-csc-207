@@ -10,11 +10,15 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+/**
+ * NFLTeamDataBase class.
+ */
 public class NFLTeamDataBase implements NFLDataBase {
     private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
+    private static final String KEY = "38e3647f-0cbd-49e0-8e8f-d762c46e2c92";
 
     @Override
-    public JSONObject getTeam(int teamId){
+    public JSONObject getTeam(int teamId) {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -37,7 +41,7 @@ public class NFLTeamDataBase implements NFLDataBase {
     }
 
     @Override
-    public JSONArray getAllTeams(){
+    public JSONArray getAllTeams() {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -156,12 +160,13 @@ public class NFLTeamDataBase implements NFLDataBase {
     }
 
     @Override
-    public JSONObject getSeasonInfo(int year) {
+    public JSONArray getSeasonInfo(int year) {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/standings" + "?season=" + year)
                 .method("GET", null)
+                .addHeader("Authorization", KEY)
                 .build();
 
         try {
@@ -170,7 +175,7 @@ public class NFLTeamDataBase implements NFLDataBase {
             if (!response.isSuccessful()) {
                 throw new IOException("Error getting season info");
             }
-            return responseBody;
+            return responseBody.getJSONArray("data");
         }
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);

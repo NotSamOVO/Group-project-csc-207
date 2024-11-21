@@ -19,7 +19,6 @@ public class Main {
                                             .addTeamSearchUseCase()
                                             .addLeagueStandingUseCase()
                                             .build();
-
         application.pack();
         application.setVisible(true);
     }

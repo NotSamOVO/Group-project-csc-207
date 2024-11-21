@@ -16,6 +16,7 @@ import interface_adapter.teamsearch.TeamSearchViewModel;
 import use_case.leaguestanding.LeagueStandingInputBoundary;
 import use_case.leaguestanding.LeagueStandingInteractor;
 import use_case.leaguestanding.LeagueStandingOutputBoundary;
+import use_case.leaguestanding.LeagueStandingUseCase;
 import use_case.teamsearch.TeamSearchInputBoundary;
 import use_case.teamsearch.TeamSearchInteractor;
 import use_case.teamsearch.TeamSearchOutputBoundary;
@@ -35,6 +36,8 @@ import view.ViewManager;
 //                  if your team decides to work with this as your starter code
 //                  for your final project this term.
 public class AppBuilder {
+    private static final int HEIGHT = 800;
+    private static final int WIDTH = 1000;
     private final JPanel cardPanel = new JPanel();
     private final CardLayout cardLayout = new CardLayout();
     private final ViewManagerModel viewManagerModel = new ViewManagerModel();
@@ -44,6 +47,9 @@ public class AppBuilder {
     private TeamSearchViewModel teamSearchViewModel;
     private LeagueStandingView leagueStandingView;
     private LeagueStandingViewModel leagueStandingViewModel;
+    final Config config = new Config();
+
+    private final LeagueStandingUseCase leagueStandingUseCase = config.getLeagueStandingUseCase();
 
     public AppBuilder() {
         cardPanel.setLayout(cardLayout);
@@ -66,7 +72,7 @@ public class AppBuilder {
      */
     public AppBuilder addLeagueStandingView() {
         leagueStandingViewModel = new LeagueStandingViewModel();
-        leagueStandingView = new LeagueStandingView(leagueStandingViewModel);
+        leagueStandingView = new LeagueStandingView(leagueStandingViewModel, leagueStandingUseCase);
         cardPanel.add(leagueStandingView, leagueStandingView.getViewname());
         return this;
     }
@@ -105,8 +111,9 @@ public class AppBuilder {
      * @return the application
      */
     public JFrame build() {
-        final JFrame application = new JFrame("Login Example");
+        final JFrame application = new JFrame("Team Search");
         application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        application.setSize(WIDTH, HEIGHT);
 
         application.add(cardPanel);
 

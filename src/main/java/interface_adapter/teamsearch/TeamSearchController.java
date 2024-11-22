@@ -1,14 +1,19 @@
 package interface_adapter.teamsearch;
 
+import use_case.teamsearch.TeamSearchInputBoundary;
+
 /**
  * Controller for the Team Search Use Case.
  */
 public class TeamSearchController {
 
     private final TeamSearchViewModel teamSearchViewModel;
+    private final TeamSearchInputBoundary userTeamsearchUseCaseInteractor;
 
-    public TeamSearchController(TeamSearchViewModel teamSearchViewModel) {
+    public TeamSearchController(TeamSearchViewModel teamSearchViewModel,
+                                TeamSearchInputBoundary userTeamsearchUseCaseInteractor) {
         this.teamSearchViewModel = teamSearchViewModel;
+        this.userTeamsearchUseCaseInteractor = userTeamsearchUseCaseInteractor;
     }
 
     /**
@@ -18,5 +23,12 @@ public class TeamSearchController {
     public void executeSearch(String teamId) {
         // To be implemented
         teamSearchViewModel.getState().setTeamId(teamId);
+    }
+
+    /**
+     * Executes the "switch to LeagueStandingView" Use Case.
+     */
+    public void switchLeagueStandingView() {
+        userTeamsearchUseCaseInteractor.switchLeagueStandingView();
     }
 }

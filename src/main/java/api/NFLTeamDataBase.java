@@ -9,16 +9,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import entity.Player;
-import entity.Team;
 
 public class NFLTeamDataBase implements NFLDataBase {
     private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
 
     @Override
-    public Team getTeam(int teamId){
+    public JSONObject getTeam(int teamId){
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -31,17 +27,9 @@ public class NFLTeamDataBase implements NFLDataBase {
             final JSONObject responseBody = new JSONObject(response.body().string());
 
             if (!response.isSuccessful()) {
-                throw new IOException("Error getting team");
+                throw new IOException("Unexpected code " + response);
             }
-            return Team.builder()
-                    .id(responseBody.getInt("id"))
-                    .conference(responseBody.getString("conference"))
-                    .division(responseBody.getString("division"))
-                    .location(responseBody.getString("location"))
-                    .name(responseBody.getString("name"))
-                    .fullName(responseBody.getString("full_name"))
-                    .abbreviation(responseBody.getString("abbreviation"))
-                    .build();
+            return responseBody;
         }
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);
@@ -49,7 +37,7 @@ public class NFLTeamDataBase implements NFLDataBase {
     }
 
     @Override
-    public ArrayList<Team> getAllTeams(){
+    public JSONArray getAllTeams(){
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -60,33 +48,28 @@ public class NFLTeamDataBase implements NFLDataBase {
         try {
             final Response response = client.newCall(request).execute();
             if (!response.isSuccessful()) {
-                throw new IOException("Error getting team");
+                throw new IOException("Unexpected code " + response);
             }
             final String responseBody = response.body().string();
             final JSONObject jsonResponse = new JSONObject(responseBody);
             final JSONArray teamsArray = jsonResponse.getJSONArray("data");
-            final ArrayList<Team> teams = new ArrayList<>();
+            final JSONArray result = new JSONArray();
 
             for (int i = 0; i < teamsArray.length(); i++) {
                 JSONObject team = teamsArray.getJSONObject(i);
-                teams.add(Team.builder()
-                        .id(team.getInt("id"))
-                        .conference(team.getString("conference"))
-                        .division(team.getString("division"))
-                        .location(team.getString("location"))
-                        .name(team.getString("name"))
-                        .fullName(team.getString("full_name"))
-                        .abbreviation(team.getString("abbreviation"))
-                        .build());
+                JSONObject teamInfo = new JSONObject();
+                teamInfo.put("id", team.getInt("id"));
+                teamInfo.put("name", team.getString("full_name"));
+                result.put(teamInfo);
             }
-            return teams;
+            return result;
         } catch (IOException | JSONException event) {
             throw new RuntimeException(event);
         }
     }
 
     @Override
-    public Player getPlayer(int playerId) {
+    public JSONObject getPlayer(int playerId) {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -99,31 +82,7 @@ public class NFLTeamDataBase implements NFLDataBase {
             if (!response.isSuccessful()) {
                 throw new RuntimeException("Player not found");
             }
-            JSONObject team = responseBody.getJSONObject("team");
-            Team teamObj = Team.builder()
-                    .id(team.getInt("id"))
-                    .conference(team.getString("conference"))
-                    .division(team.getString("division"))
-                    .location(team.getString("location"))
-                    .name(team.getString("name"))
-                    .fullName(team.getString("full_name"))
-                    .abbreviation(team.getString("abbreviation"))
-                    .build();
-
-            return Player.builder()
-                    .id(responseBody.getInt("id"))
-                    .firstName(responseBody.getString("first_name"))
-                    .lastName(responseBody.getString("last_name"))
-                    .position(responseBody.getString("position"))
-                    .positionAbbreviation(responseBody.getString("position_abbreviation"))
-                    .height(responseBody.getString("height"))
-                    .weight(responseBody.getString("weight"))
-                    .jerseyNumber(responseBody.getString("jersey_number"))
-                    .college(responseBody.getString("college"))
-                    .experience(responseBody.getString("experience"))
-                    .age(responseBody.getInt("age"))
-                    .team(teamObj)
-                    .build();
+            return responseBody;
         }
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);
@@ -131,7 +90,7 @@ public class NFLTeamDataBase implements NFLDataBase {
     }
 
     @Override
-    public ArrayList<Player> getAllPlayers() {
+    public JSONArray getAllPlayers() {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -141,41 +100,11 @@ public class NFLTeamDataBase implements NFLDataBase {
         try {
             final Response response = client.newCall(request).execute();
             final JSONObject responseBody = new JSONObject(response.body().string());
-            final JSONArray playerArray = responseBody.getJSONArray("data");
-            final ArrayList<Player> players = new ArrayList<>();
 
             if (!response.isSuccessful()) {
                 throw new RuntimeException("Error getting players");
             }
-            for (int i = 0; i < playerArray.length(); i++) {
-                JSONObject player = playerArray.getJSONObject(i);
-                JSONObject team = player.getJSONObject("team");
-                Team teamObj = Team.builder()
-                        .id(team.getInt("id"))
-                        .conference(team.getString("conference"))
-                        .division(team.getString("division"))
-                        .location(team.getString("location"))
-                        .name(team.getString("name"))
-                        .fullName(team.getString("full_name"))
-                        .abbreviation(team.getString("abbreviation"))
-                        .build();
-
-                players.add(Player.builder()
-                        .id(player.getInt("id"))
-                        .firstName(player.getString("first_name"))
-                        .lastName(player.getString("last_name"))
-                        .position(player.getString("position"))
-                        .positionAbbreviation(player.getString("position_abbreviation"))
-                        .height(player.getString("height"))
-                        .weight(player.getString("weight"))
-                        .jerseyNumber(player.getString("jersey_number"))
-                        .college(player.getString("college"))
-                        .experience(player.getString("experience"))
-                        .age(player.getInt("age"))
-                        .team(teamObj)
-                        .build());
-            }
-            return players;
+            return responseBody.getJSONArray("data");
         }
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);

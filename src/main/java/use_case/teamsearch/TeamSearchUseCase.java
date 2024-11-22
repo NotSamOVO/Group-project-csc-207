@@ -1,4 +1,4 @@
-package use_case;
+package use_case.teamsearch;
 
 import api.NFLTeamDataBase;
 import org.json.JSONArray;

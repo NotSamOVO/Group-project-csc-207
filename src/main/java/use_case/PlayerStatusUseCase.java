@@ -4,6 +4,11 @@ import api.NFLTeamDataBase;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
+import entity.Team;
+import entity.Player;
+
 public class PlayerStatusUseCase {
     private NFLTeamDataBase playerDataBase = new NFLTeamDataBase();
 
@@ -19,19 +24,19 @@ public class PlayerStatusUseCase {
      * @return the id of the player. -1 if the player is not found.
      */
     public int getPlayerId(String firstName, String lastName, String teamName) {
-        JSONArray allPlayers = playerDataBase.getAllPlayers();
-        for (int i = 0; i < allPlayers.length(); i++) {
-            JSONObject player = allPlayers.getJSONObject(i);
-            String playerFirstName = player.getString("first_name").toLowerCase();
-            String playerLastName = player.getString("last_name").toLowerCase();
-            String playerTeamName = player.getJSONObject("team").getString("full_name").toLowerCase();
+        ArrayList<Player> allPlayers = playerDataBase.getAllPlayers();
+        for (int i = 0; i < allPlayers.size(); i++) {
+            Player player = allPlayers.get(i);
+            String playerFirstName = player.getFirstName();
+            String playerLastName = player.getLastName();
+            String playerTeamName = player.getTeam().getName();
 
             boolean nameMatch = (playerFirstName.equals(firstName) && playerLastName.equals(lastName)) ||
                     (playerLastName.equals(firstName) && playerFirstName.equals(lastName));
             boolean teamMatch = teamName.isEmpty() || playerTeamName.contains(teamName);
 
             if (nameMatch && teamMatch) {
-                return player.getInt("id");
+                return player.getId();
             }
         }
         return -1;

@@ -4,6 +4,11 @@ import api.NFLTeamDataBase;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import entity.Team;
+import entity.Player;
+
+import java.util.ArrayList;
+
 public class TeamSearchUseCase {
     private NFLTeamDataBase teamDatabase = new NFLTeamDataBase();
 
@@ -17,11 +22,11 @@ public class TeamSearchUseCase {
      * @return the id of the team. -1 if the team is not found.
      */
     public int getTeamId(String teamName) {
-        JSONArray allTeams = teamDatabase.getAllTeams();
-        for (int i = 0; i < allTeams.length(); i++) {
-            JSONObject team = allTeams.getJSONObject(i);
-            if (team.getString("name").equals(teamName)) {
-                return team.getInt("id");
+        ArrayList<Team> allTeams = teamDatabase.getAllTeams();
+        for (int i = 0; i < allTeams.size(); i++) {
+            Team team = allTeams.get(i);
+            if (team.getName().equals(teamName)) {
+                return team.getId();
             }
         }
         return -1;

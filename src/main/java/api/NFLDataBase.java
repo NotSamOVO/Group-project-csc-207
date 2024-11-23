@@ -1,12 +1,17 @@
 package api;
 
-import org.json.JSONException;
-
-import org.json.JSONObject;
+import entity.Game;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import entity.Player;
+import entity.Team;
+
+import java.util.ArrayList;
 
 /**
- * data_access.BasketBallDataBase is an interface that defines the methods for interacting with the data_access.TeamUserCase API.
+ * BasketBallDataBase is an interface that defines the methods for interacting with the TeamUserCase API.
  */
 public interface NFLDataBase {
     /**
@@ -16,14 +21,14 @@ public interface NFLDataBase {
      * @return the team with the specified ID.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getTeam(int teamId) throws JSONException;
+    Team getTeam(int teamId) throws JSONException;
 
     /**
      * A method that returns all teams in the league.
-     * @return JSONArray of all teams.
+     * @return ArrayList of all teams.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONArray getAllTeams() throws JSONException;
+    ArrayList<Team> getAllTeams() throws JSONException;
 
     /**
      * A method that returns a specific player by their ID.
@@ -32,15 +37,15 @@ public interface NFLDataBase {
      * @return the player with the specified ID.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getPlayer(int playerId) throws JSONException;
+    Player getPlayer(int playerId) throws JSONException;
 
     /**
      * A method that returns all players in the league.
      *
-     * @return an array of all players.
+     * @return an ArrayList of all players.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONArray getAllPlayers() throws JSONException;
+    ArrayList<Player> getAllPlayers() throws JSONException;
 
     /**
      * A method that returns a specific game by its ID.
@@ -49,7 +54,15 @@ public interface NFLDataBase {
      * @return the game with the specified ID.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getGame(int gameId) throws JSONException;
+    Game getGame(int gameId) throws JSONException;
+
+    /**
+     * A method that returns all games.
+     *
+     * @return all games.
+     * @throws JSONException if an error occurs while parsing the JSON response.
+     */
+    ArrayList<Game> getAllGames() throws JSONException;
 
     /**
      * A method that returns games for a specific date.
@@ -68,11 +81,4 @@ public interface NFLDataBase {
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
     JSONObject getSeasonInfo(int year) throws JSONException;
-
-    /**
-     * A method returns all games.
-     * @return JSONArray of all games
-     * @throws JSONException if an error occurs while parsing the JSON response.
-     */
-    JSONArray getAllGames() throws JSONException;
 }

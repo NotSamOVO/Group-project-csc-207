@@ -1,5 +1,4 @@
 package use_case.matchresults;
-import api.NFLDataBase;
 import api.NFLTeamDataBase;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
  * The MatchresultsOutputData class provides methods to retrieve and process
  * data related to NFL games, including game descriptions, scores, and dates.
  */
-public class MatchResultsOutputData {
+public class MatchResultsUseCase {
     private NFLTeamDataBase nflDataBase;
 
     /**
@@ -19,7 +18,7 @@ public class MatchResultsOutputData {
      *
      * @param nflDataBase the data access interface for retrieving NFL data.
      */
-    public MatchResultsOutputData(NFLTeamDataBase nflDataBase) {
+    public MatchResultsUseCase(NFLTeamDataBase nflDataBase) {
         this.nflDataBase = nflDataBase;
     }
 

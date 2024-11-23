@@ -1,5 +1,7 @@
 package use_case.matchresults;
 import api.NFLTeamDataBase;
+import entity.Game;
+import entity.Team;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,16 +27,39 @@ public class MatchResultsUseCase {
     /**
      * Retrieves a formatted string representing the game matchup.
      *
+     * @return a list of gameId.
+     * @throws RuntimeException if the game data is malformed or missing.
+     */
+    public ArrayList<Integer> getGameId(String teamName) {
+        final ArrayList<Game> allGames = nflDataBase.getAllGames();
+        final ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < allGames.size(); i++) {
+            final Game game = allGames.get(i);
+            final int gameId = game.getId();
+            final Team homeTeamObj = game.getHome_team();
+            final Team visitorTeamObj = game.getVisitor_team();
+            final String homeTeam = homeTeamObj.getName();
+            final String visitorTeam = visitorTeamObj.getName();
+            if (homeTeam.equals(teamName) || visitorTeam.equals(teamName)) {
+                result.add(gameId);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Retrieves a formatted string representing the game matchup.
+     *
      * @param gameId the unique ID of the game.
      * @return a string in the format "HomeTeam vs VisitorTeam".
      * @throws RuntimeException if the game data is malformed or missing.
      */
     public String getGame(int gameId) {
-        final JSONObject gameJson = nflDataBase.getGame(gameId);
+        final Game game = nflDataBase.getGame(gameId);
 
         try {
-            final String homeTeam = gameJson.getJSONObject("home_team").getString("full_name");
-            final String visitorTeam = gameJson.getJSONObject("visitor_team").getString("full_name");
+            final String homeTeam = game.getHome_team().getName();
+            final String visitorTeam = game.getVisitor_team().getName();
 
             return homeTeam + " vs " + visitorTeam;
         }
@@ -52,13 +77,13 @@ public class MatchResultsUseCase {
      */
 
     public String getScore(int gameId) {
-        final JSONObject scoreJson = nflDataBase.getGame(gameId);
+        final Game scoreGame = nflDataBase.getGame(gameId);
 
         try {
-            final Integer homeScore = scoreJson.getInt("home_team_score");
-            final Integer visitorScore = scoreJson.getInt("visitor_team_score");
+            final Integer homeScore = scoreGame.getHome_team_score();
+            final Integer visitorScore = scoreGame.getVisitor_team_score();
 
-            return homeScore + "-" + visitorScore;
+            return homeScore + " - " + visitorScore;
         }
         catch (JSONException e) {
             throw new RuntimeException(e);
@@ -73,10 +98,10 @@ public class MatchResultsUseCase {
      * @throws RuntimeException if the game data is malformed or missing.
      */
     public String getDate(int gameId) {
-        final JSONObject dateJson = nflDataBase.getGame(gameId);
+        final Game dateGame = nflDataBase.getGame(gameId);
 
         try {
-            final String date = dateJson.getString("date");
+            final String date = dateGame.getDate();
             return date;
         }
         catch (JSONException e) {
@@ -84,32 +109,19 @@ public class MatchResultsUseCase {
         }
     }
 
-    public String[][] getdata(int[] gameId) {
-        final String[][] data = new String[gameId.length][3];
-        for (int i = 0; i < gameId.length; i++) {
-            final int gameid = gameId[i];
-            data[i][0] = getGame(gameid);
-            data[i][1] = getScore(gameid);
-            data[i][2] = getDate(gameid);
-        }
-        return data;
-    }
+    /**
+     * Retrieves the venue of the game.
+     *
+     * @param gameId the unique ID of the game.
+     * @return a string representing the venue.
+     * @throws RuntimeException if the game data is malformed or missing.
+     */
+    public String getVenue(int gameId) {
+        final Game venueGame = nflDataBase.getGame(gameId);
 
-    public int[] getGameId(int teamId) {
         try {
-            final JSONObject team = nflDataBase.getTeam(teamId);
-            final String teamName = team.getString("name");
-            final JSONArray games = nflDataBase.getAllGames();
-            final ArrayList<Integer> result = new ArrayList<>();
-            for (int i = 0; i < games.length(); i++) {
-                final JSONObject game = games.getJSONObject(i);
-                final String homeTeam = game.getString("home_team");
-                final String visitorTeam = game.getString("visitor_team");
-                if (homeTeam.equals(teamName) || visitorTeam.equals(teamName)) {
-                    result.add(game.getInt("id"));
-                }
-            }
-            return result.stream().mapToInt(i -> i).toArray();
+            final String venue = venueGame.getVenue();
+            return venue;
         }
         catch (JSONException e) {
             throw new RuntimeException(e);

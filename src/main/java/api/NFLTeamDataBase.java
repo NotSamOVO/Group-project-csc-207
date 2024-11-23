@@ -223,6 +223,8 @@ public class NFLTeamDataBase implements NFLDataBase {
                     .abbreviation(visitorTeam.getString("abbreviation"))
                     .build();
 
+            String venue = game.optString("venue", "Unknown Venue");
+
             return Game.builder()
                     .id(game.getInt("id"))
                     .home_team(homeTeamObj)
@@ -230,7 +232,15 @@ public class NFLTeamDataBase implements NFLDataBase {
                     .date(game.getString("date"))
                     .home_team_score(game.getInt("home_team_score"))
                     .visitor_team_score(game.getInt("visitor_team_score"))
-                    .venue(game.getString("venue"))
+                    .venue(venue)
+                    .home_team_q1(game.getInt("home_team_q1"))
+                    .visitor_team_q1(game.getInt("visitor_team_q1"))
+                    .home_team_q2(game.getInt("home_team_q2"))
+                    .visitor_team_q2(game.getInt("visitor_team_q2"))
+                    .home_team_q3(game.getInt("home_team_q3"))
+                    .visitor_team_q3(game.getInt("visitor_team_q3"))
+                    .home_team_q4(game.getInt("home_team_q4"))
+                    .visitor_team_q4(game.getInt("visitor_team_q4"))
                     .build();
         }
         catch (IOException | JSONException event) {
@@ -282,6 +292,8 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .abbreviation(visitorTeam.getString("abbreviation"))
                         .build();
 
+                String venue = game.optString("venue", "Unknown Venue");
+
                 result.add(Game.builder()
                         .id(game.getInt("id"))
                                 .home_team(homeTeamObj)
@@ -289,7 +301,15 @@ public class NFLTeamDataBase implements NFLDataBase {
                                 .date(game.getString("date"))
                                 .home_team_score(game.getInt("home_team_score"))
                                 .visitor_team_score(game.getInt("visitor_team_score"))
-                                .venue(game.getString("venue"))
+                                .venue(venue)
+                        .home_team_q1(game.getInt("home_team_q1"))
+                        .visitor_team_q1(game.getInt("visitor_team_q1"))
+                        .home_team_q2(game.getInt("home_team_q2"))
+                        .visitor_team_q2(game.getInt("visitor_team_q2"))
+                        .home_team_q3(game.getInt("home_team_q3"))
+                        .visitor_team_q3(game.getInt("visitor_team_q3"))
+                        .home_team_q4(game.getInt("home_team_q4"))
+                        .visitor_team_q4(game.getInt("visitor_team_q4"))
                         .build());
             }
             return result;

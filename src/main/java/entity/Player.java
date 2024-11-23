@@ -18,6 +18,7 @@ public class Player {
     private String experience;
     private int age;
     private Team team;
+
     public Player(int id, String firstName, String lastName, String position, String positionAbbreviation
             , String height, String weight, String jerseyNumber, String college, String experience, int age, Team team) {
         this.id = id;
@@ -134,14 +135,14 @@ public class Player {
      * Returns a new PlayerBuilder instance.
      * @return a new PlayerBuilder instance.
      */
-    public static PlayerBuilder builder(){
+    public static PlayerBuilder builder() {
         return new PlayerBuilder();
     }
 
     /**
      * Represents a builder for creating instances of a Player.
      */
-    public static class PlayerBuilder{
+    public static class PlayerBuilder {
         private int id;
         private String firstName;
         private String lastName;

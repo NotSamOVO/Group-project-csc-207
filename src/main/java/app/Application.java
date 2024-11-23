@@ -1,22 +1,18 @@
 package app.gui;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.GridLayout;
+import app.Config;
+import use_case.matchresults.MatchResultsUseCase;
+import use_case.teamsearch.TeamSearchUseCase;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.WindowConstants;
+import java.awt.*;
+import java.util.ArrayList;
+
+import javax.swing.*;
 
 /**
  * GUI class for Team Search and Match Results.
  */
-public class SimpleApplication {
+public class Application {
     static final int WIDTH = 800;
     static final int HEIGHT = 300;
 
@@ -25,6 +21,11 @@ public class SimpleApplication {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
+        final Config config = new Config();
+
+        final MatchResultsUseCase matchResultsUseCase = config.getMatchResultsUseCase();
+        final TeamSearchUseCase teamSearchUseCase = config.getTeamSearchUseCase();
+
         SwingUtilities.invokeLater(() -> {
             final JFrame frame = new JFrame("Team and Match Results App");
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -36,7 +37,7 @@ public class SimpleApplication {
             // Creating individual cards (panels)
             final JPanel defaultCard = createDefaultCard();
             final JPanel teamSearchCard = createTeamSearchCard(frame);
-            final JPanel matchResultsCard = createMatchResultsCard(frame);
+            final JPanel matchResultsCard = createMatchResultsCard(frame, matchResultsUseCase);
 
             cardPanel.add(defaultCard, "DefaultCard");
             cardPanel.add(teamSearchCard, "TeamSearchCard");
@@ -110,31 +111,87 @@ public class SimpleApplication {
     /**
      * Match Results Card: Displays match results based on user input.
      */
-    private static JPanel createMatchResultsCard(JFrame jFrame) {
-        final JPanel matchResultsCard = new JPanel();
-        matchResultsCard.setLayout(new GridLayout(3, 2));
+    private static JPanel createMatchResultsCard(JFrame jFrame, MatchResultsUseCase matchResultsUseCase) {
+        final JPanel teamSearchCard = new JPanel();
+        teamSearchCard.setLayout(new BorderLayout());
 
-        final JTextField matchDateField = new JTextField(20);
-        final JButton viewResultsButton = new JButton("View Results");
+        final JPanel inputPanel = new JPanel(new GridLayout(2, 2));
+        final JTextField teamNameField = new JTextField(20);
+        final JButton searchButton = new JButton("Search");
+        final JButton matchResultsButton = new JButton("Match Results");
         final JLabel resultLabel = new JLabel();
 
-        viewResultsButton.addActionListener(event -> {
-            final String matchDate = matchDateField.getText();
+        inputPanel.add(new JLabel("Enter Team Name:"));
+        inputPanel.add(teamNameField);
+        inputPanel.add(searchButton);
+        inputPanel.add(matchResultsButton);
 
-            // Simulating match results logic
-            if (matchDate.isEmpty()) {
-                JOptionPane.showMessageDialog(jFrame, "Please enter a match date!");
+        final JPanel resultsPanel = new JPanel(new BorderLayout());
+        final JLabel noResultsLabel = new JLabel("Results will appear here...");
+        noResultsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        final String[] columnNames = {"Game", "Score", "Date", "q1", "q2", "q3", "q4", "venue"};
+        final JTable resultsTable = new JTable(new String[0][0], columnNames);
+        final JScrollPane scrollPane = new JScrollPane(resultsTable);
+
+        resultsPanel.add(noResultsLabel, BorderLayout.NORTH);
+        resultsPanel.add(scrollPane, BorderLayout.CENTER);
+
+        // Search Button Logic
+        searchButton.addActionListener(event -> {
+            final String teamName = teamNameField.getText().trim();
+
+            if (teamName.isEmpty()) {
+                JOptionPane.showMessageDialog(jFrame, "Please enter a team name!");
             } else {
-                // Replace with actual match result logic
-                resultLabel.setText("Results for date: " + matchDate);
-                JOptionPane.showMessageDialog(jFrame, "Results for " + matchDate + " displayed!");
+                // Simulating search logic
+                resultLabel.setText("Results for team: " + teamName);
+                JOptionPane.showMessageDialog(jFrame, "Team " + teamName + " found!");
             }
         });
 
-        matchResultsCard.add(new JLabel("Enter Match Date (YYYY-MM-DD):"));
-        matchResultsCard.add(matchDateField);
-        matchResultsCard.add(viewResultsButton);
-        matchResultsCard.add(resultLabel);
-        return matchResultsCard;
+        // Match Results Button Logic
+        matchResultsButton.addActionListener(event -> {
+            final String teamName = teamNameField.getText().trim();
+
+            if (teamName.isEmpty()) {
+                JOptionPane.showMessageDialog(jFrame, "Please enter a team name to view match results!");
+                return;
+            }
+
+            try {
+                ArrayList<Integer> gameIds = matchResultsUseCase.getGameId(teamName);
+
+                if (gameIds.isEmpty()) {
+                    noResultsLabel.setText("No match results found for team: " + teamName);
+                    resultsTable.setModel(new javax.swing.table.DefaultTableModel(new Object[0][0], columnNames));
+                }
+                else {
+                    // Populate table data
+                    String[][] data = new String[gameIds.size()][8];
+                    for (int i = 0; i < gameIds.size(); i++) {
+                        int gameId = gameIds.get(i);
+                        data[i][0] = matchResultsUseCase.getGame(gameId);
+                        data[i][1] = matchResultsUseCase.getScore(gameId);
+                        data[i][2] = matchResultsUseCase.getDate(gameId);
+                        data[i][3] = matchResultsUseCase.getq1(gameId);
+                        data[i][4] = matchResultsUseCase.getq2(gameId);
+                        data[i][5] = matchResultsUseCase.getq3(gameId);
+                        data[i][6] = matchResultsUseCase.getq4(gameId);
+                        data[i][7] = matchResultsUseCase.getVenue(gameId);
+                    }
+
+                    // Update table model
+                    resultsTable.setModel(new javax.swing.table.DefaultTableModel(data, columnNames));
+                    noResultsLabel.setText("Displaying match results for team: " + teamName);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(jFrame, "Error fetching match results: " + e.getMessage());
+            }
+        });
+
+        teamSearchCard.add(inputPanel, BorderLayout.NORTH);
+        teamSearchCard.add(resultsPanel, BorderLayout.CENTER);
+        return teamSearchCard;
     }
 }

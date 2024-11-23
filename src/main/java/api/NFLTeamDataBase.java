@@ -10,8 +10,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class TeamUserCase implements NFLDataBase {
+public class NFLTeamDataBase implements NFLDataBase {
     private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
+    private static final String API_KEY = "f0fb2b79-6fcb-47cd-b4a2-e5534b085344";
 
     @Override
     public JSONObject getTeam(int teamId) {
@@ -118,6 +119,7 @@ public class TeamUserCase implements NFLDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/games/" + gameId)
+                .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();
         try {
@@ -126,7 +128,33 @@ public class TeamUserCase implements NFLDataBase {
             if (!response.isSuccessful()) {
                 throw new RuntimeException("Error getting game");
             }
-            return responseBody;
+            return responseBody.getJSONObject("data");
+        }
+        catch (IOException | JSONException event) {
+            throw new RuntimeException(event);
+        }
+    }
+
+    @Override
+    public JSONArray getAllGames() {
+        final OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        final Request request = new Request.Builder()
+                .url(BASE_URL + "/games")
+                .addHeader("Authorization", API_KEY)
+                .method("GET", null)
+                .build();
+        try {
+            final Response response = client.newCall(request).execute();
+
+            if (!response.isSuccessful()) {
+                throw new RuntimeException("Error getting games");
+            }
+
+            final String responseBody = response.body().string();
+            final JSONObject jsonResponse = new JSONObject(responseBody);
+            final JSONArray gamesArray = jsonResponse.getJSONArray("data");
+            return gamesArray;
         }
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);

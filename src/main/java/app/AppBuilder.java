@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import api.NFLTeamDataBase;
 import interface_adapter.ViewManagerModel;
 import interface_adapter.teamsearch.TeamSearchController;
 import interface_adapter.teamsearch.TeamSearchViewModel;
@@ -55,6 +56,19 @@ public class AppBuilder {
      * @return this builder
      */
     public AppBuilder addTeamSearchUseCase() {
+        return this;
+    }
+
+    /**
+     * Adds the Match Results View to the application.
+     * @return this builder
+     */
+    public AppBuilder addMatchResultsView() {
+        matchResultsViewModel = new MatchResultsViewModel();
+        final NFLTeamDataBase nflTeamDataBase = new NFLTeamDataBase();
+        final MatchResultsUseCase outputData = new MatchResultsUseCase(nflTeamDataBase);
+        matchResultsView = new MatchResultsView(matchResultsViewModel, outputData);
+        cardPanel.add(matchResultsView, matchResultsView.getViewName());
         return this;
     }
 

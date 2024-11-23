@@ -1,12 +1,14 @@
+package api;
+
 import org.json.JSONException;
 
 import org.json.JSONObject;
 import org.json.JSONArray;
 
 /**
- * BasketBallDataBase is an interface that defines the methods for interacting with the TeamUserCase API.
+ * data_access.BasketBallDataBase is an interface that defines the methods for interacting with the data_access.TeamUserCase API.
  */
-public interface BasketBallDataBase {
+public interface NFLDataBase {
     /**
      * A method that returns a specific team by its ID.
      *
@@ -66,4 +68,11 @@ public interface BasketBallDataBase {
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
     JSONObject getSeasonInfo(int year) throws JSONException;
+
+    /**
+     * A method returns all games.
+     * @return JSONArray of all games
+     * @throws JSONException if an error occurs while parsing the JSON response.
+     */
+    JSONArray getAllGames() throws JSONException;
 }

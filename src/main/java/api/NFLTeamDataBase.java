@@ -1,3 +1,5 @@
+package api;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -8,11 +10,11 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-public class TeamUserCase implements BasketBallDataBase {
+public class TeamUserCase implements NFLDataBase {
     private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
 
     @Override
-    public JSONObject getTeam(int teamId){
+    public JSONObject getTeam(int teamId) {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -35,7 +37,7 @@ public class TeamUserCase implements BasketBallDataBase {
     }
 
     @Override
-    public JSONArray getAllTeams(){
+    public JSONArray getAllTeams() {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -61,7 +63,8 @@ public class TeamUserCase implements BasketBallDataBase {
                 result.put(teamInfo);
             }
             return result;
-        } catch (IOException | JSONException event) {
+        }
+        catch (IOException | JSONException event) {
             throw new RuntimeException(event);
         }
     }

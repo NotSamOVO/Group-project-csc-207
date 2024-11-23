@@ -1,4 +1,2 @@
-package use_case.teamsearch;
-
-public class TeamSearchInputData {
+package use_case.teamsearch;public class TeamSearchInputData {
 }

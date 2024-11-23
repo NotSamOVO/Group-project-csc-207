@@ -23,7 +23,7 @@ public class Game {
      * @param visitor_team_score the score of the visiting team
      * @param venue            the venue where the game is played
      */
-    public Game(int id, Team visitor_team, Team home_team, String date, int home_team_score, int visitor_team_score,
+    public Game(int id, Team home_team, Team visitor_team, String date, int home_team_score, int visitor_team_score,
                 String venue) {
         this.id = id;
         this.visitor_team = visitor_team;
@@ -44,21 +44,21 @@ public class Game {
     }
 
     /**
-     * Returns the visiting team.
-     *
-     * @return the visiting team
-     */
-    public Team getVisitor_team() {
-        return visitor_team;
-    }
-
-    /**
      * Returns the home team.
      *
      * @return the home team
      */
     public Team getHome_team() {
         return home_team;
+    }
+
+    /**
+     * Returns the visiting team.
+     *
+     * @return the visiting team
+     */
+    public Team getVisitor_team() {
+        return visitor_team;
     }
 
     /**
@@ -207,7 +207,7 @@ public class Game {
          * @return a new Game instance
          */
         public Game build() {
-            return new Game(id, visitor_team, home_team, date, home_team_score, visitor_team_score, venue);
+            return new Game(id, home_team, visitor_team, date, home_team_score, visitor_team_score, venue);
         }
     }
 }

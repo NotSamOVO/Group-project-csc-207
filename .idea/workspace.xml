@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="Added relevant files in accordance to the Lab 5 template">
-      <change beforePath="$PROJECT_DIR$/src/main/java/TeamUserCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TeamUserCase.java" afterDir="false" />
-    </list>
+    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="Added relevant files in accordance to the Lab 5 template" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

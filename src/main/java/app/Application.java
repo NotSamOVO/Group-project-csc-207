@@ -118,13 +118,13 @@ public class Application {
         final JPanel inputPanel = new JPanel(new GridLayout(2, 2));
         final JTextField teamNameField = new JTextField(20);
         final JButton searchButton = new JButton("Search");
-        final JButton matchResultsButton = new JButton("Submit");
+        final JButton submit = new JButton("Submit");
         final JLabel resultLabel = new JLabel();
 
         inputPanel.add(new JLabel("Enter Team Name:"));
         inputPanel.add(teamNameField);
         inputPanel.add(searchButton);
-        inputPanel.add(matchResultsButton);
+        inputPanel.add(submit);
 
         final JPanel resultsPanel = new JPanel(new BorderLayout());
         final JLabel noResultsLabel = new JLabel("Results will appear here...");
@@ -151,7 +151,7 @@ public class Application {
         });
 
         // Match Results Button Logic
-        matchResultsButton.addActionListener(event -> {
+        submit.addActionListener(event -> {
             final String teamName = teamNameField.getText().trim();
 
             if (teamName.isEmpty()) {

@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="Added relevant files in accordance to the Lab 5 template" />
+=======
+    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu edited the team search use case and PlayerStatusUseCase due to change of entities">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" afterDir="false" />
+    </list>
+>>>>>>> origin/main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +42,11 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/NotSamOVO/Group-project-csc-207.git&quot;,
+<<<<<<< HEAD
     &quot;accountId&quot;: &quot;e7b9ffe3-d18d-452b-b4bc-59b33d7e6885&quot;
+=======
+    &quot;accountId&quot;: &quot;a954c9c2-e670-4bd5-b344-d68f6a551bd7&quot;
+>>>>>>> origin/main
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -50,12 +61,19 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+<<<<<<< HEAD
     &quot;Application.Application.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.SimpleApplication.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;notexploiting&quot;,
+=======
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tianle.xu&quot;,
+>>>>>>> origin/main
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -65,6 +83,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.gui.Application" />
@@ -79,12 +98,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+  <component name="RunManager">
+>>>>>>> origin/main
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.Main" />
       <module name="homework-5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="app.*" />
+          <option name="PATTERN" value="entity.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -118,10 +140,19 @@
       <workItem from="1729524256854" duration="3767000" />
       <workItem from="1729565879189" duration="13000" />
       <workItem from="1729568941578" duration="612000" />
+<<<<<<< HEAD
       <workItem from="1731878892903" duration="8245000" />
       <workItem from="1732373865461" duration="15036000" />
       <workItem from="1732412208340" duration="12000" />
       <workItem from="1732469366986" duration="384000" />
+=======
+      <workItem from="1731878892903" duration="8926000" />
+      <workItem from="1731947635264" duration="3006000" />
+      <workItem from="1731980113224" duration="1074000" />
+      <workItem from="1732038501312" duration="1780000" />
+      <workItem from="1732306565491" duration="8003000" />
+      <workItem from="1732323654386" duration="1020000" />
+>>>>>>> origin/main
     </task>
     <task id="LOCAL-00001" summary="tianle.xu">
       <option name="closed" value="true" />
@@ -155,7 +186,47 @@
       <option name="project" value="LOCAL" />
       <updated>1731894863187</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Created Team Search panel with a search bar and the four feature buttons from Lab 5 Template. Cleaned up unnecessary files (57 deleted)">
+      <option name="closed" value="true" />
+      <created>1731898228573</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731898228573</updated>
+    </task>
+    <task id="LOCAL-00006" summary="tianle.xu added in the usecase for TeamSearchUseCase">
+      <option name="closed" value="true" />
+      <created>1731981183201</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731981183201</updated>
+    </task>
+    <task id="LOCAL-00007" summary="tianle.xu added in the usecase for TeamSearchUseCase, added in the config, added in the usecase for PlayerStatusUseCase">
+      <option name="closed" value="true" />
+      <created>1732040222036</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732040222036</updated>
+    </task>
+    <task id="LOCAL-00008" summary="tianle.xu added in the player and team entities and changed the database and interface to access the entities for getteam, getallteams,getplayerand getallplayers">
+      <option name="closed" value="true" />
+      <created>1732312709327</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732312709327</updated>
+    </task>
+    <task id="LOCAL-00009" summary="tianle.xu edited the team search use case and PlayerStatusUseCase due to change of entities">
+      <option name="closed" value="true" />
+      <created>1732313004629</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1732313004629</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,7 +243,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="tianle.xu" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -188,6 +259,11 @@
     <MESSAGE value="tianle.xu" />
     <MESSAGE value="Deleted irrelevant files (data_access, entity, signup, log in) and added relevant folders to the project, such the teamsearch interface_adapter files and the teamsearch use_case" />
     <MESSAGE value="Added relevant files in accordance to the Lab 5 template" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added relevant files in accordance to the Lab 5 template" />
+    <MESSAGE value="Created Team Search panel with a search bar and the four feature buttons from Lab 5 Template. Cleaned up unnecessary files (57 deleted)" />
+    <MESSAGE value="tianle.xu added in the usecase for TeamSearchUseCase" />
+    <MESSAGE value="tianle.xu added in the usecase for TeamSearchUseCase, added in the config, added in the usecase for PlayerStatusUseCase" />
+    <MESSAGE value="tianle.xu added in the player and team entities and changed the database and interface to access the entities for getteam, getallteams,getplayerand getallplayers" />
+    <MESSAGE value="tianle.xu edited the team search use case and PlayerStatusUseCase due to change of entities" />
+    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu edited the team search use case and PlayerStatusUseCase due to change of entities" />
   </component>
 </project>

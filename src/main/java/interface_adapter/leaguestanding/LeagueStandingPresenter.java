@@ -1,19 +1,19 @@
-package interface_adapter.teamsearch;
+package interface_adapter.leaguestanding;
 
 import interface_adapter.ViewModel;
-import interface_adapter.leaguestanding.LeagueStandingViewModel;
-import use_case.teamsearch.TeamSearchOutputBoundary;
+import interface_adapter.teamsearch.TeamSearchViewModel;
+import use_case.leaguestanding.LeagueStandingOutputBoundary;
 
 /**
- * The Presenter for the Team Search Use case.
+ * The Presenter for the League Standing Use case.
  */
-public class TeamSearchPresenter implements TeamSearchOutputBoundary {
+public class LeagueStandingPresenter implements LeagueStandingOutputBoundary {
 
     private final LeagueStandingViewModel leagueStandingViewModel;
     private final ViewModel viewModel;
     private final TeamSearchViewModel teamSearchViewModel;
 
-    public TeamSearchPresenter(ViewModel viewModel,
+    public LeagueStandingPresenter(ViewModel viewModel,
                                    LeagueStandingViewModel leagueStandingViewModel,
                                    TeamSearchViewModel teamSearchViewModel) {
         this.leagueStandingViewModel = leagueStandingViewModel;
@@ -22,8 +22,8 @@ public class TeamSearchPresenter implements TeamSearchOutputBoundary {
     }
 
     @Override
-    public void switchLeagueStandingView() {
-        viewModel.setState(leagueStandingViewModel.getViewName());
+    public void switchTeamSearchView() {
+        viewModel.setState(teamSearchViewModel.getViewName());
         viewModel.firePropertyChanged();
     }
 }

@@ -1,6 +1,9 @@
 package api;
 
+<<<<<<< HEAD
 import entity.Game;
+=======
+>>>>>>> origin/main
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -17,10 +20,16 @@ import entity.Team;
 
 public class NFLTeamDataBase implements NFLDataBase {
     private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
+<<<<<<< HEAD
     private static final String API_KEY = "f0fb2b79-6fcb-47cd-b4a2-e5534b085344";
 
     @Override
     public Team getTeam(int teamId) {
+=======
+
+    @Override
+    public Team getTeam(int teamId){
+>>>>>>> origin/main
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -51,7 +60,11 @@ public class NFLTeamDataBase implements NFLDataBase {
     }
 
     @Override
+<<<<<<< HEAD
     public ArrayList<Team> getAllTeams() {
+=======
+    public ArrayList<Team> getAllTeams(){
+>>>>>>> origin/main
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -185,12 +198,19 @@ public class NFLTeamDataBase implements NFLDataBase {
     }
 
     @Override
+<<<<<<< HEAD
     public Game getGame(int gameId) {
+=======
+    public JSONObject getGame(int gameId) {
+>>>>>>> origin/main
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/games/" + gameId)
+<<<<<<< HEAD
                 .addHeader("Authorization", API_KEY)
+=======
+>>>>>>> origin/main
                 .method("GET", null)
                 .build();
         try {
@@ -199,6 +219,7 @@ public class NFLTeamDataBase implements NFLDataBase {
             if (!response.isSuccessful()) {
                 throw new RuntimeException("Error getting game");
             }
+<<<<<<< HEAD
             final JSONObject game = responseBody.getJSONObject("data");
             final JSONObject homeTeam = game.getJSONObject("home_team");
             final JSONObject visitorTeam = game.getJSONObject("visitor_team");
@@ -313,6 +334,9 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .build());
             }
             return result;
+=======
+            return responseBody;
+>>>>>>> origin/main
         }
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
 package use_case.teamsearch;
 
 import api.NFLTeamDataBase;

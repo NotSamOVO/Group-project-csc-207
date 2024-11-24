@@ -302,6 +302,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .pointsFor(season.getInt("points_for"))
                         .pointsAgainst(season.getInt("points_against"))
                         .pointsDiff(season.getInt("point_differential"))
+                        .year(year)
                         .build());
             }
             return seasons;
@@ -313,7 +314,7 @@ public class NFLTeamDataBase implements NFLDataBase {
 
     @Override
     public ArrayList<Season> getTeamHistoricalSeasons(int teamId, int pastSeasonsCount) {
-        ArrayList<Season> allSeasons = new ArrayList<>();
+        final ArrayList<Season> allSeasons = new ArrayList<>();
         final int currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
 
         for (int i = 0; i < pastSeasonsCount; i++) {

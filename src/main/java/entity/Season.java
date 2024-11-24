@@ -16,9 +16,10 @@ public class Season {
     private int pointsAgainst;
     private int pointsDiff;
     private int teamId;
+    private int year;
 
     public Season(int teamId, String fullName, int pointsFor, int pointsAgainst, int pointsDiff, int wins, int losses, int ties,
-                  String conferenceRecord, String divisionRecord, String homeRecord, String awayRecord) {
+                  String conferenceRecord, String divisionRecord, String homeRecord, String awayRecord, int year) {
         this.fullName = fullName;
         this.pointsFor = pointsFor;
         this.pointsAgainst = pointsAgainst;
@@ -30,6 +31,7 @@ public class Season {
         this.divisionRecord = divisionRecord;
         this.homeRecord = homeRecord;
         this.awayRecord = awayRecord;
+        this.year = year;
     }
 
     public int getTeamId() { return teamId; }
@@ -78,6 +80,8 @@ public class Season {
         return pointsDiff;
     }
 
+    public int getYear() { return year; }
+
     /**
      * Returns a new Seasonbuilder instance.
      * @return a new Seasonbuilder instance.
@@ -102,17 +106,18 @@ public class Season {
         private int pointsAgainst;
         private int pointsDiff;
         private int teamId;
+        private int year;
 
         SeasonBuilder() {
         }
 
         /**
          * Sets the ID of the team.
-         * @param teamId the ID of the team.
+         * @param the_teamId the ID of the team.
          * @return the TeamBuilderInstance.
          */
-        public SeasonBuilder teamId(int teamId) {
-            this.teamId = teamId;
+        public SeasonBuilder teamId(int the_teamId) {
+            this.teamId = the_teamId;
             return this;
         }
 
@@ -227,12 +232,22 @@ public class Season {
         }
 
         /**
+         * Sets the year of the season.
+         * @param the_year the year.
+         * @return the TeamBuilder instance.
+         */
+        public SeasonBuilder year(int the_year) {
+            this.year = the_year;
+            return this;
+        }
+
+        /**
          * Builds an instance of a Team's seasonal reocrd.
          * @return an instance of a Team's seasonal reocrd.
          */
         public Season build() {
             return new Season(teamId, fullName, pointsFor, pointsAgainst, pointsDiff, wins, losses, ties,
-                    conferenceRecord, divisionRecord, homeRecord, awayRecord);
+                    conferenceRecord, divisionRecord, homeRecord, awayRecord, year);
         }
     }
 }

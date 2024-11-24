@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
 package use_case.teamsearch;
 
 import api.NFLTeamDataBase;
@@ -21,7 +17,7 @@ public class TeamSearchUseCase {
     }
 
     /**
-     * get the team id by inputting team name
+     * get the team id by inputting team name.
      * @param teamName The name of the team.
      * @return the id of the team. -1 if the team is not found.
      */

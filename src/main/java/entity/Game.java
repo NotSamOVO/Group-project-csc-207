@@ -259,42 +259,42 @@ public class Game {
         }
 
         public GameBuilder home_team_q1(Integer home_team_q1) {
-            this.home_team_score = home_team_q1;
+            this.home_team_q1 = home_team_q1;
             return this;
         }
 
         public GameBuilder visitor_team_q1(Integer visitor_team_q1) {
-            this.visitor_team_score = visitor_team_q1;
+            this.visitor_team_q1 = visitor_team_q1;
             return this;
         }
 
         public GameBuilder home_team_q2(Integer home_team_q2) {
-            this.home_team_score = home_team_q2;
+            this.home_team_q2 = home_team_q2;
             return this;
         }
 
         public GameBuilder visitor_team_q2(Integer visitor_team_q2) {
-            this.visitor_team_score = visitor_team_q2;
+            this.visitor_team_q2 = visitor_team_q2;
             return this;
         }
 
         public GameBuilder home_team_q3(Integer home_team_q3) {
-            this.home_team_score = home_team_q3;
+            this.home_team_q3 = home_team_q3;
             return this;
         }
 
         public GameBuilder visitor_team_q3(Integer visitor_team_q3) {
-            this.visitor_team_score = visitor_team_q3;
+            this.visitor_team_q3 = visitor_team_q3;
             return this;
         }
 
         public GameBuilder home_team_q4(Integer home_team_q4) {
-            this.home_team_score = home_team_q4;
+            this.home_team_q4 = home_team_q4;
             return this;
         }
 
         public GameBuilder visitor_team_q4(Integer visitor_team_q4) {
-            this.visitor_team_score = visitor_team_q4;
+            this.visitor_team_q4 = visitor_team_q4;
             return this;
         }
 

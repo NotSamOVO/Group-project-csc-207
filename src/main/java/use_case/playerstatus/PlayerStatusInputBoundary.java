@@ -5,12 +5,6 @@ package use_case.playerstatus;
  */
 public interface PlayerStatusInputBoundary {
     /**
-     * Executes the playerstatus use case.
-     * @param playerStatusData the input data
-     */
-    void execute(PlayerStatusInputData playerStatusData);
-
-    /**
      * Executes the switch to teamSearch view use case.
      */
     void switchToTeamSearchView();

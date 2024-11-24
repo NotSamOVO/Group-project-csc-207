@@ -80,6 +80,11 @@ public class Team {
         return abbreviation;
     }
 
+    public String toString() {
+        return "Team: " + id + "/n" + conference + "/n" + division + "/n" + location + "/n" + name + "/n"
+                + fullName + "/n" + abbreviation;
+    }
+
     /**
      * Returns a new TeamBuilder instance.
      * @return a new TeamBuilder instance.

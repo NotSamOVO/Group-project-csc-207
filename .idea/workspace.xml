@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu adding in the page for playerstatus" />
+    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu adding the main">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusDataAccessInteractor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusInputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusInteractor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/PlayerStatusView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PlayerStatusView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/AppBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/Main.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,6 +65,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Application.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
@@ -122,7 +138,7 @@
       <workItem from="1732038501312" duration="1780000" />
       <workItem from="1732306565491" duration="8003000" />
       <workItem from="1732323654386" duration="1020000" />
-      <workItem from="1732475703381" duration="8173000" />
+      <workItem from="1732475703381" duration="10385000" />
     </task>
     <task id="LOCAL-00001" summary="tianle.xu">
       <option name="closed" value="true" />
@@ -228,7 +244,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732483880096</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="tianle.xu adding the main">
+      <option name="closed" value="true" />
+      <created>1732484033890</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1732484033890</updated>
+    </task>
+    <task id="LOCAL-00015" summary="tianle.xu adding the main">
+      <option name="closed" value="true" />
+      <created>1732484123965</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1732484123965</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +302,7 @@
     <MESSAGE value="tianle.xu adding in all the player Status related classes and interfaces" />
     <MESSAGE value="tianle.xu adding in playerstatusview" />
     <MESSAGE value="tianle.xu adding in the page for playerstatus" />
-    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu adding in the page for playerstatus" />
+    <MESSAGE value="tianle.xu adding the main" />
+    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu adding the main" />
   </component>
 </project>

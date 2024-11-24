@@ -7,12 +7,18 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import interface_adapter.ViewManagerModel;
+import interface_adapter.historicalseasons.HistoricalSeasonsController;
+import interface_adapter.historicalseasons.HistoricalSeasonsPresenter;
+import interface_adapter.historicalseasons.HistoricalSeasonsViewModel;
 import interface_adapter.leaguestanding.LeagueStandingController;
 import interface_adapter.leaguestanding.LeagueStandingPresenter;
 import interface_adapter.leaguestanding.LeagueStandingViewModel;
 import interface_adapter.teamsearch.TeamSearchController;
 import interface_adapter.teamsearch.TeamSearchPresenter;
 import interface_adapter.teamsearch.TeamSearchViewModel;
+import use_case.historicalseasons.HistoricalSeasonsInputBoundary;
+import use_case.historicalseasons.HistoricalSeasonsInteractor;
+import use_case.historicalseasons.HistoricalSeasonsOutputBoundary;
 import use_case.leaguestanding.LeagueStandingInputBoundary;
 import use_case.leaguestanding.LeagueStandingInteractor;
 import use_case.leaguestanding.LeagueStandingOutputBoundary;
@@ -20,6 +26,7 @@ import use_case.leaguestanding.LeagueStandingUseCase;
 import use_case.teamsearch.TeamSearchInputBoundary;
 import use_case.teamsearch.TeamSearchInteractor;
 import use_case.teamsearch.TeamSearchOutputBoundary;
+import view.HistoricalSeasonsView;
 import view.LeagueStandingView;
 import view.TeamSearchView;
 import view.ViewManager;
@@ -45,6 +52,8 @@ public class AppBuilder {
 
     private TeamSearchView teamSearchView;
     private TeamSearchViewModel teamSearchViewModel;
+    private HistoricalSeasonsView historicalSeasonsView;
+    private HistoricalSeasonsViewModel historicalSeasonsViewModel;
     private LeagueStandingView leagueStandingView;
     private LeagueStandingViewModel leagueStandingViewModel;
     final Config config = new Config();
@@ -78,6 +87,17 @@ public class AppBuilder {
 //    }
 
     /**
+     * Adds the Historical Seasons View to the application.
+     * @return this builder.
+     */
+    public AppBuilder addHistoricalSeasonsView() {
+        HistoricalSeasonsViewModel viewModel = new HistoricalSeasonsViewModel();
+        HistoricalSeasonsView view = new HistoricalSeasonsView(viewModel);
+        cardPanel.add(view, viewModel.getViewName());
+        return this;
+    }
+
+    /**
      * Adds the Team Search Use Case to the application.
      * @return this builder
      */
@@ -105,6 +125,20 @@ public class AppBuilder {
 //        leagueStandingView.setLeagueStandingController(controller);
 //        return this;
 //    }
+
+    /**
+     * Adds the Historical Seasons Use Case to the application.
+     * @return this builder
+     */
+    public AppBuilder addHistoricalSeasonsUseCase() {
+        final HistoricalSeasonsOutputBoundary presenter = new HistoricalSeasonsPresenter(
+                viewManagerModel, historicalSeasonsViewModel, teamSearchViewModel);
+        final HistoricalSeasonsInputBoundary interactor = new HistoricalSeasonsInteractor(
+                presenter, Config.getNflTeamDataBase());
+        final HistoricalSeasonsController controller = new HistoricalSeasonsController(interactor);
+        historicalSeasonsView.setController(controller);
+        return this;
+    }
 
     /**
      * Creates the JFrame for the application and initially sets the TeamSearchView to be displayed.

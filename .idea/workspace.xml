@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu adding in all the player Status related classes and interfaces">
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/PlayerStatusView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusViewModel.java" afterDir="false" />
+    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu adding in playerstatusview">
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Application.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +124,7 @@
       <workItem from="1732038501312" duration="1780000" />
       <workItem from="1732306565491" duration="8003000" />
       <workItem from="1732323654386" duration="1020000" />
-      <workItem from="1732475703381" duration="7519000" />
+      <workItem from="1732475703381" duration="7838000" />
     </task>
     <task id="LOCAL-00001" summary="tianle.xu">
       <option name="closed" value="true" />
@@ -217,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732481673015</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="tianle.xu adding in playerstatusview">
+      <option name="closed" value="true" />
+      <created>1732483302543</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1732483302543</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +239,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="Tianle.xu" />
                       </list>
                     </value>
                   </entry>
@@ -257,6 +262,7 @@
     <MESSAGE value="tianle.xu edited the team search use case and PlayerStatusUseCase due to change of entities" />
     <MESSAGE value="tianle.xu adding in PlayerStatusDataAccessInteractor, PlayerStatusInputBoundary, outputboundary interactor" />
     <MESSAGE value="tianle.xu adding in all the player Status related classes and interfaces" />
-    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu adding in all the player Status related classes and interfaces" />
+    <MESSAGE value="tianle.xu adding in playerstatusview" />
+    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu adding in playerstatusview" />
   </component>
 </project>

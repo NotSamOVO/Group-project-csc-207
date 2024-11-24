@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu adding the main">
+    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu edditing error adding in toString for team and players">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusDataAccessInteractor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusInputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusInputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusInteractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusInteractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/PlayerStatusView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PlayerStatusView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/AppBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/app/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +127,7 @@
       <workItem from="1732038501312" duration="1780000" />
       <workItem from="1732306565491" duration="8003000" />
       <workItem from="1732323654386" duration="1020000" />
-      <workItem from="1732475703381" duration="10385000" />
+      <workItem from="1732475703381" duration="11512000" />
     </task>
     <task id="LOCAL-00001" summary="tianle.xu">
       <option name="closed" value="true" />
@@ -260,7 +249,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732484123965</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="tianle.xu edditing error adding in toString for team and players">
+      <option name="closed" value="true" />
+      <created>1732486312953</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1732486312953</updated>
+    </task>
+    <task id="LOCAL-00017" summary="tianle.xu edditing error adding in toString for team and players">
+      <option name="closed" value="true" />
+      <created>1732486318184</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1732486318184</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,6 +308,7 @@
     <MESSAGE value="tianle.xu adding in playerstatusview" />
     <MESSAGE value="tianle.xu adding in the page for playerstatus" />
     <MESSAGE value="tianle.xu adding the main" />
-    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu adding the main" />
+    <MESSAGE value="tianle.xu edditing error adding in toString for team and players" />
+    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu edditing error adding in toString for team and players" />
   </component>
 </project>

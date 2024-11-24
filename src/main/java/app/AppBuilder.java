@@ -27,7 +27,7 @@ import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.playerstatus.PlayerStatusInteractor;
 import use_case.playerstatus.PlayerStatusInputBoundary;
 import use_case.playerstatus.PlayerStatusOutputBoundary;
-import use_case.playerstatus.PlayerStatusViewModel;
+import interface_adapter.playerstatus.PlayerStatusViewModel;
 import view.LeagueStandingView;
 import view.TeamSearchView;
 import view.PlayerStatusView;
@@ -56,9 +56,12 @@ public class AppBuilder {
     private TeamSearchViewModel teamSearchViewModel;
     private LeagueStandingView leagueStandingView;
     private LeagueStandingViewModel leagueStandingViewModel;
+    private PlayerStatusView playerStatusView;
+    private PlayerStatusViewModel playerStatusViewModel;
     final Config config = new Config();
 
     private final LeagueStandingUseCase leagueStandingUseCase = config.getLeagueStandingUseCase();
+    private final PlayerStatusUseCase playerStatusUseCase = config.getPlayerStatusUseCase();
 
     public AppBuilder() {
         cardPanel.setLayout(cardLayout);
@@ -120,8 +123,8 @@ public class AppBuilder {
      * @return this builder
      */
     public AppBuilder addPlayerStatusView() {
-        playerStatusViewModel = new PlayerStatusViewModel();
-        playerStatusView = new PlayerStatusView(playerStatusViewModel);
+        final PlayerStatusViewModel playerStatusViewModel = new PlayerStatusViewModel();
+        final PlayerStatusView playerStatusView = new PlayerStatusView(playerStatusViewModel, playerStatusUseCase);
         cardPanel.add(playerStatusView, playerStatusView.getViewName());
         return this;
     }
@@ -132,7 +135,7 @@ public class AppBuilder {
      */
     public AppBuilder addPlayerStatusUseCase() {
         final PlayerStatusOutputBoundary playerStatusOutputBoundary = new PlayerStatusPresenter(viewManagerModel,
-                playerStatusViewModel);
+                playerStatusViewModel, teamSearchViewModel);
         final PlayerStatusInputBoundary playerStatusInteractor = new PlayerStatusInteractor(playerStatusOutputBoundary);
 
         final PlayerStatusController controller = new PlayerStatusController(playerStatusInteractor);

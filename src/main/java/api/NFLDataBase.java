@@ -1,5 +1,6 @@
 package api;
 
+import entity.Season;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -72,4 +73,13 @@ public interface NFLDataBase {
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
     JSONArray getSeasonInfo(int year) throws JSONException;
+
+    /**
+     * A method that returns information about a specific season.
+     *
+     * @param year is the year of the season (e.g., 2021 for the 2021-2022 season).
+     * @return the Season ArrayList containing information about the specified season.
+     * @throws JSONException if an error occurs while parsing the JSON response.
+     */
+    ArrayList<Season> getSeasonInfoArrayList(int year);
 }

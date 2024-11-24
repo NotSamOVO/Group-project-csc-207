@@ -1,5 +1,6 @@
 package api;
 
+import entity.Season;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -16,6 +17,7 @@ import entity.Team;
 
 public class NFLTeamDataBase implements NFLDataBase {
     private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
+    private static final String API_KEY = "612e0802-b513-43d0-8aba-ea3e3048fdcd";
 
     @Override
     public Team getTeam(int teamId){
@@ -249,7 +251,57 @@ public class NFLTeamDataBase implements NFLDataBase {
 //    }
 
     @Override
-    public JSONArray getSeasonInfo(int year) {
-        return new JSONArray();
+    public ArrayList<Season> getSeasonInfoArrayList(int year) {
+        final OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        final Request request = new Request.Builder()
+                .url(BASE_URL + "/standings" + "?season=" + year)
+                .addHeader("Authorization", API_KEY)
+                .method("GET", null)
+                .build();
+
+        try {
+            final Response response = client.newCall(request).execute();
+
+            if (!response.isSuccessful()) {
+                throw new RuntimeException("Error getting season info");
+            }
+
+            final String responseBody = response.body().string();
+            final JSONObject jsonResponse = new JSONObject(responseBody);
+            final JSONArray seasonArray = jsonResponse.getJSONArray("data");
+            final ArrayList<Season> seasons = new ArrayList<>();
+            for (int i = 0; i < seasonArray.length(); i++) {
+                final JSONObject season = seasonArray.getJSONObject(i);
+                final JSONObject homeTeam = season.getJSONObject("team");
+                final Team homeTeamObj = Team.builder()
+                        .id(homeTeam.getInt("id"))
+                        .conference(homeTeam.getString("conference"))
+                        .division(homeTeam.getString("division"))
+                        .location(homeTeam.getString("location"))
+                        .name(homeTeam.getString("name"))
+                        .fullName(homeTeam.getString("full_name"))
+                        .abbreviation(homeTeam.getString("abbreviation"))
+                        .build();
+
+                seasons.add(Season.builder()
+                        .fullName(homeTeamObj.getFullName())
+                        .conferenceRecord(season.getString("conference_record"))
+                        .divisionRecord(season.getString("division_record"))
+                        .awayRecord(season.getString("road_record"))
+                        .homeRecord(season.getString("home_record"))
+                        .wins(season.getInt("wins"))
+                        .losses(season.getInt("losses"))
+                        .ties(season.getInt("ties"))
+                        .pointsFor(season.getInt("points_for"))
+                        .pointsAgainst(season.getInt("points_against"))
+                        .pointsDiff(season.getInt("point_differential"))
+                        .build());
+            }
+            return seasons;
+        }
+        catch (IOException | JSONException event) {
+            throw new RuntimeException(event);
+        }
     }
 }

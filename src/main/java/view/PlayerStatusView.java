@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import interface_adapter.playerstatus.PlayerStatusController;
 import interface_adapter.playerstatus.PlayerStatusState;
+import interface_adapter.playerstatus.PlayerStatusViewModel;
+import use_case.playerstatus.PlayerStatusUseCase;
 
 /**
  * The View for the Player Status use case.
@@ -13,8 +15,9 @@ import interface_adapter.playerstatus.PlayerStatusState;
 public class PlayerStatusView extends JPanel implements ActionListener {
 
     private final String viewName = "Player Status";
-    private final PlayerStatusState playerStatusState;
-    private PlayerStatusController playerStatusController;
+    private PlayerStatusViewModel viewModel;
+    private PlayerStatusUseCase useCase;
+    private PlayerStatusController controller;
 
     private final JTextField firstNameField = new JTextField(15);
     private final JTextField lastNameField = new JTextField(15);
@@ -25,8 +28,9 @@ public class PlayerStatusView extends JPanel implements ActionListener {
 
     private final JTextArea resultArea = new JTextArea(10, 50);
 
-    public PlayerStatusView(PlayerStatusState playerStatusState) {
-        this.playerStatusState = playerStatusState;
+    public PlayerStatusView(PlayerStatusViewModel playerStatusViewModel, PlayerStatusUseCase playerStatusUseCase) {
+        this.viewModel = playerStatusViewModel;
+        this.useCase = playerStatusUseCase;
 
         setLayout(new BorderLayout());
 
@@ -65,19 +69,7 @@ public class PlayerStatusView extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == searchButton) {
-            String firstName = firstNameField.getText().trim();
-            String lastName = lastNameField.getText().trim();
-            String teamName = teamNameField.getText().trim();
-
-            if (!playerStatusState.getErrorMessage().isEmpty()) {
-                resultArea.setText("Error: " + playerStatusState.getErrorMessage());
-            } else {
-                resultArea.setText(playerStatusState.getPlayerInfo());
-            }
-        } else if (e.getSource() == backButton) {
-            playerStatusController.switchToTeamSearchView();
-        }
+        System.out.println("Click" + e.getActionCommand());
     }
 
     public String getViewName() {
@@ -85,6 +77,6 @@ public class PlayerStatusView extends JPanel implements ActionListener {
     }
 
     public void setPlayerStatusController(PlayerStatusController controller) {
-        this.playerStatusController = controller;
+        this.controller = controller;
     }
 }

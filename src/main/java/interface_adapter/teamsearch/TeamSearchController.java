@@ -31,4 +31,9 @@ public class TeamSearchController {
     public void switchLeagueStandingView() {
         userTeamsearchUseCaseInteractor.switchLeagueStandingView();
     }
+
+    /**
+     * Executes the "switch to HistoricalSeasonsView" Use Case.
+     */
+    public void switchHistoricalSeasonsView() { userTeamsearchUseCaseInteractor.switchHistoricalSeasonsView(); }
 }

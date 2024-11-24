@@ -8,5 +8,7 @@ public interface TeamSearchOutputBoundary {
      * Switches to the League Standing View.
      */
     void switchLeagueStandingView();
+
+    void switchHistoricalSeasonsView();
 }
 

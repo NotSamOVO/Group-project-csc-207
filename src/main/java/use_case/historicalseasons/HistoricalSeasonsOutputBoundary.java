@@ -5,6 +5,8 @@ package use_case.historicalseasons;
  */
 public interface HistoricalSeasonsOutputBoundary {
 
+    void prepareTeamSearchView(HistoricalSeasonsOutputData response);
+
     /**
      * Presents the view for the HistoricalSeasons Use Case.
      * @param outputData the output data.

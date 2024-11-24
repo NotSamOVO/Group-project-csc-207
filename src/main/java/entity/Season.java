@@ -231,7 +231,7 @@ public class Season {
          * @return an instance of a Team's seasonal reocrd.
          */
         public Season build() {
-            return new Season(teamId, pointsFor, pointsAgainst, pointsDiff, wins, losses, ties,
+            return new Season(teamId, fullName, pointsFor, pointsAgainst, pointsDiff, wins, losses, ties,
                     conferenceRecord, divisionRecord, homeRecord, awayRecord);
         }
     }

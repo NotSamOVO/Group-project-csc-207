@@ -15,8 +15,9 @@ public class Season {
     private int pointsFor;
     private int pointsAgainst;
     private int pointsDiff;
+    private int teamId;
 
-    public Season(String fullName, int pointsFor, int pointsAgainst, int pointsDiff, int wins, int losses, int ties,
+    public Season(int teamId, String fullName, int pointsFor, int pointsAgainst, int pointsDiff, int wins, int losses, int ties,
                   String conferenceRecord, String divisionRecord, String homeRecord, String awayRecord) {
         this.fullName = fullName;
         this.pointsFor = pointsFor;
@@ -30,6 +31,8 @@ public class Season {
         this.homeRecord = homeRecord;
         this.awayRecord = awayRecord;
     }
+
+    public int getTeamId() { return teamId; }
 
     public String getFullName() {
         return fullName;
@@ -98,8 +101,19 @@ public class Season {
         private int pointsFor;
         private int pointsAgainst;
         private int pointsDiff;
+        private int teamId;
 
         SeasonBuilder() {
+        }
+
+        /**
+         * Sets the ID of the team.
+         * @param teamId the ID of the team.
+         * @return the TeamBuilderInstance.
+         */
+        public SeasonBuilder teamId(int teamId) {
+            this.teamId = teamId;
+            return this;
         }
 
         /**
@@ -217,7 +231,7 @@ public class Season {
          * @return an instance of a Team's seasonal reocrd.
          */
         public Season build() {
-            return new Season(fullName, pointsFor, pointsAgainst, pointsDiff, wins, losses, ties,
+            return new Season(teamId, pointsFor, pointsAgainst, pointsDiff, wins, losses, ties,
                     conferenceRecord, divisionRecord, homeRecord, awayRecord);
         }
     }

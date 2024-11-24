@@ -285,6 +285,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .build();
 
                 seasons.add(Season.builder()
+                        .teamId(homeTeam.getInt("id"))
                         .fullName(homeTeamObj.getFullName())
                         .conferenceRecord(season.getString("conference_record"))
                         .divisionRecord(season.getString("division_record"))
@@ -303,5 +304,22 @@ public class NFLTeamDataBase implements NFLDataBase {
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);
         }
+    }
+
+    @Override
+    public ArrayList<Season> getTeamHistoricalSeasons(int teamId, int pastSeasonsCount) {
+        ArrayList<Season> allSeasons = new ArrayList<>();
+        int currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+
+        for (int i = 0; i < pastSeasonsCount; i++) {
+            int year = currentYear - i;
+            ArrayList<Season> seasons = getSeasonInfoArrayList(year);
+            for (Season season : seasons) {
+                if (season.getTeamId() == teamId) {
+                    allSeasons.add(season);
+                }
+            }
+        }
+        return allSeasons;
     }
 }

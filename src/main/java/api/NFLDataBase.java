@@ -82,4 +82,12 @@ public interface NFLDataBase {
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
     ArrayList<Season> getSeasonInfoArrayList(int year);
+
+    /**
+     * A method that returns a list of historical seasons of a team.
+     *
+     * @param teamId the ID of the team.
+     * @param pastSeasonsCount how many past seasons to load.
+     */
+    ArrayList<Season> getTeamHistoricalSeasons(int teamId, int pastSeasonsCount);
 }

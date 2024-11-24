@@ -39,4 +39,10 @@ public class PlayerStatusUseCase {
         }
         return -1;
     }
+
+    public String getPlayerStatus(String firstName, String lastName, String teamName) {
+        int id = getPlayerId(firstName, lastName, teamName);
+        Player player = playerDataBase.getPlayer(id);
+        return player.toString();
+    }
 }

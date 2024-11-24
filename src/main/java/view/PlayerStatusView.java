@@ -70,17 +70,13 @@ public class PlayerStatusView extends JPanel implements ActionListener {
             String lastName = lastNameField.getText().trim();
             String teamName = teamNameField.getText().trim();
 
-            // Execute the search via the controller
-            playerStatusController.executePlayerStatus(firstName, lastName, teamName);
-
-            // Update the result area with the fetched player info or error
             if (!playerStatusState.getErrorMessage().isEmpty()) {
                 resultArea.setText("Error: " + playerStatusState.getErrorMessage());
             } else {
                 resultArea.setText(playerStatusState.getPlayerInfo());
             }
         } else if (e.getSource() == backButton) {
-            playerStatusController.switchToTeamSearchView(); // Navigate back to Team Search View
+            playerStatusController.switchToTeamSearchView();
         }
     }
 

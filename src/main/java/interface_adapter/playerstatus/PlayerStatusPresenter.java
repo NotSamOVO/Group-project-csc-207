@@ -36,7 +36,7 @@ public class PlayerStatusPresenter implements PlayerStatusOutputBoundary {
     @Override
     public void presentPlayerNotFound(String errorMessage) {
         PlayerStatusState playerStatusState = playerStatusViewModel.getState();
-        playerStatusState.setPlayerError(errorMessage);
+        playerStatusState.setErrorMessage(errorMessage);
         this.playerStatusViewModel.setState(playerStatusState);
         this.playerStatusViewModel.firePropertyChanged();
     }

@@ -15,4 +15,9 @@ public class TeamSearchInteractor implements TeamSearchInputBoundary {
     public void switchLeagueStandingView() {
         userPresenter.switchLeagueStandingView();
     }
+
+    @Override
+    public void switchHistoricalSeasonsView() {
+        userPresenter.switchHistoricalSeasonsView();
+    }
 }

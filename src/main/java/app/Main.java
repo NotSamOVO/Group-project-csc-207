@@ -14,11 +14,13 @@ public class Main {
         final AppBuilder appBuilder = new AppBuilder();
 
         final JFrame application = appBuilder
-                                            .addTeamSearchView()
-                                            .addLeagueStandingView()
-                                            .addTeamSearchUseCase()
-                                            .addLeagueStandingUseCase()
-                                            .build();
+                .addTeamSearchView()
+                .addPlayerStatusView()
+                .addLeagueStandingView()
+                .addTeamSearchUseCase()
+                .addLeagueStandingUseCase()
+                .addPlayerStatusUseCase()
+                .build();
         application.pack();
         application.setVisible(true);
     }

@@ -56,6 +56,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/teams")
+                .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();
 

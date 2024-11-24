@@ -228,6 +228,11 @@ public class NFLTeamDataBase implements NFLDataBase {
         }
     }
 
+    @Override
+    public JSONArray getSeasonInfo(int year) throws JSONException {
+        return null;
+    }
+
 //    @Override
 //    public JSONArray getSeasonInfo(int year) {
 //        final OkHttpClient client = new OkHttpClient().newBuilder()
@@ -243,7 +248,7 @@ public class NFLTeamDataBase implements NFLDataBase {
 //            if (!response.isSuccessful()) {
 //                throw new IOException("Error getting season info");
 //            }
-//            return responseBody;
+//            return responseBody.names();
 //        }
 //        catch (IOException | JSONException event) {
 //            throw new RuntimeException(event);
@@ -309,11 +314,11 @@ public class NFLTeamDataBase implements NFLDataBase {
     @Override
     public ArrayList<Season> getTeamHistoricalSeasons(int teamId, int pastSeasonsCount) {
         ArrayList<Season> allSeasons = new ArrayList<>();
-        int currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+        final int currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
 
         for (int i = 0; i < pastSeasonsCount; i++) {
-            int year = currentYear - i;
-            ArrayList<Season> seasons = getSeasonInfoArrayList(year);
+            final int year = currentYear - i;
+            final ArrayList<Season> seasons = getSeasonInfoArrayList(year);
             for (Season season : seasons) {
                 if (season.getTeamId() == teamId) {
                     allSeasons.add(season);

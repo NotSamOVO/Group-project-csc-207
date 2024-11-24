@@ -66,16 +66,16 @@ public class AppBuilder {
         return this;
     }
 
-    /**
-     * Adds the League Standing View to the application.
-     * @return this builder
-     */
-    public AppBuilder addLeagueStandingView() {
-        leagueStandingViewModel = new LeagueStandingViewModel();
-        leagueStandingView = new LeagueStandingView(leagueStandingViewModel, leagueStandingUseCase);
-        cardPanel.add(leagueStandingView, leagueStandingView.getViewname());
-        return this;
-    }
+//    /**
+//     * Adds the League Standing View to the application.
+//     * @return this builder
+//     */
+//    public AppBuilder addLeagueStandingView() {
+//        leagueStandingViewModel = new LeagueStandingViewModel();
+//        leagueStandingView = new LeagueStandingView(leagueStandingViewModel, leagueStandingUseCase);
+//        cardPanel.add(leagueStandingView, leagueStandingView.getViewname());
+//        return this;
+//    }
 
     /**
      * Adds the Team Search Use Case to the application.
@@ -91,20 +91,20 @@ public class AppBuilder {
         return this;
     }
 
-    /**
-     * Adds the League Standing Use Case to the application.
-     * @return this builder
-     */
-    public AppBuilder addLeagueStandingUseCase() {
-        final LeagueStandingOutputBoundary leagueStandingOutputBoundary = new LeagueStandingPresenter(viewManagerModel,
-                leagueStandingViewModel, teamSearchViewModel);
-        final LeagueStandingInputBoundary userLeagueStandingInteractor =
-                new LeagueStandingInteractor(leagueStandingOutputBoundary);
-
-        final LeagueStandingController controller = new LeagueStandingController(userLeagueStandingInteractor);
-        leagueStandingView.setLeagueStandingController(controller);
-        return this;
-    }
+//    /**
+//     * Adds the League Standing Use Case to the application.
+//     * @return this builder
+//     */
+//    public AppBuilder addLeagueStandingUseCase() {
+//        final LeagueStandingOutputBoundary leagueStandingOutputBoundary = new LeagueStandingPresenter(viewManagerModel,
+//                leagueStandingViewModel, teamSearchViewModel);
+//        final LeagueStandingInputBoundary userLeagueStandingInteractor =
+//                new LeagueStandingInteractor(leagueStandingOutputBoundary);
+//
+//        final LeagueStandingController controller = new LeagueStandingController(userLeagueStandingInteractor);
+//        leagueStandingView.setLeagueStandingController(controller);
+//        return this;
+//    }
 
     /**
      * Creates the JFrame for the application and initially sets the TeamSearchView to be displayed.

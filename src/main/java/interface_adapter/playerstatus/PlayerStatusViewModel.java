@@ -1,5 +1,7 @@
 package interface_adapter.playerstatus;
 
+import interface_adapter.ViewModel;
+
 public class PlayerStatusViewModel extends ViewModel<PlayerStatusState>{
     public static final String TITLE_LABEL = "Player Status";
     public static final String FIRST_NAME_LABEL = "First Name:";

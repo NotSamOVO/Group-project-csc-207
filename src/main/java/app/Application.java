@@ -118,7 +118,7 @@ public class Application {
         final JPanel inputPanel = new JPanel(new GridLayout(2, 2));
         final JTextField teamNameField = new JTextField(20);
         final JButton searchButton = new JButton("Search");
-        final JButton matchResultsButton = new JButton("Match Results");
+        final JButton matchResultsButton = new JButton("Submit");
         final JLabel resultLabel = new JLabel();
 
         inputPanel.add(new JLabel("Enter Team Name:"));

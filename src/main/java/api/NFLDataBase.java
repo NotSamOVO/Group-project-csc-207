@@ -9,6 +9,7 @@ import entity.Player;
 import entity.Team;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * BasketBallDataBase is an interface that defines the methods for interacting with the TeamUserCase API.
@@ -81,4 +82,11 @@ public interface NFLDataBase {
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
     JSONArray getSeasonInfo(int year) throws JSONException;
+
+    /**
+     * A method that returns historical data for the last 5 seasons.
+     * @param teamId the ID of the team.
+     * @return a list of JSONObjects.
+     */
+    List<JSONObject> getHistoricalStats(int teamId);
 }

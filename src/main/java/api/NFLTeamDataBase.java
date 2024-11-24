@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import entity.Player;
 import entity.Team;
@@ -365,6 +366,36 @@ public class NFLTeamDataBase implements NFLDataBase {
 //            throw new RuntimeException(event);
 //        }
 //    }
+
+    public List<JSONObject> getHistoricalStats(int teamId) {
+        final OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        List<JSONObject> historicalStats = new ArrayList<>();
+
+        for (int year = 2020; year <= 2024; year++) {
+            final Request request = new Request.Builder()
+                    .url(BASE_URL + "/standings?season=" + year)
+                    .addHeader("Authorization", API_KEY)
+                    .method("GET", null)
+                    .build();
+            try {
+                final Response response = client.newCall(request).execute();
+                final JSONObject responseBody = new JSONObject(response.body().string());
+                final JSONArray dataArray = responseBody.getJSONArray("data");
+                for (int i = 0; i < dataArray.length(); i++) {
+                    JSONObject teamData = dataArray.getJSONObject(i);
+                    JSONObject team = teamData.getJSONObject("team");
+                    if (team.getInt("id") == teamId) {
+                        historicalStats.add(teamData);
+                        break;
+                    }
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return historicalStats;
+    }
 
     @Override
     public JSONArray getSeasonInfo(int year) {

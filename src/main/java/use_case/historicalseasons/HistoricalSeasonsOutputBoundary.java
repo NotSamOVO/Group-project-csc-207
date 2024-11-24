@@ -9,7 +9,7 @@ public interface HistoricalSeasonsOutputBoundary {
      * Presents the view for the HistoricalSeasons Use Case.
      * @param outputData the output data.
      */
-    void presentHistoricalSeasons(HistoricalSeasonsOutputBoundary outputData);
+    void presentHistoricalSeasons(HistoricalSeasonsOutputData outputData);
 
     /**
      * Switches to the Team Search View.

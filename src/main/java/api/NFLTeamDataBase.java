@@ -342,25 +342,30 @@ public class NFLTeamDataBase implements NFLDataBase {
         }
     }
 
-    @Override
-    public JSONObject getSeasonInfo(int year) {
-        final OkHttpClient client = new OkHttpClient().newBuilder()
-                .build();
-        final Request request = new Request.Builder()
-                .url(BASE_URL + "/standings" + "?season=" + year)
-                .method("GET", null)
-                .build();
+//    @Override
+//    public JSONArray getSeasonInfo(int year) {
+//        final OkHttpClient client = new OkHttpClient().newBuilder()
+//                .build();
+//        final Request request = new Request.Builder()
+//                .url(BASE_URL + "/standings" + "?season=" + year)
+//                .method("GET", null)
+//                .build();
+//
+//        try {
+//            final Response response = client.newCall(request).execute();
+//            final JSONObject responseBody = new JSONObject(response.body().string());
+//            if (!response.isSuccessful()) {
+//                throw new IOException("Error getting season info");
+//            }
+//            return responseBody;
+//        }
+//        catch (IOException | JSONException event) {
+//            throw new RuntimeException(event);
+//        }
+//    }
 
-        try {
-            final Response response = client.newCall(request).execute();
-            final JSONObject responseBody = new JSONObject(response.body().string());
-            if (!response.isSuccessful()) {
-                throw new IOException("Error getting season info");
-            }
-            return responseBody;
-        }
-        catch (IOException | JSONException event) {
-            throw new RuntimeException(event);
-        }
+    @Override
+    public JSONArray getSeasonInfo(int year) {
+        return new JSONArray();
     }
 }

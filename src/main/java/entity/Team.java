@@ -13,13 +13,8 @@ public class Team {
     private String fullName;
     private String abbreviation;
 
-<<<<<<< HEAD
     public Team(int id, String conference, String division, String location, String name,
                 String fullName, String abbreviation) {
-=======
-    public Team(int id, String conference, String division, String location, String name
-            ,String fullName, String abbreviation) {
->>>>>>> origin/main
         this.id = id;
         this.conference = conference;
         this.division = division;

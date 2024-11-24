@@ -38,10 +38,16 @@ public class Application {
             final JPanel defaultCard = createDefaultCard();
             final JPanel teamSearchCard = createTeamSearchCard(frame);
             final JPanel matchResultsCard = createMatchResultsCard(frame, matchResultsUseCase);
+            final JPanel historicalSeason = createHistoricalSeasonCard(frame);
+            final JPanel leagueStanding = createLeagueStandingCard(frame);
+            final JPanel playerStats = createPlayerStats(frame);
 
             cardPanel.add(defaultCard, "DefaultCard");
             cardPanel.add(teamSearchCard, "TeamSearchCard");
             cardPanel.add(matchResultsCard, "MatchResultsCard");
+            cardPanel.add(historicalSeason, "HistoricalSeasonCard");
+            cardPanel.add(leagueStanding, "LeagueStandingCard");
+            cardPanel.add(playerStats, "PlayerStatsCard");
 
             // Creating buttons for navigation
             final JButton teamSearchButton = new JButton("Team Search");
@@ -50,10 +56,22 @@ public class Application {
             final JButton matchResultsButton = new JButton("Match Results");
             matchResultsButton.addActionListener(event -> cardLayout.show(cardPanel, "MatchResultsCard"));
 
+            final JButton historicalSeasonButton = new JButton("Historical Season");
+            historicalSeasonButton.addActionListener(event -> cardLayout.show(cardPanel, "HistoricalSeasonCard"));
+
+            final JButton leagueStandingButton = new JButton("League Standing");
+            leagueStandingButton.addActionListener(event -> cardLayout.show(cardPanel, "LeagueStandingCard"));
+
+            final JButton playerStatsButton = new JButton("Player Stats");
+            playerStatsButton.addActionListener(event -> cardLayout.show(cardPanel, "PlayerStatsCard"));
+
             // Adding buttons to the bottom panel
             final JPanel buttonPanel = new JPanel();
             buttonPanel.add(teamSearchButton);
             buttonPanel.add(matchResultsButton);
+            buttonPanel.add(historicalSeasonButton);
+            buttonPanel.add(leagueStandingButton);
+            buttonPanel.add(playerStatsButton);
 
             // Adding components to the frame
             frame.getContentPane().add(cardPanel, BorderLayout.CENTER);
@@ -193,5 +211,23 @@ public class Application {
         teamSearchCard.add(inputPanel, BorderLayout.NORTH);
         teamSearchCard.add(resultsPanel, BorderLayout.CENTER);
         return teamSearchCard;
+    }
+
+    public static JPanel createLeagueStandingCard(JFrame jFrame) {
+        final JPanel leagueStandingCard = new JPanel();
+        leagueStandingCard.setLayout(new BorderLayout());
+        return leagueStandingCard;
+    }
+
+    public static JPanel createHistoricalSeasonCard(JFrame jFrame) {
+        final JPanel historicalSeasonCard = new JPanel();
+        historicalSeasonCard.setLayout(new BorderLayout());
+        return historicalSeasonCard;
+    }
+
+    public static JPanel createPlayerStats(JFrame jFrame) {
+        final JPanel playerStats = new JPanel();
+        playerStats.setLayout(new BorderLayout());
+        return playerStats;
     }
 }

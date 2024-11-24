@@ -11,7 +11,7 @@ public interface PlayerStatusInputBoundary {
     void execute(PlayerStatusInputData playerStatusData);
 
     /**
-     * Executes the switch to player view use case.
+     * Executes the switch to teamSearch view use case.
      */
-    void switchToPlayerView();
+    void switchToTeamSearchView();
 }

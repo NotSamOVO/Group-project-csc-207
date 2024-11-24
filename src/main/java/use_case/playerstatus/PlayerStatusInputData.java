@@ -6,9 +6,9 @@ package use_case.playerstatus;
 public class PlayerStatusInputData {
     private String firstName;
     private String lastName;
-    private int teamName;
+    private String teamName;
 
-    public PlayerStatusInputData(String firstName, String lastName, int teamName) {
+    public PlayerStatusInputData(String firstName, String lastName, String teamName) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.teamName = teamName;
@@ -22,7 +22,7 @@ public class PlayerStatusInputData {
         return lastName;
     }
 
-    int getTeamName() {
+    String getTeamName() {
         return teamName;
     }
 }

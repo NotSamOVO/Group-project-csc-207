@@ -5,14 +5,12 @@ package use_case.playerstatus;
  */
 public interface PlayerStatusOutputBoundary {
 
-    /**
-     * Prepares the failure view for the PlayerStatus Use Case.
-     * @param errorMessage the explanation of the failure
-     */
-    void prepareFailView(String errorMessage);
+    void presentPlayerStatus(PlayerStatusOutputData outputData);
+
+    void presentPlayerNotFound(String errorMessage);
 
     /**
-     * Switches to the playerStatus View.
+     * Switches to the Teamsearch View.
      */
-    void switchPlayerStatusView();
+    void switchToTeamSearchView();
 }

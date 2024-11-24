@@ -6,24 +6,38 @@ import entity.Player;
  * The player status interactor
  */
 public class PlayerStatusInteractor {
-    private final PlayerStatusDataAccessInteractor dataAccessObject;
-    private final PlayerStatusOutputBoundary userPresenter;
-    private final Player player;
+    private final PlayerStatusOutputBoundary playerStatusPresenter;
+    private final PlayerDataAccessInterface playerDataAccessObject;
 
-    public PlayerStatusInteractor(PlayerStatusDataAccessInteractor dataAccessObject
-            ,PlayerStatusOutputBoundary userPresenter, Player player) {
-        this.dataAccessObject = dataAccessObject;
-        this.userPresenter = userPresenter;
-        this.player = player;
+    public PlayerStatusInteractor(PlayerStatusOutputBoundary playerStatusPresenter,
+                                  PlayerDataAccessInterface playerDataAccessObject) {
+        this.playerStatusPresenter = playerStatusPresenter;
+        this.playerDataAccessObject = playerDataAccessObject;
     }
 
     @Override
     public void execute(PlayerStatusInputData playerStatusInputData){
-        String firstName = playerStatusInputData.getFirstName();
-        String lastName = playerStatusInputData.getLastName();
-        String teamName = playerStatusInputData.getTeamName();
-        if(!dataAccessObject.existsByName(firstName, lastName, teamName)){
-            userPresenter.prepareFailView("Player not found");
+        Player player = playerDataAccessObject.findPlayer(inputData.getFirstName(), inputData.getLastName(), inputData.getTeamName());
+
+        if (player != null) {
+            PlayerStatusOutputData outputData = new PlayerStatusOutputData(
+                    player.getId(),
+                    player.getFirstName(),
+                    player.getLastName(),
+                    player.getPosition(),
+                    player.getPositionAbbreviation(),
+                    player.getHeight(),
+                    player.getWeight(),
+                    player.getJerseyNumber(),
+                    player.getCollege(),
+                    player.getExperience(),
+                    player.getAge(),
+                    player.getTeam().getName(),
+                    player.getTeam().getAbbreviation()
+            );
+            playerStatusPresenter.presentPlayerStatus(outputData);
+        } else {
+            playerStatusPresenter.presentPlayerNotFound("Player not found");
         }
     }
 

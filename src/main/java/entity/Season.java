@@ -15,9 +15,11 @@ public class Season {
     private int pointsFor;
     private int pointsAgainst;
     private int pointsDiff;
+    private double winningPercentage;
 
     public Season(String fullName, int pointsFor, int pointsAgainst, int pointsDiff, int wins, int losses, int ties,
-                  String conferenceRecord, String divisionRecord, String homeRecord, String awayRecord) {
+                  String conferenceRecord,
+                  String divisionRecord, String homeRecord, String awayRecord, double winningPercentage) {
         this.fullName = fullName;
         this.pointsFor = pointsFor;
         this.pointsAgainst = pointsAgainst;
@@ -29,6 +31,7 @@ public class Season {
         this.divisionRecord = divisionRecord;
         this.homeRecord = homeRecord;
         this.awayRecord = awayRecord;
+        this.winningPercentage = winningPercentage;
     }
 
     public String getFullName() {
@@ -75,6 +78,10 @@ public class Season {
         return pointsDiff;
     }
 
+    public double getWinningPercentage() {
+        return winningPercentage;
+    }
+
     /**
      * Returns a new Seasonbuilder instance.
      * @return a new Seasonbuilder instance.
@@ -98,6 +105,7 @@ public class Season {
         private int pointsFor;
         private int pointsAgainst;
         private int pointsDiff;
+        private double winningPercentage;
 
         SeasonBuilder() {
         }
@@ -105,7 +113,7 @@ public class Season {
         /**
          * Sets the full name of the team.
          * @param fullname the full name of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder fullName(String fullname) {
             this.fullName = fullname;
@@ -115,7 +123,7 @@ public class Season {
         /**
          * Sets the conference record of the team.
          * @param conferencerecord the conference record of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder conferenceRecord(String conferencerecord) {
             this.conferenceRecord = conferencerecord;
@@ -125,7 +133,7 @@ public class Season {
         /**
          * Sets the division record of the team.
          * @param divisionrecord the division record of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder divisionRecord(String divisionrecord) {
             this.divisionRecord = divisionrecord;
@@ -135,7 +143,7 @@ public class Season {
         /**
          * Sets the away record of the team.
          * @param awayrecord the home record of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder awayRecord(String awayrecord) {
             this.awayRecord = awayrecord;
@@ -145,7 +153,7 @@ public class Season {
         /**
          * Sets the home record of the team.
          * @param homerecord the home record of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder homeRecord(String homerecord) {
             this.homeRecord = homerecord;
@@ -155,7 +163,7 @@ public class Season {
         /**
          * Sets the number of wins of the team.
          * @param win the number of wins of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder wins(int win) {
             this.wins = win;
@@ -165,7 +173,7 @@ public class Season {
         /**
          * Sets the number of losses of the team.
          * @param lose the number of losses of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder losses(int lose) {
             this.losses = lose;
@@ -175,7 +183,7 @@ public class Season {
         /**
          * Sets the number of ties of the team.
          * @param tie the number of ties of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder ties(int tie) {
             this.ties = tie;
@@ -183,9 +191,27 @@ public class Season {
         }
 
         /**
+         * Sets the winning percentage of the team.
+         * @param win the number of wins of the team.
+         * @param lose the number of losses of the team.
+         * @param tie the number of ties of the team.
+         * @return the SeasonBuilder instance.
+         */
+        public SeasonBuilder winningPercentage(int win, int lose, int tie) {
+            final int totalGames = win + lose + tie;
+            if (totalGames > 0) {
+                this.winningPercentage = (double) win / totalGames;
+            }
+            else {
+                this.winningPercentage = 0.0;
+            }
+            return this;
+        }
+
+        /**
          * Sets the total earned points of the team.
          * @param pointsfor the total earned points of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder pointsFor(int pointsfor) {
             this.pointsFor = pointsfor;
@@ -195,7 +221,7 @@ public class Season {
         /**
          * Sets the total lost points of the team.
          * @param pointsagainst the total lost points of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder pointsAgainst(int pointsagainst) {
             this.pointsAgainst = pointsagainst;
@@ -205,7 +231,7 @@ public class Season {
         /**
          * Sets the differential between total earned and lost points of the team.
          * @param pointsdiff the differential between total earned and lost points of the team.
-         * @return the TeamBuilder instance.
+         * @return the SeasonBuilder instance.
          */
         public SeasonBuilder pointsDiff(int pointsdiff) {
             this.pointsDiff = pointsdiff;
@@ -218,7 +244,7 @@ public class Season {
          */
         public Season build() {
             return new Season(fullName, pointsFor, pointsAgainst, pointsDiff, wins, losses, ties,
-                    conferenceRecord, divisionRecord, homeRecord, awayRecord);
+                     conferenceRecord, divisionRecord, homeRecord, awayRecord, winningPercentage);
         }
     }
 }

@@ -1,11 +1,13 @@
 package api;
 
+import entity.Season;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import entity.Player;
 import entity.Team;
+import entity.Season;
 
 import java.util.ArrayList;
 
@@ -71,5 +73,5 @@ public interface NFLDataBase {
      * @return the Season object containing information about the specified season.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONArray getSeasonInfo(int year) throws JSONException;
+    ArrayList<Season> getSeasonInfo(int year) throws JSONException;
 }

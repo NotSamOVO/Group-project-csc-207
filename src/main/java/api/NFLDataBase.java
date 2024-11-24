@@ -80,5 +80,5 @@ public interface NFLDataBase {
      * @return the Season object containing information about the specified season.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getSeasonInfo(int year) throws JSONException;
+    JSONArray getSeasonInfo(int year) throws JSONException;
 }

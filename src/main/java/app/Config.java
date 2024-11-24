@@ -1,13 +1,12 @@
 package app;
 
 import api.NFLTeamDataBase;
-import api.NFLDataBase;
 import use_case.PlayerStatusUseCase;
 import use_case.leaguestanding.LeagueStandingUseCase;
 import use_case.teamsearch.TeamSearchUseCase;
 
 public class Config {
-    private final NFLTeamDataBase dataBase = new NFLTeamDataBase();
+    private static final NFLTeamDataBase dataBase = new NFLTeamDataBase();
 
     /**
      * Get the TeamSearchUseCase object.
@@ -31,4 +30,12 @@ public class Config {
      */
     public LeagueStandingUseCase getLeagueStandingUseCase() {
         return new LeagueStandingUseCase(dataBase); }
+
+    /**
+     * Get the single instance of NFLTeamDataBase
+     * @return an instance of NFLTeamDataBase.
+     */
+    public static NFLTeamDataBase getNflTeamDataBase() {
+        return dataBase;
+    }
 }

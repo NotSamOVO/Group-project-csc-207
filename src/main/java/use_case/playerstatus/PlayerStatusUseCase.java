@@ -1,8 +1,6 @@
-package use_case;
+package use_case.playerstatus;
 
 import api.NFLTeamDataBase;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 

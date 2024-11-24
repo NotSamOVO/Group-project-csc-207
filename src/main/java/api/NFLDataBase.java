@@ -1,5 +1,9 @@
 package api;
 
+<<<<<<< HEAD
+import entity.Game;
+=======
+>>>>>>> origin/main
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,7 +57,15 @@ public interface NFLDataBase {
      * @return the game with the specified ID.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getGame(int gameId) throws JSONException;
+    Game getGame(int gameId) throws JSONException;
+
+    /**
+     * A method that returns all games.
+     *
+     * @return all games.
+     * @throws JSONException if an error occurs while parsing the JSON response.
+     */
+    ArrayList<Game> getAllGames() throws JSONException;
 
     /**
      * A method that returns games for a specific date.

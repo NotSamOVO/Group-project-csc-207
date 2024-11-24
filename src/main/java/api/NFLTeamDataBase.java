@@ -1,5 +1,9 @@
 package api;
 
+<<<<<<< HEAD
+import entity.Game;
+=======
+>>>>>>> origin/main
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -16,9 +20,16 @@ import entity.Team;
 
 public class NFLTeamDataBase implements NFLDataBase {
     private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
+<<<<<<< HEAD
+    private static final String API_KEY = "f0fb2b79-6fcb-47cd-b4a2-e5534b085344";
+
+    @Override
+    public Team getTeam(int teamId) {
+=======
 
     @Override
     public Team getTeam(int teamId){
+>>>>>>> origin/main
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -49,7 +60,11 @@ public class NFLTeamDataBase implements NFLDataBase {
     }
 
     @Override
+<<<<<<< HEAD
+    public ArrayList<Team> getAllTeams() {
+=======
     public ArrayList<Team> getAllTeams(){
+>>>>>>> origin/main
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
@@ -183,11 +198,19 @@ public class NFLTeamDataBase implements NFLDataBase {
     }
 
     @Override
+<<<<<<< HEAD
+    public Game getGame(int gameId) {
+=======
     public JSONObject getGame(int gameId) {
+>>>>>>> origin/main
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/games/" + gameId)
+<<<<<<< HEAD
+                .addHeader("Authorization", API_KEY)
+=======
+>>>>>>> origin/main
                 .method("GET", null)
                 .build();
         try {
@@ -196,7 +219,124 @@ public class NFLTeamDataBase implements NFLDataBase {
             if (!response.isSuccessful()) {
                 throw new RuntimeException("Error getting game");
             }
+<<<<<<< HEAD
+            final JSONObject game = responseBody.getJSONObject("data");
+            final JSONObject homeTeam = game.getJSONObject("home_team");
+            final JSONObject visitorTeam = game.getJSONObject("visitor_team");
+
+            final Team homeTeamObj = Team.builder()
+                    .id(homeTeam.getInt("id"))
+                    .conference(homeTeam.getString("conference"))
+                    .division(homeTeam.getString("division"))
+                    .location(homeTeam.getString("location"))
+                    .name(homeTeam.getString("name"))
+                    .fullName(homeTeam.getString("full_name"))
+                    .abbreviation(homeTeam.getString("abbreviation"))
+                    .build();
+
+            final Team visitorTeamObj = Team.builder()
+                    .id(visitorTeam.getInt("id"))
+                    .conference(visitorTeam.getString("conference"))
+                    .division(visitorTeam.getString("division"))
+                    .location(visitorTeam.getString("location"))
+                    .name(visitorTeam.getString("name"))
+                    .fullName(visitorTeam.getString("full_name"))
+                    .abbreviation(visitorTeam.getString("abbreviation"))
+                    .build();
+
+            String venue = game.optString("venue", "Unknown Venue");
+
+            return Game.builder()
+                    .id(game.getInt("id"))
+                    .home_team(homeTeamObj)
+                    .visitor_team(visitorTeamObj)
+                    .date(game.getString("date"))
+                    .home_team_score(game.getInt("home_team_score"))
+                    .visitor_team_score(game.getInt("visitor_team_score"))
+                    .venue(venue)
+                    .home_team_q1(game.getInt("home_team_q1"))
+                    .visitor_team_q1(game.getInt("visitor_team_q1"))
+                    .home_team_q2(game.getInt("home_team_q2"))
+                    .visitor_team_q2(game.getInt("visitor_team_q2"))
+                    .home_team_q3(game.getInt("home_team_q3"))
+                    .visitor_team_q3(game.getInt("visitor_team_q3"))
+                    .home_team_q4(game.getInt("home_team_q4"))
+                    .visitor_team_q4(game.getInt("visitor_team_q4"))
+                    .build();
+        }
+        catch (IOException | JSONException event) {
+            throw new RuntimeException(event);
+        }
+    }
+
+    @Override
+    public ArrayList<Game> getAllGames() {
+        final OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        final Request request = new Request.Builder()
+                .url(BASE_URL + "/games")
+                .addHeader("Authorization", API_KEY)
+                .method("GET", null)
+                .build();
+        try {
+            final Response response = client.newCall(request).execute();
+
+            if (!response.isSuccessful()) {
+                throw new RuntimeException("Error getting games");
+            }
+
+            final String responseBody = response.body().string();
+            final JSONObject jsonResponse = new JSONObject(responseBody);
+            final JSONArray gamesArray = jsonResponse.getJSONArray("data");
+            final ArrayList<Game> result = new ArrayList<>();
+            for (int i = 0; i < gamesArray.length(); i++) {
+                final JSONObject game = gamesArray.getJSONObject(i);
+                final JSONObject homeTeam = game.getJSONObject("home_team");
+                final JSONObject visitorTeam = game.getJSONObject("visitor_team");
+                final Team homeTeamObj = Team.builder()
+                        .id(homeTeam.getInt("id"))
+                        .conference(homeTeam.getString("conference"))
+                        .division(homeTeam.getString("division"))
+                        .location(homeTeam.getString("location"))
+                        .name(homeTeam.getString("name"))
+                        .fullName(homeTeam.getString("full_name"))
+                        .abbreviation(homeTeam.getString("abbreviation"))
+                        .build();
+
+                final Team visitorTeamObj = Team.builder()
+                        .id(visitorTeam.getInt("id"))
+                        .conference(visitorTeam.getString("conference"))
+                        .division(visitorTeam.getString("division"))
+                        .location(visitorTeam.getString("location"))
+                        .name(visitorTeam.getString("name"))
+                        .fullName(visitorTeam.getString("full_name"))
+                        .abbreviation(visitorTeam.getString("abbreviation"))
+                        .build();
+
+                String venue = game.optString("venue", "Unknown Venue");
+
+                result.add(Game.builder()
+                        .id(game.getInt("id"))
+                                .home_team(homeTeamObj)
+                                .visitor_team(visitorTeamObj)
+                                .date(game.getString("date"))
+                                .home_team_score(game.getInt("home_team_score"))
+                                .visitor_team_score(game.getInt("visitor_team_score"))
+                                .venue(venue)
+                        .home_team_q1(game.getInt("home_team_q1"))
+                        .visitor_team_q1(game.getInt("visitor_team_q1"))
+                        .home_team_q2(game.getInt("home_team_q2"))
+                        .visitor_team_q2(game.getInt("visitor_team_q2"))
+                        .home_team_q3(game.getInt("home_team_q3"))
+                        .visitor_team_q3(game.getInt("visitor_team_q3"))
+                        .home_team_q4(game.getInt("home_team_q4"))
+                        .visitor_team_q4(game.getInt("visitor_team_q4"))
+                        .build());
+            }
+            return result;
+=======
             return responseBody;
+>>>>>>> origin/main
         }
         catch (IOException | JSONException event) {
             throw new RuntimeException(event);

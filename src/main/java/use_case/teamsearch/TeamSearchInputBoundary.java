@@ -8,4 +8,6 @@ public interface TeamSearchInputBoundary {
      * Executes the switch to leagues standing view use case.
      */
     void switchLeagueStandingView();
+
+    void switchHistoricalSeasonsView();
 }

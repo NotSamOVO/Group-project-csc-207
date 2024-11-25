@@ -102,11 +102,13 @@ public class NFLTeamDataBase implements NFLDataBase {
                 .build();
         try {
             final Response response = client.newCall(request).execute();
+            System.out.println(response.body().string());
             final JSONObject responseBody = new JSONObject(response.body().string());
             if (!response.isSuccessful()) {
                 throw new RuntimeException("Player not found");
             }
-            JSONArray team = responseBody.getJSONArray("team");
+            JSONObject team = responseBody.getJSONObject("team");
+            System.out.println("done three");
             Team teamObj = Team.builder()
                     .id(team.getInt("id"))
                     .conference(team.getString("conference"))
@@ -116,9 +118,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                     .fullName(team.getString("full_name"))
                     .abbreviation(team.getString("abbreviation"))
                     .build();
-            if(true){
-                throw new RuntimeException(response.body().string());
-            }
+            System.out.println("done too");
             return Player.builder()
                     .id(responseBody.getInt("id"))
                     .firstName(responseBody.getString("first_name"))
@@ -144,7 +144,7 @@ public class NFLTeamDataBase implements NFLDataBase {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url(BASE_URL + "/players")
+                .url(BASE_URL + "/players?per_page=100")
                 .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();
@@ -184,6 +184,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .age(player.optInt("age",0))
                         .team(teamObj)
                         .build());
+                System.out.println(players.toString());
             }
             return players;
         }

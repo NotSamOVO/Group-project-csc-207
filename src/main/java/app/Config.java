@@ -2,7 +2,8 @@ package app;
 
 import api.NFLTeamDataBase;
 import api.NFLDataBase;
-import use_case.PlayerStatusUseCase;
+import use_case.matchresults.MatchResultsUseCase;
+import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.leaguestanding.LeagueStandingUseCase;
 import use_case.teamsearch.TeamSearchUseCase;
 
@@ -17,6 +18,14 @@ public class Config {
         return new TeamSearchUseCase(dataBase);
     }
 
+    /**
+<<<<<<< HEAD
+     * Get the MatchResults object.
+     * @return MatchResults object.
+     */
+    public MatchResultsUseCase getMatchResultsUseCase() {
+        return new MatchResultsUseCase(dataBase);
+    }
     /**
      * Get the TeamSearchUseCase object.
      * @return TeamSearchUseCase object.

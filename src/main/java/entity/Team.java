@@ -13,8 +13,8 @@ public class Team {
     private String fullName;
     private String abbreviation;
 
-    public Team(int id, String conference, String division, String location, String name
-            ,String fullName, String abbreviation) {
+    public Team(int id, String conference, String division, String location, String name,
+                String fullName, String abbreviation) {
         this.id = id;
         this.conference = conference;
         this.division = division;
@@ -78,6 +78,11 @@ public class Team {
      */
     public String getAbbreviation() {
         return abbreviation;
+    }
+
+    public String toString() {
+        return "Team: " + id + "/n" + conference + "/n" + division + "/n" + location + "/n" + name + "/n"
+                + fullName + "/n" + abbreviation;
     }
 
     /**

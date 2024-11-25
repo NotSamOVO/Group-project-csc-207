@@ -1,13 +1,12 @@
 package api;
 
-import entity.Season;
+import entity.Game;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import entity.Player;
 import entity.Team;
-import entity.Season;
 
 import java.util.ArrayList;
 
@@ -55,7 +54,15 @@ public interface NFLDataBase {
      * @return the game with the specified ID.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    JSONObject getGame(int gameId) throws JSONException;
+    Game getGame(int gameId) throws JSONException;
+
+    /**
+     * A method that returns all games.
+     *
+     * @return all games.
+     * @throws JSONException if an error occurs while parsing the JSON response.
+     */
+    ArrayList<Game> getAllGames() throws JSONException;
 
     /**
      * A method that returns games for a specific date.
@@ -73,5 +80,5 @@ public interface NFLDataBase {
      * @return the Season object containing information about the specified season.
      * @throws JSONException if an error occurs while parsing the JSON response.
      */
-    ArrayList<Season> getSeasonInfo(int year) throws JSONException;
+    JSONArray getSeasonInfo(int year) throws JSONException;
 }

@@ -17,8 +17,10 @@ public class Player {
     private String experience;
     private int age;
     private Team team;
+
     public Player(int id, String firstName, String lastName, String position, String positionAbbreviation
-    , String height, String weight, String jerseyNumber, String college, String experience, int age, Team team) {
+            , String height, String weight, String jerseyNumber, String college, String experience, int age, Team team) {
+
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -130,9 +132,20 @@ public class Player {
     }
 
     /**
+     * Returns the team info of the player.
+     * @return the team info of the player.
+     */
+    public String toString() {
+        return id + "/n" + firstName + "/n" + lastName + "/n" + position + "/n" + positionAbbreviation + "/n"
+                + height + "/n" + weight + "/n" + jerseyNumber + "/n" + college + "/n" + experience + "/n"
+                + age + "/n" + team.toString();
+    }
+
+    /**
      * Returns a new PlayerBuilder instance.
      * @return a new PlayerBuilder instance.
      */
+
     public static PlayerBuilder builder(){
         return new PlayerBuilder();
     }
@@ -140,6 +153,7 @@ public class Player {
     /**
      * Represents a builder for creating instances of a Player.
      */
+
     public static class PlayerBuilder{
         private int id;
         private String firstName;
@@ -154,7 +168,7 @@ public class Player {
         private int age;
         private Team team;
 
-        PlayerBuilder(){
+        PlayerBuilder() {
         }
 
         /**
@@ -162,7 +176,7 @@ public class Player {
          * @param id the id of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder id(int id){
+        public PlayerBuilder id(int id) {
             this.id = id;
             return this;
         }
@@ -172,7 +186,8 @@ public class Player {
          * @param firstName the firstName of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder firstName(String firstName){
+
+        public PlayerBuilder firstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
@@ -182,7 +197,8 @@ public class Player {
          * @param lastName the lastName of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder lastName(String lastName){
+
+        public PlayerBuilder lastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
@@ -192,7 +208,8 @@ public class Player {
          * @param position the position of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder position(String position){
+
+        public PlayerBuilder position(String position) {
             this.position = position;
             return this;
         }
@@ -202,7 +219,8 @@ public class Player {
          * @param positionAbbreviation the positionAbbreviation of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder positionAbbreviation(String positionAbbreviation){
+
+        public PlayerBuilder positionAbbreviation(String positionAbbreviation) {
             this.positionAbbreviation = positionAbbreviation;
             return this;
         }
@@ -212,7 +230,8 @@ public class Player {
          * @param height the height of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder height(String height){
+
+        public PlayerBuilder height(String height) {
             this.height = height;
             return this;
         }
@@ -222,7 +241,8 @@ public class Player {
          * @param weight the weight of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder weight(String weight){
+
+        public PlayerBuilder weight(String weight) {
             this.weight = weight;
             return this;
         }
@@ -232,7 +252,8 @@ public class Player {
          * @param jerseyNumber the jerseyNumber of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder jerseyNumber(String jerseyNumber){
+
+        public PlayerBuilder jerseyNumber(String jerseyNumber) {
             this.jerseyNumber = jerseyNumber;
             return this;
         }
@@ -242,7 +263,8 @@ public class Player {
          * @param college the college of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder college(String college){
+
+        public PlayerBuilder college(String college) {
             this.college = college;
             return this;
         }
@@ -252,7 +274,8 @@ public class Player {
          * @param experience the experience of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder experience(String experience){
+
+        public PlayerBuilder experience(String experience) {
             this.experience = experience;
             return this;
         }
@@ -262,7 +285,8 @@ public class Player {
          * @param age the age of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder age(int age){
+
+        public PlayerBuilder age(int age) {
             this.age = age;
             return this;
         }
@@ -272,7 +296,8 @@ public class Player {
          * @param team the team of the player.
          * @return the PlayerBuilder instance.
          */
-        public PlayerBuilder team(Team team){
+
+        public PlayerBuilder team(Team team) {
             this.team = team;
             return this;
         }
@@ -281,10 +306,9 @@ public class Player {
          * Builds a new Player instance.
          * @return a new Player instance.
          */
-        public Player build(){
-            return new Player(id,firstName,lastName,position,positionAbbreviation
-                    ,height,weight,jerseyNumber,college,experience,age,team);
+        public Player build() {
+            return new Player(id, firstName, lastName, position, positionAbbreviation
+                    , height, weight, jerseyNumber, college, experience, age, team);
         }
     }
 }
-

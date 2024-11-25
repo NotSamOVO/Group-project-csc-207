@@ -137,9 +137,11 @@ public class Player {
      * @return the team info of the player.
      */
     public String toString() {
-        return id + "\n" + firstName + "\n" + lastName + "\n" + position + "\n" + positionAbbreviation + "\n"
-                + height + "\n" + weight + "\n" + jerseyNumber + "\n" + college + "\n" + experience + "\n"
-                + age + "\n" + team.toString();
+        return "\nid: " + id + "\nFirst name: " + firstName + "\nLast Name: " + lastName + "\nPosition: " + position
+                + "\nPosition_Abbreviation: " + positionAbbreviation + "\nHeight: " + height + "\nWeight: "
+                + weight + "\nJersey Number: " + jerseyNumber + "\nCollege: " + college + "\nExperience: "
+                + experience + "\nAge: " + age + "\nTeam: " + team.toString();
+
     }
 
     /**

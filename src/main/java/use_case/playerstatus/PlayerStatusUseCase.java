@@ -21,7 +21,7 @@ public class PlayerStatusUseCase {
      * @param teamName The team name of the player.
      * @return the id of the player. -1 if the player is not found.
      */
-    public int getPlayerId(String firstName, String lastName, String teamName) {
+    public Player getPlayer(String firstName, String lastName, String teamName) {
         ArrayList<Player> allPlayers = playerDataBase.getAllPlayers();
         for (int i = 0; i < allPlayers.size(); i++) {
             Player player = allPlayers.get(i);
@@ -29,23 +29,21 @@ public class PlayerStatusUseCase {
             String playerLastName = player.getLastName();
             String playerTeamName = player.getTeam().getName();
 
-            boolean nameMatch = (playerFirstName.equals(firstName) && playerLastName.equals(lastName))
-                    && playerFirstName.equals(lastName);
-            boolean teamMatch = playerTeamName == teamName;
+            boolean nameMatch = (playerFirstName.equals(firstName) && playerLastName.equals(lastName));
+            boolean teamMatch = playerTeamName.equals(teamName);
 
             if (nameMatch && teamMatch) {
-                return player.getId();
+                return player;
             }
         }
-        return -1;
+        return null;
     }
 
     public String getPlayerStatus(String firstName, String lastName, String teamName) {
-        int id = getPlayerId(firstName, lastName, teamName);
-        if(id == -1) {
+        Player player = getPlayer(firstName, lastName, teamName);
+        if(player == null) {
             return "Player not found";
         }else {
-            Player player = playerDataBase.getPlayer(id);
             return player.toString();
         }
     }

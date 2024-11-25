@@ -132,6 +132,16 @@ public class Player {
     }
 
     /**
+     * Returns the team info of the player.
+     * @return the team info of the player.
+     */
+    public String toString() {
+        return id + "/n" + firstName + "/n" + lastName + "/n" + position + "/n" + positionAbbreviation + "/n"
+                + height + "/n" + weight + "/n" + jerseyNumber + "/n" + college + "/n" + experience + "/n"
+                + age + "/n" + team.toString();
+    }
+
+    /**
      * Returns a new PlayerBuilder instance.
      * @return a new PlayerBuilder instance.
      */

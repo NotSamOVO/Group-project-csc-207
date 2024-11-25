@@ -13,6 +13,9 @@ import interface_adapter.leaguestanding.LeagueStandingViewModel;
 import interface_adapter.teamsearch.TeamSearchController;
 import interface_adapter.teamsearch.TeamSearchPresenter;
 import interface_adapter.teamsearch.TeamSearchViewModel;
+import interface_adapter.playerstatus.PlayerStatusController;
+import interface_adapter.playerstatus.PlayerStatusPresenter;
+import interface_adapter.playerstatus.PlayerStatusViewModel;
 import use_case.leaguestanding.LeagueStandingInputBoundary;
 import use_case.leaguestanding.LeagueStandingInteractor;
 import use_case.leaguestanding.LeagueStandingOutputBoundary;
@@ -20,8 +23,14 @@ import use_case.leaguestanding.LeagueStandingUseCase;
 import use_case.teamsearch.TeamSearchInputBoundary;
 import use_case.teamsearch.TeamSearchInteractor;
 import use_case.teamsearch.TeamSearchOutputBoundary;
+import use_case.playerstatus.PlayerStatusUseCase;
+import use_case.playerstatus.PlayerStatusInteractor;
+import use_case.playerstatus.PlayerStatusInputBoundary;
+import use_case.playerstatus.PlayerStatusOutputBoundary;
+import interface_adapter.playerstatus.PlayerStatusViewModel;
 import view.LeagueStandingView;
 import view.TeamSearchView;
+import view.PlayerStatusView;
 import view.ViewManager;
 
 /**
@@ -47,9 +56,12 @@ public class AppBuilder {
     private TeamSearchViewModel teamSearchViewModel;
     private LeagueStandingView leagueStandingView;
     private LeagueStandingViewModel leagueStandingViewModel;
+    private PlayerStatusView playerStatusView;
+    private PlayerStatusViewModel playerStatusViewModel;
     final Config config = new Config();
 
     private final LeagueStandingUseCase leagueStandingUseCase = config.getLeagueStandingUseCase();
+    private final PlayerStatusUseCase playerStatusUseCase = config.getPlayerStatusUseCase();
 
     public AppBuilder() {
         cardPanel.setLayout(cardLayout);
@@ -103,6 +115,31 @@ public class AppBuilder {
 
         final LeagueStandingController controller = new LeagueStandingController(userLeagueStandingInteractor);
         leagueStandingView.setLeagueStandingController(controller);
+        return this;
+    }
+
+    /**
+     * Adds the Player Status View to the application.
+     * @return this builder
+     */
+    public AppBuilder addPlayerStatusView() {
+        final PlayerStatusViewModel playerStatusViewModel = new PlayerStatusViewModel();
+        final PlayerStatusView playerStatusView = new PlayerStatusView(playerStatusViewModel, playerStatusUseCase);
+        cardPanel.add(playerStatusView, playerStatusView.getViewName());
+        return this;
+    }
+
+    /**
+     * Adds the Player Status Use Case to the application.
+     * @return this builder
+     */
+    public AppBuilder addPlayerStatusUseCase() {
+        final PlayerStatusOutputBoundary playerStatusOutputBoundary = new PlayerStatusPresenter(viewManagerModel,
+                playerStatusViewModel, teamSearchViewModel);
+        final PlayerStatusInputBoundary playerStatusInteractor = new PlayerStatusInteractor(playerStatusOutputBoundary);
+
+        final PlayerStatusController controller = new PlayerStatusController(playerStatusInteractor);
+        playerStatusView.setPlayerStatusController(controller);
         return this;
     }
 

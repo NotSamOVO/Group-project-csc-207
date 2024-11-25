@@ -3,7 +3,7 @@ package app;
 import api.NFLTeamDataBase;
 import api.NFLDataBase;
 import use_case.matchresults.MatchResultsUseCase;
-import use_case.PlayerStatusUseCase;
+import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.leaguestanding.LeagueStandingUseCase;
 import use_case.teamsearch.TeamSearchUseCase;
 

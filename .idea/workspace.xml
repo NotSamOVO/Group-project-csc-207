@@ -7,7 +7,6 @@
     <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu edditing errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -275,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732552818969</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="tianle.xu edditing errors">
+      <option name="closed" value="true" />
+      <created>1732555626073</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1732555626073</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

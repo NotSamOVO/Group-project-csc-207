@@ -42,7 +42,11 @@ public class PlayerStatusUseCase {
 
     public String getPlayerStatus(String firstName, String lastName, String teamName) {
         int id = getPlayerId(firstName, lastName, teamName);
-        Player player = playerDataBase.getPlayer(id);
-        return player.toString();
+        if(id == -1) {
+            return "Player not found";
+        }else {
+            Player player = playerDataBase.getPlayer(id);
+            return player.toString();
+        }
     }
 }

@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu edditing error adding in toString for team and players">
+    <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="eddited application and database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/PlayerStatusView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PlayerStatusView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/leaguestanding/LeagueStandingUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/leaguestanding/LeagueStandingUseCase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +41,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/NotSamOVO/Group-project-csc-207.git",
-    "accountId": "a954c9c2-e670-4bd5-b344-d68f6a551bd7"
+    "accountId": "b7dd5655-2e66-4d32-8dd5-4aaf5b44848f"
   }
 }]]></component>
   <component name="ProjectColorInfo">{
@@ -58,7 +60,7 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "Tianle.xu",
+    "git-widget-placeholder": "Park",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -128,6 +130,7 @@
       <workItem from="1732306565491" duration="8003000" />
       <workItem from="1732323654386" duration="1020000" />
       <workItem from="1732475703381" duration="11512000" />
+      <workItem from="1732495759878" duration="1135000" />
     </task>
     <task id="LOCAL-00001" summary="tianle.xu">
       <option name="closed" value="true" />
@@ -272,9 +275,31 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="f6c49aea-d317-436d-9aff-05c2bf6a8682" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Tianle.xu" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="f6c49aea-d317-436d-9aff-05c2bf6a8682">
           <value>
             <State>
               <option name="FILTERS">
@@ -309,6 +334,7 @@
     <MESSAGE value="tianle.xu adding in the page for playerstatus" />
     <MESSAGE value="tianle.xu adding the main" />
     <MESSAGE value="tianle.xu edditing error adding in toString for team and players" />
-    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu edditing error adding in toString for team and players" />
+    <MESSAGE value="eddited application and database" />
+    <option name="LAST_COMMIT_MESSAGE" value="eddited application and database" />
   </component>
 </project>

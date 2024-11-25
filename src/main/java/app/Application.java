@@ -4,6 +4,7 @@ import app.Config;
 import use_case.matchresults.MatchResultsUseCase;
 import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.teamsearch.TeamSearchUseCase;
+import use_case.leaguestanding.LeagueStandingUseCase;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class Application {
         final MatchResultsUseCase matchResultsUseCase = config.getMatchResultsUseCase();
         final TeamSearchUseCase teamSearchUseCase = config.getTeamSearchUseCase();
         final PlayerStatusUseCase playerStatusUseCase = config.getPlayerStatusUseCase();
+        final LeagueStandingUseCase leagueStandingUseCase = config.getLeagueStandingUseCase();
 
         SwingUtilities.invokeLater(() -> {
             final JFrame frame = new JFrame("Team and Match Results App");
@@ -41,11 +43,13 @@ public class Application {
             final JPanel teamSearchCard = createTeamSearchCard(frame);
             final JPanel matchResultsCard = createMatchResultsCard(frame, matchResultsUseCase);
             final JPanel playerStatusCard = createPlayerStatusCard(frame, playerStatusUseCase);
+            final JPanel leageuStandingCard = createLeagueStandingCard(frame, leagueStandingUseCase);
 
             cardPanel.add(defaultCard, "DefaultCard");
             cardPanel.add(teamSearchCard, "TeamSearchCard");
             cardPanel.add(matchResultsCard, "MatchResultsCard");
             cardPanel.add(playerStatusCard, "PlayerStatusCard");
+            cardPanel.add(leageuStandingCard, "LeagueStandingCard");
 
             // Creating buttons for navigation
             final JButton teamSearchButton = new JButton("Team Search");
@@ -57,11 +61,15 @@ public class Application {
             final JButton playerStatusButton = new JButton("Player Status");
             playerStatusButton.addActionListener(event -> cardLayout.show(cardPanel, "PlayerStatusCard"));
 
+            final JButton leagueStandingButton = new JButton("League Standing");
+            leagueStandingButton.addActionListener(event -> cardLayout.show(cardPanel, "LeagueStandingCard"));
+
             // Adding buttons to the bottom panel
             final JPanel buttonPanel = new JPanel();
             buttonPanel.add(teamSearchButton);
             buttonPanel.add(matchResultsButton);
             buttonPanel.add(playerStatusButton);
+            buttonPanel.add(leagueStandingButton);
 
             // Adding components to the frame
             frame.getContentPane().add(cardPanel, BorderLayout.CENTER);
@@ -275,4 +283,49 @@ public class Application {
         return playerStatusCard;
     }
 
+    /**
+     * League Standing Card: Displays league standings of the current year.
+     *
+     * @param jFrame the parent frame.
+     * @param leagueStandingUseCase the use case for retrieving league standings.
+     * @return a JPanel displaying league standings.
+     */
+    private static JPanel createLeagueStandingCard(JFrame jFrame, LeagueStandingUseCase leagueStandingUseCase) {
+        final JPanel teamSearchCard = new JPanel(new BorderLayout());
+
+        try {
+            // Results panel to hold table and label
+            final JPanel resultsPanel = new JPanel(new BorderLayout());
+            final JLabel noResultsLabel = new JLabel("Results will appear here...");
+            noResultsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+            // Table setup
+            final String[] columnNames = {
+                    "Rank", "Team Name", "Wins", "Losses", "Ties", "Win %", "Home", "Away", "DIV",
+                    "CONF", "PF", "PA", "DIFF"};
+            final String[][] data = leagueStandingUseCase.getLeagueStanding();
+
+            // JTable to display standings
+            final JTable standingTable = new JTable(data, columnNames);
+            standingTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+            standingTable.setFillsViewportHeight(true);
+
+            // Scroll pane for table
+            final JScrollPane scrollPane = new JScrollPane(standingTable);
+
+            // Add components to the results panel
+            resultsPanel.add(noResultsLabel, BorderLayout.NORTH);
+            resultsPanel.add(scrollPane, BorderLayout.CENTER);
+
+            // Add results panel to the main card
+            teamSearchCard.add(resultsPanel, BorderLayout.CENTER);
+
+        }
+        catch (Exception e) {
+            // Show error dialog in case of issues
+            JOptionPane.showMessageDialog(jFrame, "Error fetching league standings: " + e.getMessage());
+        }
+
+        return teamSearchCard;
+    }
 }

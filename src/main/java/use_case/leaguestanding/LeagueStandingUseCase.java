@@ -1,13 +1,12 @@
 package use_case.leaguestanding;
 
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import api.NFLTeamDataBase;
+import entity.Season;
 
 /**
  * The class for the league standing use case.
@@ -26,30 +25,24 @@ public final class LeagueStandingUseCase {
      */
 
     public String[][] getLeagueStanding() {
-        final JSONArray standing = teamstandingDataBase.getSeasonInfo(year);
-        final String[][] data = new String[standing.length()][14];
+        final ArrayList<Season> standing = teamstandingDataBase.getSeasonInfo(year);
+        final String[][] data = new String[standing.size()][14];
 
-        for (int i = 0; i < standing.length(); i++) {
-            final JSONObject obj = standing.getJSONObject(i);
-            final JSONObject team = obj.getJSONObject("team");
-            final int wins = obj.getInt("wins");
-            final int losses = obj.getInt("losses");
-            final int ties = obj.getInt("ties");
-            final double totalGames = wins + losses + ties;
-            final double winPercentage = (totalGames > 0) ? (double) wins / totalGames : 0.0;
+        for (int i = 0; i < standing.size(); i++) {
+            final Season obj = standing.get(i);
 
-            data[i][1] = team.getString("full_name");
-            data[i][2] = String.valueOf(obj.getInt("wins"));
-            data[i][3] = String.valueOf(obj.getInt("losses"));
-            data[i][4] = String.valueOf(obj.getInt("ties"));
-            data[i][5] = String.format("%.3f", winPercentage);
-            data[i][6] = obj.getString("home_record");
-            data[i][7] = obj.getString("road_record");
-            data[i][8] = obj.getString("division_record");
-            data[i][9] = obj.getString("conference_record");
-            data[i][10] = String.valueOf(obj.getInt("points_for"));
-            data[i][11] = String.valueOf(obj.getInt("points_against"));
-            data[i][12] = String.valueOf(obj.getInt("point_differential"));
+            data[i][1] = obj.getFullName();
+            data[i][2] = String.valueOf(obj.getWins());
+            data[i][3] = String.valueOf(obj.getLosses());
+            data[i][4] = String.valueOf(obj.getTies());
+            data[i][5] = String.format("%.3f", obj.getWinningPercentage());
+            data[i][6] = obj.getHomeRecord();
+            data[i][7] = obj.getAwayRecord();
+            data[i][8] = obj.getDivisionRecord();
+            data[i][9] = obj.getConferenceRecord();
+            data[i][10] = String.valueOf(obj.getPointsFor());
+            data[i][11] = String.valueOf(obj.getPointsAgainst());
+            data[i][12] = String.valueOf(obj.getPointsDiff());
         }
 
         Arrays.sort(data, new Comparator<String[]>() {
@@ -68,3 +61,4 @@ public final class LeagueStandingUseCase {
         return data;
     }
 }
+

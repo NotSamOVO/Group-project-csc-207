@@ -68,6 +68,7 @@ public class Application {
             final JPanel buttonPanel = new JPanel();
             buttonPanel.add(teamSearchButton);
             buttonPanel.add(matchResultsButton);
+
             buttonPanel.add(playerStatusButton);
             buttonPanel.add(leagueStandingButton);
 

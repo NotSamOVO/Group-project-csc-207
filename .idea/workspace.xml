@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="eddited application and database">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Application.java" afterDir="false" />
@@ -60,7 +61,11 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+<<<<<<< HEAD
+    "git-widget-placeholder": "tianle.xu",
+=======
     "git-widget-placeholder": "Park",
+>>>>>>> main
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

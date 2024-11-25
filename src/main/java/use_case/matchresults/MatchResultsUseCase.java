@@ -103,6 +103,9 @@ public class MatchResultsUseCase {
 
         try {
             final String date = dateGame.getDate();
+            if (date.contains("T")) {
+                return date.split("T")[0];
+            }
             return date;
         }
         catch (JSONException e) {
@@ -135,12 +138,7 @@ public class MatchResultsUseCase {
         try {
             Integer homeq1 = q1Game.getHome_team_q1();
             Integer visitorq1 = q1Game.getVisitor_team_q1();
-            if (homeq1 == null) {
-                homeq1 = 0;
-            }
-            if (visitorq1 == null) {
-                visitorq1 = 0;
-            }
+
             return homeq1 + " - " + visitorq1;
         }
         catch (JSONException e) {
@@ -154,12 +152,7 @@ public class MatchResultsUseCase {
         try {
             Integer homeq2 = q2Game.getHome_team_q2();
             Integer visitorq2 = q2Game.getVisitor_team_q2();
-            if (homeq2 == null) {
-                homeq2 = 0;
-            }
-            if (visitorq2 == null) {
-                visitorq2 = 0;
-            }
+
             return homeq2 + " - " + visitorq2;
         }
         catch (JSONException e) {
@@ -173,12 +166,7 @@ public class MatchResultsUseCase {
         try {
             Integer homeq3 = q3Game.getHome_team_q3();
             Integer visitorq3 = q3Game.getVisitor_team_q3();
-            if (homeq3 == null) {
-                homeq3 = 0;
-            }
-            if (visitorq3 == null) {
-                visitorq3 = 0;
-            }
+
             return homeq3 + " - " + visitorq3;
         }
         catch (JSONException e) {
@@ -192,12 +180,7 @@ public class MatchResultsUseCase {
         try {
             Integer homeq4 = q4Game.getHome_team_q4();
             Integer visitorq4 = q4Game.getVisitor_team_q4();
-            if (homeq4 == null) {
-                homeq4 = 0;
-            }
-            if (visitorq4 == null) {
-                visitorq4 = 0;
-            }
+
             return homeq4 + " - " + visitorq4;
         }
         catch (JSONException e) {

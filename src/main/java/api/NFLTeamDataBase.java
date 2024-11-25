@@ -106,7 +106,7 @@ public class NFLTeamDataBase implements NFLDataBase {
             if (!response.isSuccessful()) {
                 throw new RuntimeException("Player not found");
             }
-            JSONObject team = responseBody.getJSONObject("team");
+            JSONArray team = responseBody.getJSONArray("team");
             Team teamObj = Team.builder()
                     .id(team.getInt("id"))
                     .conference(team.getString("conference"))
@@ -116,7 +116,9 @@ public class NFLTeamDataBase implements NFLDataBase {
                     .fullName(team.getString("full_name"))
                     .abbreviation(team.getString("abbreviation"))
                     .build();
-
+            if(true){
+                throw new RuntimeException(response.body().string());
+            }
             return Player.builder()
                     .id(responseBody.getInt("id"))
                     .firstName(responseBody.getString("first_name"))
@@ -128,7 +130,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                     .jerseyNumber(responseBody.getString("jersey_number"))
                     .college(responseBody.getString("college"))
                     .experience(responseBody.getString("experience"))
-                    .age(responseBody.getInt("age"))
+                    .age(responseBody.optInt("age",0))
                     .team(teamObj)
                     .build();
         }
@@ -155,6 +157,7 @@ public class NFLTeamDataBase implements NFLDataBase {
             if (!response.isSuccessful()) {
                 throw new RuntimeException("Error getting players");
             }
+
             for (int i = 0; i < playerArray.length(); i++) {
                 JSONObject player = playerArray.getJSONObject(i);
                 JSONObject team = player.getJSONObject("team");
@@ -167,7 +170,6 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .fullName(team.getString("full_name"))
                         .abbreviation(team.getString("abbreviation"))
                         .build();
-
                 players.add(Player.builder()
                         .id(player.getInt("id"))
                         .firstName(player.getString("first_name"))
@@ -179,7 +181,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .jerseyNumber(player.getString("jersey_number"))
                         .college(player.getString("college"))
                         .experience(player.getString("experience"))
-                        .age(player.getInt("age"))
+                        .age(player.optInt("age",0))
                         .team(teamObj)
                         .build());
             }

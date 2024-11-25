@@ -29,9 +29,9 @@ public class PlayerStatusUseCase {
             String playerLastName = player.getLastName();
             String playerTeamName = player.getTeam().getName();
 
-            boolean nameMatch = (playerFirstName.equals(firstName) && playerLastName.equals(lastName)) ||
-                    (playerLastName.equals(firstName) && playerFirstName.equals(lastName));
-            boolean teamMatch = teamName.isEmpty() || playerTeamName.contains(teamName);
+            boolean nameMatch = (playerFirstName.equals(firstName) && playerLastName.equals(lastName))
+                    && playerFirstName.equals(lastName);
+            boolean teamMatch = playerTeamName == teamName;
 
             if (nameMatch && teamMatch) {
                 return player.getId();

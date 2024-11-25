@@ -93,6 +93,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/players/" + playerId)
+                .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();
         try {
@@ -138,6 +139,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/players")
+                .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();
         try {

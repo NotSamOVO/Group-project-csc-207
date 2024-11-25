@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu edditing errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusOutputBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +267,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732486318184</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="tianle.xu edditing errors">
+      <option name="closed" value="true" />
+      <created>1732552818969</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1732552818969</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,6 +342,7 @@
     <MESSAGE value="tianle.xu adding the main" />
     <MESSAGE value="tianle.xu edditing error adding in toString for team and players" />
     <MESSAGE value="eddited application and database" />
-    <option name="LAST_COMMIT_MESSAGE" value="eddited application and database" />
+    <MESSAGE value="tianle.xu edditing errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu edditing errors" />
   </component>
 </project>

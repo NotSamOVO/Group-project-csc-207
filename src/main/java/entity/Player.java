@@ -15,11 +15,12 @@ public class Player {
     private String jerseyNumber;
     private String college;
     private String experience;
-    private int age;
+    private Integer age;
     private Team team;
 
     public Player(int id, String firstName, String lastName, String position, String positionAbbreviation
-            , String height, String weight, String jerseyNumber, String college, String experience, int age, Team team) {
+            , String height, String weight, String jerseyNumber, String college, String experience, Integer age
+            , Team team) {
 
         this.id = id;
         this.firstName = firstName;
@@ -119,7 +120,7 @@ public class Player {
      * Returns the age of the player.
      * @return the age of the player.
      */
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
@@ -165,7 +166,7 @@ public class Player {
         private String jerseyNumber;
         private String college;
         private String experience;
-        private int age;
+        private Integer age;
         private Team team;
 
         PlayerBuilder() {
@@ -286,7 +287,7 @@ public class Player {
          * @return the PlayerBuilder instance.
          */
 
-        public PlayerBuilder age(int age) {
+        public PlayerBuilder age(Integer age) {
             this.age = age;
             return this;
         }

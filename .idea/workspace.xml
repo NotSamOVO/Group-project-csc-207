@@ -7,7 +7,11 @@
     <list default="true" id="e9351f91-7626-4a17-8821-51520b06fa64" name="Changes" comment="tianle.xu edditing errors">
       <change afterPath="$PROJECT_DIR$/src/test/java/PlayerStatusResultTest/PlayerStatusUseCaseMockitoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

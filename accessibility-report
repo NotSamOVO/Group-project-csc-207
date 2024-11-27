@@ -1,0 +1,35 @@
+Accessibility Report
+1. Principles of Universal Design
+1. Equitable Use
+
+The program ensures all NFL fans can access features like team search, player stats, and match results. The interface is designed to be inclusive and easy to navigate for users of varying abilities.
+Future implementation: Add screen reader compatibility and keyboard navigation to accommodate visually impaired users.
+2. Flexibility in Use
+
+Users can search and explore data for their favorite NFL team, with options to view both current and historical stats.
+Future implementation: Introduce customizable views, like focusing on offense/defense stats or filtering by specific games or players.
+3. Simple and Intuitive Use
+
+The app features a clean and straightforward layout, with clear labels and organized menus to guide users through team selection, stats, and standings.
+Future implementation: Add a step-by-step tutorial or quick-start guide for new users.
+4. Perceptible Information
+
+The app uses clear text and high-contrast visuals to display data like match results, standings, and player stats.
+Future implementation: Include support for colorblind modes and audio descriptions for key content.
+5. Tolerance for Error
+
+Users can easily go back and forth between pages without losing their selections or progress.
+Future implementation: Add undo or confirmation options for major actions, such as resetting team preferences or clearing filters.
+6. Low Physical Effort
+
+The app minimizes input by streamlining navigation and offering quick links to relevant data.
+Future implementation: Add voice search capabilities for users with limited mobility or those who prefer hands-free interaction.
+7. Size and Space for Approach and Use
+
+The app is designed to work on a variety of devices, including smartphones and tablets, with appropriately sized buttons and controls for touchscreens.
+Future implementation: Optimize for landscape and portrait modes and ensure accessibility on larger or smaller devices.
+2. Target Market
+Our program is aimed at NFL fans who want a simple and efficient way to access information about their favorite teams. This includes casual fans who like to keep up with match results and standings, as well as die-hard fans interested in player stats, historical data, and detailed performance trends. Fantasy football players, sports analysts, and NFL enthusiasts will find the program especially useful for tracking game-by-game progress and making informed decisions about their favorite teams and players.
+
+3. Demographic Accessibility
+Some demographics might find the program less accessible, such as those without access to smartphones or those who are not familiar with NFL teams and statistics. Additionally, users with disabilities, like visual or motor impairments, might face challenges unless additional features like screen reader support, voice navigation, and customizable interfaces are implemented. Addressing these gaps will help make the program inclusive and ensure that all NFL fans can engage with and enjoy the app.

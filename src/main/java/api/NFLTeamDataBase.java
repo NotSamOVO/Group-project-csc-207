@@ -61,6 +61,7 @@ public class NFLTeamDataBase implements NFLDataBase {
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/teams")
                 .method("GET", null)
+                .addHeader("Authorization", API_KEY)
                 .build();
 
         try {
@@ -141,7 +142,7 @@ public class NFLTeamDataBase implements NFLDataBase {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url(BASE_URL + "/players")
+                .url(BASE_URL + "/players?team_ids[]=33")
                 .method("GET", null)
                 .build();
         try {
@@ -246,6 +247,8 @@ public class NFLTeamDataBase implements NFLDataBase {
                     .visitor_team_q3(game.optInt("visitor_team_q3", 0))
                     .home_team_q4(game.optInt("home_team_q4", 0))
                     .visitor_team_q4(game.optInt("visitor_team_q4", 0))
+                    .home_team_ot(game.optInt("home_team_ot", 0))
+                    .visitor_team_ot(game.optInt("visitor_team_ot", 0))
                     .build();
         }
         catch (IOException | JSONException event) {
@@ -258,7 +261,7 @@ public class NFLTeamDataBase implements NFLDataBase {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url(BASE_URL + "/games?seasons[]=2024")
+                .url(BASE_URL + "/games?per_page=100?seasons[]=2022&seasons[]=2023")
                 .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();
@@ -273,6 +276,9 @@ public class NFLTeamDataBase implements NFLDataBase {
             final JSONObject jsonResponse = new JSONObject(responseBody);
             final JSONArray gamesArray = jsonResponse.getJSONArray("data");
             final ArrayList<Game> result = new ArrayList<>();
+//            if (true) {
+//                throw new RuntimeException(String.valueOf(gamesArray.length()));
+//            }
             for (int i = 0; i < gamesArray.length(); i++) {
                 final JSONObject game = gamesArray.getJSONObject(i);
                 final JSONObject homeTeam = game.getJSONObject("home_team");
@@ -315,6 +321,8 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .visitor_team_q3(game.optInt("visitor_team_q3", 0))
                         .home_team_q4(game.optInt("home_team_q4", 0))
                         .visitor_team_q4(game.optInt("visitor_team_q4", 0))
+                        .home_team_ot(game.optInt("home_team_ot", 0))
+                        .visitor_team_ot(game.optInt("visitor_team_ot", 0))
                         .build());
             }
             return result;

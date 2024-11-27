@@ -3,7 +3,6 @@ package app.gui;
 import app.Config;
 import interface_adapter.TeamSearchViewModel;
 import interface_adapter.matchresults.MatchResultsViewModel;
-import interface_adapter.teamsearch.TeamSearchViewModel;
 import use_case.matchresults.MatchResultsUseCase;
 import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.teamsearch.TeamSearchUseCase;

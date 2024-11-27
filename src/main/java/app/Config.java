@@ -19,7 +19,6 @@ public class Config {
     }
 
     /**
-<<<<<<< HEAD
      * Get the MatchResults object.
      * @return MatchResults object.
      */

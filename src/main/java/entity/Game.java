@@ -19,6 +19,8 @@ public class Game {
     private Integer visitor_team_q3;
     private Integer home_team_q4;
     private Integer visitor_team_q4;
+    private Integer home_team_ot;
+    private Integer visitor_team_ot;
 
     /**
      * Constructs a new Game instance.
@@ -33,7 +35,8 @@ public class Game {
      */
     public Game(Integer id, Team home_team, Team visitor_team, String date, Integer home_team_score, Integer visitor_team_score,
                 String venue, Integer home_team_q1, Integer home_team_q2, Integer home_team_q3, Integer home_team_q4,
-                Integer visitor_team_q1, Integer visitor_team_q2, Integer visitor_team_q3, Integer visitor_team_q4) {
+                Integer visitor_team_q1, Integer visitor_team_q2, Integer visitor_team_q3, Integer visitor_team_q4,
+                Integer home_team_ot, Integer visitor_team_ot) {
         this.id = id;
         this.visitor_team = visitor_team;
         this.home_team = home_team;
@@ -49,6 +52,8 @@ public class Game {
         this.visitor_team_q3 = visitor_team_q3;
         this.home_team_q4 = home_team_q4;
         this.visitor_team_q4 = visitor_team_q4;
+        this.home_team_ot = home_team_ot;
+        this.visitor_team_ot = visitor_team_ot;
     }
 
     /**
@@ -146,6 +151,12 @@ public class Game {
         return visitor_team_q4;
     }
 
+    public Integer getHome_team_ot() { return home_team_ot;
+    }
+
+    public Integer getVisitor_team_ot() { return visitor_team_ot;
+    }
+
     /**
      * Creates a new GameBuilder for constructing Game instances.
      *
@@ -174,6 +185,8 @@ public class Game {
         private Integer visitor_team_q3;
         private Integer home_team_q4;
         private Integer visitor_team_q4;
+        private Integer home_team_ot;
+        private Integer visitor_team_ot;
 
         /**
          * Constructs an empty GameBuilder instance.
@@ -298,6 +311,16 @@ public class Game {
             return this;
         }
 
+        public GameBuilder home_team_ot(Integer home_team_ot) {
+            this.home_team_ot = home_team_ot;
+            return this;
+        }
+
+        public GameBuilder visitor_team_ot(Integer visitor_team_ot) {
+            this.visitor_team_ot = visitor_team_ot;
+            return this;
+        }
+
         /**
          * Builds a new {@link Game} instance with the current builder state.
          *
@@ -306,7 +329,7 @@ public class Game {
         public Game build() {
             return new Game(id, home_team, visitor_team, date, home_team_score, visitor_team_score, venue, home_team_q1,
                     home_team_q2, home_team_q3, home_team_q4, visitor_team_q1, visitor_team_q2,
-                    visitor_team_q3, visitor_team_q4);
+                    visitor_team_q3, visitor_team_q4, home_team_ot, visitor_team_ot);
         }
     }
 }

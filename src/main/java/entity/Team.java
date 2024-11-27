@@ -81,8 +81,8 @@ public class Team {
     }
 
     public String toString() {
-        return "Team: " + id + "/n" + conference + "/n" + division + "/n" + location + "/n" + name + "/n"
-                + fullName + "/n" + abbreviation;
+        return "Team: \nid: " + id + "\nConference: " + conference + "\nDivision: " + division + "\nLocation: "
+                + location + "\nName: " + name + "\nFull name: " + fullName + "\nAbbreviation: " + abbreviation;
     }
 
     /**

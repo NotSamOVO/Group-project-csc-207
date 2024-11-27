@@ -32,15 +32,6 @@ public interface NFLDataBase {
     ArrayList<Team> getAllTeams() throws JSONException;
 
     /**
-     * A method that returns a specific player by their ID.
-     *
-     * @param playerId is the ID of the player.
-     * @return the player with the specified ID.
-     * @throws JSONException if an error occurs while parsing the JSON response.
-     */
-    Player getPlayer(int playerId) throws JSONException;
-
-    /**
      * A method that returns all players in the league.
      *
      * @return an ArrayList of all players.

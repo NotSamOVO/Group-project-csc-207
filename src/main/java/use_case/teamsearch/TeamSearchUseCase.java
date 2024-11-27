@@ -21,14 +21,14 @@ public class TeamSearchUseCase {
      * @param teamName The name of the team.
      * @return the id of the team. -1 if the team is not found.
      */
-    public int getTeamId(String teamName) {
+    public String getTeamId(String teamName) {
         ArrayList<Team> allTeams = teamDatabase.getAllTeams();
         for (int i = 0; i < allTeams.size(); i++) {
             Team team = allTeams.get(i);
             if (team.getName().equals(teamName)) {
-                return team.getId();
+                return team.toString();
             }
         }
-        return -1;
+        return "Team Not Found";
     }
 }

@@ -34,7 +34,9 @@ public class MatchResultsUseCase {
     public ArrayList<Integer> getGameId(String teamName) {
         final ArrayList<Game> allGames = nflDataBase.getAllGames();
         final ArrayList<Integer> result = new ArrayList<>();
+
         for (int i = 0; i < allGames.size(); i++) {
+            boolean check = false;
             final Game game = allGames.get(i);
             final Integer gameId = game.getId();
             final Team homeTeamObj = game.getHome_team();
@@ -42,6 +44,10 @@ public class MatchResultsUseCase {
             final String homeTeam = homeTeamObj.getName();
             final String visitorTeam = visitorTeamObj.getName();
             if (homeTeam.equals(teamName) || visitorTeam.equals(teamName)) {
+                check = true;
+                result.add(gameId);
+            }
+            if (check) {
                 result.add(gameId);
             }
         }
@@ -95,7 +101,7 @@ public class MatchResultsUseCase {
      * Retrieves the date of the game.
      *
      * @param gameId the unique ID of the game.
-     * @return a string representing the game date in ISO format (e.g., "2024-09-06T00:20:00.000Z").
+     * @return a string representing the game date in ISO format (e.g., "2024-09-06").
      * @throws RuntimeException if the game data is malformed or missing.
      */
     public String getDate(int gameId) {
@@ -182,6 +188,23 @@ public class MatchResultsUseCase {
             Integer visitorq4 = q4Game.getVisitor_team_q4();
 
             return homeq4 + " - " + visitorq4;
+        }
+        catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String getot(int gameId) {
+        final Game otGame = nflDataBase.getGame(gameId);
+
+        try {
+            Integer homeot = otGame.getHome_team_ot();
+            Integer visitorot = otGame.getVisitor_team_ot();
+
+            if (homeot == 0 && visitorot == 0) {
+                return "No Overtime";
+            }
+            return homeot + " - " + visitorot;
         }
         catch (JSONException e) {
             throw new RuntimeException(e);

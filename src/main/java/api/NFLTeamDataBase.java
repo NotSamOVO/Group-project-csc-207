@@ -29,6 +29,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/teams/" + teamId)
+                .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();
 
@@ -60,6 +61,7 @@ public class NFLTeamDataBase implements NFLDataBase {
                 .build();
         final Request request = new Request.Builder()
                 .url(BASE_URL + "/teams")
+                .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();
 
@@ -203,6 +205,8 @@ public class NFLTeamDataBase implements NFLDataBase {
                     .visitor_team_q3(game.optInt("visitor_team_q3", 0))
                     .home_team_q4(game.optInt("home_team_q4", 0))
                     .visitor_team_q4(game.optInt("visitor_team_q4", 0))
+                    .home_team_ot(game.optInt("home_team_ot", 0))
+                    .visitor_team_ot(game.optInt("visitor_team_ot", 0))
                     .build();
         }
         catch (IOException | JSONException event) {
@@ -215,7 +219,7 @@ public class NFLTeamDataBase implements NFLDataBase {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url(BASE_URL + "/games?seasons[]=2024")
+                .url(BASE_URL + "/games?per_page=100?seasons[]=2022&seasons[]=2023")
                 .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();
@@ -272,6 +276,8 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .visitor_team_q3(game.optInt("visitor_team_q3", 0))
                         .home_team_q4(game.optInt("home_team_q4", 0))
                         .visitor_team_q4(game.optInt("visitor_team_q4", 0))
+                        .home_team_ot(game.optInt("home_team_ot", 0))
+                        .visitor_team_ot(game.optInt("visitor_team_ot", 0))
                         .build());
             }
             return result;

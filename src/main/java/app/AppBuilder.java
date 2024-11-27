@@ -6,13 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import interface_adapter.ViewManagerModel;
+import interface_adapter.TeamSearchViewModel;
 import interface_adapter.leaguestanding.LeagueStandingController;
 import interface_adapter.leaguestanding.LeagueStandingPresenter;
 import interface_adapter.leaguestanding.LeagueStandingViewModel;
 import interface_adapter.teamsearch.TeamSearchController;
 import interface_adapter.teamsearch.TeamSearchPresenter;
-import interface_adapter.teamsearch.TeamSearchViewModel;
 import interface_adapter.playerstatus.PlayerStatusController;
 import interface_adapter.playerstatus.PlayerStatusPresenter;
 import interface_adapter.playerstatus.PlayerStatusViewModel;
@@ -27,7 +26,6 @@ import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.playerstatus.PlayerStatusInteractor;
 import use_case.playerstatus.PlayerStatusInputBoundary;
 import use_case.playerstatus.PlayerStatusOutputBoundary;
-import interface_adapter.playerstatus.PlayerStatusViewModel;
 import view.LeagueStandingView;
 import view.TeamSearchView;
 import view.PlayerStatusView;
@@ -49,11 +47,11 @@ public class AppBuilder {
     private static final int WIDTH = 1000;
     private final JPanel cardPanel = new JPanel();
     private final CardLayout cardLayout = new CardLayout();
-    private final ViewManagerModel viewManagerModel = new ViewManagerModel();
+    private final TeamSearchViewModel viewManagerModel = new TeamSearchViewModel();
     private final ViewManager viewManager = new ViewManager(cardPanel, cardLayout, viewManagerModel);
 
     private TeamSearchView teamSearchView;
-    private TeamSearchViewModel teamSearchViewModel;
+    private interface_adapter.teamsearch.TeamSearchViewModel teamSearchViewModel;
     private LeagueStandingView leagueStandingView;
     private LeagueStandingViewModel leagueStandingViewModel;
     private PlayerStatusView playerStatusView;
@@ -72,7 +70,7 @@ public class AppBuilder {
      * @return this builder
      */
     public AppBuilder addTeamSearchView() {
-        teamSearchViewModel = new TeamSearchViewModel();
+        teamSearchViewModel = new interface_adapter.teamsearch.TeamSearchViewModel();
         teamSearchView = new TeamSearchView(teamSearchViewModel);
         cardPanel.add(teamSearchView, teamSearchView.getViewName());
         return this;

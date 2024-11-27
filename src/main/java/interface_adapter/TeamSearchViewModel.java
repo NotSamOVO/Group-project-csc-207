@@ -6,6 +6,10 @@ package interface_adapter;
  */
 public class ViewManagerModel extends ViewModel<String> {
 
+    private static String SEARCH_LABEL = "Search";
+    private static String TEAM_NAME_LABEL = "Please enter a team name!";
+    private static String ENTER_TEAM_NAME_LABEL = "Enter Team Name:";
+
     public ViewManagerModel() {
         super("view manager");
         this.setState("");

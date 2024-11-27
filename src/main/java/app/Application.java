@@ -1,7 +1,9 @@
 package app.gui;
 
 import app.Config;
+import interface_adapter.TeamSearchViewModel;
 import interface_adapter.matchresults.MatchResultsViewModel;
+import interface_adapter.teamsearch.TeamSearchViewModel;
 import use_case.matchresults.MatchResultsUseCase;
 import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.teamsearch.TeamSearchUseCase;
@@ -104,7 +106,7 @@ public class Application {
         teamSearchCard.setLayout(new GridLayout(3, 2));
 
         final JTextField teamNameField = new JTextField(20);
-        final JButton searchButton = new JButton("Search");
+        final JButton searchButton = new JButton(TeamSearchViewModel.SEARCH_LABEL);
         final JLabel resultLabel = new JLabel();
 
         searchButton.addActionListener(event -> {
@@ -112,7 +114,7 @@ public class Application {
 
             // Simulating team search logic
             if (teamName.isEmpty()) {
-                JOptionPane.showMessageDialog(jFrame, "Please enter a team name!");
+                JOptionPane.showMessageDialog(jFrame, TeamSearchViewModel.TEAM_NAME_LABEL);
             } else {
                 // Replace with actual team search logic
                 final String message = teamSearchUseCase.getTeamId(teamName);
@@ -120,7 +122,7 @@ public class Application {
             }
         });
 
-        teamSearchCard.add(new JLabel("Enter Team Name:"));
+        teamSearchCard.add(new JLabel(TeamSearchViewModel.ENTER_TEAM_NAME_LABEL));
         teamSearchCard.add(teamNameField);
         teamSearchCard.add(searchButton);
         teamSearchCard.add(resultLabel);

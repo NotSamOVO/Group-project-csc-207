@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82736d16-4d69-4f65-8bec-b5d786f90e5e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/MatchResultsTest/MatchResultsUseCaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +39,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/NotSamOVO/Group-project-csc-207.git&quot;,
-    &quot;accountId&quot;: &quot;b7dd5655-2e66-4d32-8dd5-4aaf5b44848f&quot;
+    &quot;accountId&quot;: &quot;a954c9c2-e670-4bd5-b344-d68f6a551bd7&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -55,6 +55,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Application.executor": "Run",
+    "Application.Main.executor": "Run",
     "JUnit.MatchResultsUseCaseMockitoTest.testGetGameId_ValidTeamName.executor": "Run",
     "JUnit.MatchResultsUseCaseTest.executor": "Run",
     "JUnit.MatchResultsUseCaseTest.testGetGameDetails_GameNotFound.executor": "Run",
@@ -64,6 +65,7 @@
     "JUnit.MatchResultsUseCaseTest.testGetGameId_ValidTeamName.executor": "Run",
     "JUnit.PlayerStatusUseCaseMockitoTest.executor": "Run",
     "JUnit.PlayerStatusUseCaseMockitoTest.testGetPlayerSuccessful.executor": "Run",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -80,6 +82,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="app.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="app.Main" />
+      <module name="homework-5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,22 +134,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatchResultsUseCaseTest.testGetGameId_TeamNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="homework-5" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MatchResultsUseCaseTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="MatchResultsUseCaseTest" />
-      <option name="MAIN_CLASS_NAME" value="MatchResultsUseCaseTest.MatchResultsUseCaseTest" />
-      <option name="METHOD_NAME" value="testGetGameId_TeamNotFound" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PlayerStatusUseCaseMockitoTest.testGetPlayerSuccessful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="homework-5" />
       <extension name="coverage">
@@ -154,18 +153,18 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.MatchResultsUseCaseTest.testGetGameDetails_Successful" />
         <item itemvalue="JUnit.PlayerStatusUseCaseMockitoTest.testGetPlayerSuccessful" />
         <item itemvalue="JUnit.MatchResultsUseCaseTest.testGetGameDetails_GameNotFound" />
-        <item itemvalue="JUnit.MatchResultsUseCaseTest.testGetGameId_TeamNotFound" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
@@ -191,6 +190,8 @@
       <workItem from="1732568169167" duration="210000" />
       <workItem from="1732579471745" duration="8280000" />
       <workItem from="1732728882988" duration="7927000" />
+      <workItem from="1732826311190" duration="217000" />
+      <workItem from="1732826563306" duration="727000" />
     </task>
     <task id="LOCAL-00001" summary="tianle.xu">
       <option name="closed" value="true" />

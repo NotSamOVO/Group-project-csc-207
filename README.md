@@ -1,4 +1,4 @@
-# Group-project-csc-207
+# NFL Data Visulization Tool
 ## Contributers
 - Tianle Xu, NotSamOVO
 - Viet Nguyen, vietng04
@@ -9,7 +9,6 @@
 3. Installation Instructions
 4. Usage Guide
 5. License
-6. Feedback
 ## Summary
 - Purpose:
 - This project is a nfl-focused data visualization tool that allows users to search for their favorite teams and access comprehensive information about their performance. 

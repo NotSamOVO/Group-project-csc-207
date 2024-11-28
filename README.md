@@ -36,7 +36,7 @@
 4. Standings
 - All team standings in the current season
 ## License
-This project is licensed under the MIT License. For more details, see the LICENSE file.
+This project is licensed under the MIT License. For more details, see the [LICENSE file](LICENSE).
 ## Tasks
 - Team task: **Team Search and Selection**
   - As a sports fan, I want to search for and select my favorite soccer team easily so that I can view their stats and relevant data for the current season.

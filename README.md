@@ -4,11 +4,11 @@
 - Viet Nguyen, vietng04
 - Jungwoo Park, softjumbo99
 ## Table of Contents
-1. Summary
-2. Key Features
-3. Installation Instructions
-4. Usage Guide
-5. License
+1. [Summary](#Summary)
+2. [Key Features](#Key Features)
+3. [Installation Instructions](#Installation Instrucitions)
+4. [Usage Guide](#Usage Guide)
+5. [License](#License)
 ## Summary
 - Purpose:
 - This project is a nfl-focused data visualization tool that allows users to search for their favorite teams and access comprehensive information about their performance. 

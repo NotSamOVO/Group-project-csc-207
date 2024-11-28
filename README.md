@@ -5,9 +5,9 @@
 - Jungwoo Park, softjumbo99
 ## Table of Contents
 1. [Summary](#Summary)
-2. [Key Features](#Key Features)
-3. [Installation Instructions](#Installation Instrucitions)
-4. [Usage Guide](#Usage Guide)
+2. [Key Features](#key-features)
+3. [Installation Instructions](#installation-instructions)
+4. [Usage Guide](#usage-guide)
 5. [License](#License)
 ## Summary
 - Purpose:

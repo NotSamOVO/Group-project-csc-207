@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82736d16-4d69-4f65-8bec-b5d786f90e5e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/accessibility-report" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PlayerStatusResultTest/PlayerStatusUseCaseMockitoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/MatchResultsTest/MatchResultsUseCaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/NFLTeamDataBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entity/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/playerstatus/PlayerStatusPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusOutputBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusOutputBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/playerstatus/PlayerStatusUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/interface_adapter/ViewManagerModel.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,18 +52,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Application.executor&quot;: &quot;Run&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Application.executor": "Run",
+    "JUnit.MatchResultsUseCaseMockitoTest.testGetGameId_ValidTeamName.executor": "Run",
+    "JUnit.MatchResultsUseCaseTest.executor": "Run",
+    "JUnit.MatchResultsUseCaseTest.testGetGameDetails_GameNotFound.executor": "Run",
+    "JUnit.MatchResultsUseCaseTest.testGetGameDetails_Successful.executor": "Run",
+    "JUnit.MatchResultsUseCaseTest.testGetGameId_TeamNotFound.executor": "Run",
+    "JUnit.MatchResultsUseCaseTest.testGetGameId_ValidTeamName (1).executor": "Run",
+    "JUnit.MatchResultsUseCaseTest.testGetGameId_ValidTeamName.executor": "Run",
+    "JUnit.PlayerStatusUseCaseMockitoTest.executor": "Run",
+    "JUnit.PlayerStatusUseCaseMockitoTest.testGetPlayerSuccessful.executor": "Run",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.gui.Application" />
@@ -89,20 +87,55 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="app.Main" />
+    <configuration name="MatchResultsUseCaseTest.testGetGameDetails_GameNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="homework-5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="entity.*" />
+          <option name="PATTERN" value="MatchResultsUseCaseTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="MatchResultsUseCaseTest" />
+      <option name="MAIN_CLASS_NAME" value="MatchResultsUseCaseTest.MatchResultsUseCaseTest" />
+      <option name="METHOD_NAME" value="testGetGameDetails_GameNotFound" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerStatusUseCaseMockitoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MatchResultsUseCaseTest.testGetGameDetails_Successful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="homework-5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MatchResultsUseCaseTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="MatchResultsUseCaseTest" />
+      <option name="MAIN_CLASS_NAME" value="MatchResultsUseCaseTest.MatchResultsUseCaseTest" />
+      <option name="METHOD_NAME" value="testGetGameDetails_Successful" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MatchResultsUseCaseTest.testGetGameId_TeamNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="homework-5" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MatchResultsUseCaseTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="MatchResultsUseCaseTest" />
+      <option name="MAIN_CLASS_NAME" value="MatchResultsUseCaseTest.MatchResultsUseCaseTest" />
+      <option name="METHOD_NAME" value="testGetGameId_TeamNotFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerStatusUseCaseMockitoTest.testGetPlayerSuccessful" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="homework-5" />
       <extension name="coverage">
         <pattern>
@@ -112,7 +145,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="PlayerStatusResultTest" />
       <option name="MAIN_CLASS_NAME" value="PlayerStatusResultTest.PlayerStatusUseCaseMockitoTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="testGetPlayerSuccessful" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -120,8 +154,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />
-        <item itemvalue="JUnit.PlayerStatusUseCaseMockitoTest" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MatchResultsUseCaseTest.testGetGameDetails_Successful" />
+        <item itemvalue="JUnit.PlayerStatusUseCaseMockitoTest.testGetPlayerSuccessful" />
+        <item itemvalue="JUnit.MatchResultsUseCaseTest.testGetGameDetails_GameNotFound" />
+        <item itemvalue="JUnit.MatchResultsUseCaseTest.testGetGameId_TeamNotFound" />
       </list>
     </recent_temporary>
   </component>

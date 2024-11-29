@@ -1,12 +1,10 @@
 package use_case.matchresults;
+
 import api.NFLDataBase;
 import api.NFLTeamDataBase;
 import entity.Game;
 import entity.Team;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 /**

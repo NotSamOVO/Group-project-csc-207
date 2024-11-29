@@ -149,8 +149,8 @@ public class MatchResultsUseCase {
         final Game q1Game = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeq1 = q1Game.getHome_team_q1();
-            Integer visitorq1 = q1Game.getVisitor_team_q1();
+            final Integer homeq1 = q1Game.getHome_team_q1();
+            final Integer visitorq1 = q1Game.getVisitor_team_q1();
 
             return homeq1 + " - " + visitorq1;
         }
@@ -170,8 +170,8 @@ public class MatchResultsUseCase {
         final Game q2Game = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeq2 = q2Game.getHome_team_q2();
-            Integer visitorq2 = q2Game.getVisitor_team_q2();
+            final Integer homeq2 = q2Game.getHome_team_q2();
+            final Integer visitorq2 = q2Game.getVisitor_team_q2();
 
             return homeq2 + " - " + visitorq2;
         }
@@ -191,8 +191,8 @@ public class MatchResultsUseCase {
         final Game q3Game = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeq3 = q3Game.getHome_team_q3();
-            Integer visitorq3 = q3Game.getVisitor_team_q3();
+            final Integer homeq3 = q3Game.getHome_team_q3();
+            final Integer visitorq3 = q3Game.getVisitor_team_q3();
 
             return homeq3 + " - " + visitorq3;
         }
@@ -212,8 +212,8 @@ public class MatchResultsUseCase {
         final Game q4Game = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeq4 = q4Game.getHome_team_q4();
-            Integer visitorq4 = q4Game.getVisitor_team_q4();
+            final Integer homeq4 = q4Game.getHome_team_q4();
+            final Integer visitorq4 = q4Game.getVisitor_team_q4();
 
             return homeq4 + " - " + visitorq4;
         }
@@ -233,8 +233,8 @@ public class MatchResultsUseCase {
         final Game otGame = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeot = otGame.getHome_team_ot();
-            Integer visitorot = otGame.getVisitor_team_ot();
+            final Integer homeot = otGame.getHome_team_ot();
+            final Integer visitorot = otGame.getVisitor_team_ot();
 
             if (homeot == 0 && visitorot == 0) {
                 return "No Overtime";

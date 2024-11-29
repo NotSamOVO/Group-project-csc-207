@@ -137,7 +137,7 @@ public class Application {
         final JPanel teamSearchCard = new JPanel();
         teamSearchCard.setLayout(new BorderLayout());
 
-        final JPanel inputPanel = new JPanel(new GridLayout(2, 2));
+        final JPanel inputPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         final JTextField teamNameField = new JTextField(20);
         final JButton submit = new JButton(MatchResultsViewModel.SUBMIT_BUTTON_LABEL);
 

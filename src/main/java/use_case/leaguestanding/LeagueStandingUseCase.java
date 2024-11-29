@@ -19,9 +19,10 @@ public final class LeagueStandingUseCase {
     public LeagueStandingUseCase(NFLTeamDataBase teamstandingDataBase) {
         this.teamstandingDataBase = teamstandingDataBase;
     }
+
     /**
      * Get the league standing of current year with sorted according to winning percentage.
-     * @return The team performances in current year.
+     * @return The teams performances in current year.
      */
 
     public String[][] getLeagueStanding() {
@@ -59,6 +60,22 @@ public final class LeagueStandingUseCase {
         }
 
         return data;
+    }
+
+    /**
+     *  Get the league standing of the team current year.
+     * @param teamname Input Team Name
+     * @return The team performances in current year.
+     */
+    public String[] getTeamStanding(String teamname) {
+        final String[][] leagueStanding = getLeagueStanding();
+        for (int i = 0; i < leagueStanding.length; i++) {
+            final String[] standing = leagueStanding[i];
+            if (standing[1].toLowerCase().contains(teamname.toLowerCase())) {
+                return standing;
+            }
+        }
+        return null;
     }
 }
 

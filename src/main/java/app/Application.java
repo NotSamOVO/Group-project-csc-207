@@ -4,7 +4,7 @@ import app.Config;
 import interface_adapter.TeamSearchViewModel;
 import interface_adapter.matchresults.MatchResultsController;
 import interface_adapter.matchresults.MatchResultsViewModel;
-import use_case.matchresults.MatchResultsInputData;
+import use_case.matchresults.MatchResultsOutputData;
 import use_case.matchresults.MatchResultsUseCase;
 import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.teamsearch.TeamSearchUseCase;
@@ -31,6 +31,8 @@ public class Application {
         final Config config = new Config();
 
         final MatchResultsUseCase matchResultsUseCase = config.getMatchResultsUseCase();
+        final MatchResultsController controller = new MatchResultsController(matchResultsUseCase);
+        final MatchResultsViewModel viewModel = new MatchResultsViewModel(matchResultsUseCase);
         final TeamSearchUseCase teamSearchUseCase = config.getTeamSearchUseCase();
         final PlayerStatusUseCase playerStatusUseCase = config.getPlayerStatusUseCase();
         final LeagueStandingUseCase leagueStandingUseCase = config.getLeagueStandingUseCase();
@@ -46,7 +48,7 @@ public class Application {
             // Creating individual cards (panels)
             final JPanel defaultCard = createDefaultCard();
             final JPanel teamSearchCard = createTeamSearchCard(frame, teamSearchUseCase);
-            final JPanel matchResultsCard = createMatchResultsCard(frame, matchResultsUseCase);
+            final JPanel matchResultsCard = createMatchResultsCard(frame, viewModel, controller);
             final JPanel playerStatusCard = createPlayerStatusCard(frame, playerStatusUseCase);
             final JPanel leageuStandingCard = createLeagueStandingCard(frame, leagueStandingUseCase);
 
@@ -133,7 +135,8 @@ public class Application {
     /**
      * Match Results Card: Displays match results based on user input.
      */
-    private static JPanel createMatchResultsCard(JFrame jFrame, MatchResultsUseCase matchResultsUseCase) {
+    private static JPanel createMatchResultsCard(JFrame jFrame, MatchResultsViewModel viewModel,
+                                                 MatchResultsController controller) {
         final JPanel teamSearchCard = new JPanel();
         teamSearchCard.setLayout(new BorderLayout());
 
@@ -162,9 +165,6 @@ public class Application {
         // Match Results Button Logic
         submit.addActionListener(event -> {
             final String teamName = teamNameField.getText().trim();
-            final MatchResultsInputData matchResultsInputData = new MatchResultsInputData(teamName);
-            final MatchResultsController controller = new MatchResultsController(matchResultsInputData);
-            final String name = controller.execute(teamName);
 
             if (teamName.isEmpty()) {
                 JOptionPane.showMessageDialog(jFrame, "Please enter a team name to view match results!");
@@ -172,26 +172,30 @@ public class Application {
             }
 
             try {
-                ArrayList<Integer> gameIds = matchResultsUseCase.getGameId(name);
+                final boolean hasResults = controller.execute(teamName);
 
-                if (gameIds.isEmpty()) {
+                if (!hasResults) {
                     noResultsLabel.setText("No match results found for team: " + teamName);
                     resultsTable.setModel(new DefaultTableModel(new Object[0][0], columnNames));
                 }
                 else {
-                    // Populate table data
+                    ArrayList<Integer> gameIds = viewModel.getGameIds(teamName);
                     String[][] data = new String[gameIds.size()][9];
                     for (int i = 0; i < gameIds.size(); i++) {
                         int gameId = gameIds.get(i);
-                        data[i][0] = matchResultsUseCase.getGame(gameId);
-                        data[i][1] = matchResultsUseCase.getScore(gameId);
-                        data[i][2] = matchResultsUseCase.getDate(gameId);
-                        data[i][3] = matchResultsUseCase.getq1(gameId);
-                        data[i][4] = matchResultsUseCase.getq2(gameId);
-                        data[i][5] = matchResultsUseCase.getq3(gameId);
-                        data[i][6] = matchResultsUseCase.getq4(gameId);
-                        data[i][7] = matchResultsUseCase.getot(gameId);
-                        data[i][8] = matchResultsUseCase.getVenue(gameId);
+
+                        // Use controller to fetch game details
+                        MatchResultsOutputData outputData = viewModel.getGameDetails(gameId);
+
+                        data[i][0] = outputData.getMatchup();
+                        data[i][1] = outputData.getScore();
+                        data[i][2] = outputData.getDate();
+                        data[i][3] = outputData.getQ1();
+                        data[i][4] = outputData.getQ2();
+                        data[i][5] = outputData.getQ3();
+                        data[i][6] = outputData.getQ4();
+                        data[i][7] = outputData.getOt();
+                        data[i][8] = outputData.getVenue();
                     }
 
                     // Update table model

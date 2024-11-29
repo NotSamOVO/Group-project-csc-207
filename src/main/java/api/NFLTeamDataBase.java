@@ -21,7 +21,7 @@ import entity.Team;
  */
 public class NFLTeamDataBase implements NFLDataBase {
     private static final String BASE_URL = "https://api.balldontlie.io/nfl/v1";
-    private static final String API_KEY = "f0fb2b79-6fcb-47cd-b4a2-e5534b085344";
+    private static final String API_KEY = "60174517-d401-41fc-bc34-ffc25d96fc71";
 
     @Override
     public Team getTeam(int teamId) {
@@ -125,16 +125,16 @@ public class NFLTeamDataBase implements NFLDataBase {
                         .abbreviation(team.getString("abbreviation"))
                         .build();
                 Player player1 = Player.builder()
-                        .id(player.getInt("id"))
-                        .firstName(player.getString("first_name"))
-                        .lastName(player.getString("last_name"))
-                        .position(player.getString("position"))
-                        .positionAbbreviation(player.getString("position_abbreviation"))
-                        .height(player.getString("height"))
-                        .weight(player.getString("weight"))
-                        .jerseyNumber(player.getString("jersey_number"))
-                        .college(player.getString("college"))
-                        .experience(player.getString("experience"))
+                        .id(player.optInt("id"))
+                        .firstName(player.optString("first_name"))
+                        .lastName(player.optString("last_name"))
+                        .position(player.optString("position"))
+                        .positionAbbreviation(player.optString("position_abbreviation"))
+                        .height(player.optString("height"))
+                        .weight(player.optString("weight"))
+                        .jerseyNumber(player.optString("jersey_number"))
+                        .college(player.optString("college"))
+                        .experience(player.optString("experience"))
                         .age(player.optInt("age",0))
                         .team(teamObj)
                         .build();

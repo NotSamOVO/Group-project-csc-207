@@ -31,7 +31,6 @@ public class PlayerStatusUseCase {
 
             boolean nameMatch = (playerFirstName.equals(firstName) && playerLastName.equals(lastName));
             boolean teamMatch = playerTeamName.equals(teamName);
-
             if (nameMatch && teamMatch) {
                 return player;
             }

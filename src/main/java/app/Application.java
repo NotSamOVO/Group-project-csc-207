@@ -11,6 +11,7 @@ import use_case.teamsearch.TeamSearchUseCase;
 import use_case.leaguestanding.LeagueStandingUseCase;
 
 import java.awt.*;
+import java.time.Year;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -118,7 +119,8 @@ public class Application {
             // Simulating team search logic
             if (teamName.isEmpty()) {
                 JOptionPane.showMessageDialog(jFrame, TeamSearchViewModel.TEAM_NAME_LABEL);
-            } else {
+            }
+            else {
                 // Replace with actual team search logic
                 final String message = teamSearchUseCase.getTeamId(teamName);
                 JOptionPane.showMessageDialog(jFrame, message);
@@ -292,23 +294,49 @@ public class Application {
      * @return a JPanel displaying league standings.
      */
     private static JPanel createLeagueStandingCard(JFrame jFrame, LeagueStandingUseCase leagueStandingUseCase) {
-        final JPanel teamSearchCard = new JPanel(new BorderLayout());
+        final JPanel leagueStandingCard = new JPanel(new BorderLayout());
+        final int year = Year.now().getValue();
 
         try {
-            // Results panel to hold table and label
-            final JPanel resultsPanel = new JPanel(new BorderLayout());
-            final JLabel noResultsLabel = new JLabel("Results will appear here...");
-            noResultsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            final JPanel inputPanel = new JPanel(new FlowLayout());
+            final JLabel label = new JLabel("Enter Team Name:");
+            final JTextField teamNameField = new JTextField(20);
+            final JButton searchButton = new JButton("Search");
+
+            inputPanel.add(label);
+            inputPanel.add(teamNameField);
+            inputPanel.add(searchButton);
 
             // Table setup
-            final String[] columnNames = {
-                    "Rank", "Team Name", "Wins", "Losses", "Ties", "Win %", "Home", "Away", "DIV",
-                    "CONF", "PF", "PA", "DIFF"};
+            final String[] columnNames = {"Rank", "Team Name", "Wins", "Losses", "Ties", "Win %", "Home", "Away",
+                    "DIV", "CONF", "PF", "PA", "DIFF"};
             final String[][] data = leagueStandingUseCase.getLeagueStanding();
+
+            // Panel for single-row search result
+            final JPanel searchResultPanel = new JPanel(new BorderLayout());
+            final JLabel searchResultLabel = new JLabel("Search Result");
+            searchResultLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+            // Single-row search result table
+            final DefaultTableModel searchTableModel = new DefaultTableModel(columnNames, 0);
+            final JTable searchResultTable = new JTable(searchTableModel);
+            searchResultTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+            searchResultTable.getColumnModel().getColumn(1).setPreferredWidth(300);
+            searchResultTable.setFillsViewportHeight(true);
+            final JScrollPane searchTableScrollPane = new JScrollPane(searchResultTable);
+
+            searchResultPanel.add(searchResultLabel, BorderLayout.NORTH);
+            searchResultPanel.add(searchTableScrollPane, BorderLayout.CENTER);
+
+            // Results panel to hold table and label
+            final JPanel resultsPanel = new JPanel(new BorderLayout());
+            final JLabel noResultsLabel = new JLabel(year + " NFL League Standings");
+            noResultsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
             // JTable to display standings
             final JTable standingTable = new JTable(data, columnNames);
             standingTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+            standingTable.getColumnModel().getColumn(1).setPreferredWidth(300);
             standingTable.setFillsViewportHeight(true);
 
             // Scroll pane for table
@@ -318,15 +346,42 @@ public class Application {
             resultsPanel.add(noResultsLabel, BorderLayout.NORTH);
             resultsPanel.add(scrollPane, BorderLayout.CENTER);
 
+            // Create a JSplitPane to allow dynamic resizing between search result and full table
+            final JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, searchResultPanel, resultsPanel);
+            splitPane.setResizeWeight(0.3); // Allocate 30% of space to the top panel initially
+            splitPane.setDividerSize(5); // Thin divider
+
             // Add results panel to the main card
-            teamSearchCard.add(resultsPanel, BorderLayout.CENTER);
+            leagueStandingCard.add(inputPanel, BorderLayout.NORTH);
+            leagueStandingCard.add(splitPane, BorderLayout.CENTER);
+
+            searchButton.addActionListener(evt -> {
+                final String teamName = teamNameField.getText().trim();
+                searchTableModel.setRowCount(0);
+
+                if (teamName.isEmpty()) {
+                    JOptionPane.showMessageDialog(jFrame,
+                            "Please enter a team name.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Call getTeamStanding to get the specific team data
+                final String[] teamStanding = leagueStandingUseCase.getTeamStanding(teamName);
+                if (teamStanding != null) {
+                    // Add the result to the search result table
+                    searchTableModel.addRow(teamStanding);
+                }
+                else {
+                    JOptionPane.showMessageDialog(jFrame, "Team not found: " + teamName, "Search Result", JOptionPane.WARNING_MESSAGE);
+                }
+            });
 
         }
-        catch (Exception e) {
+        catch (Exception eve) {
             // Show error dialog in case of issues
-            JOptionPane.showMessageDialog(jFrame, "Error fetching league standings: " + e.getMessage());
+            JOptionPane.showMessageDialog(jFrame, "Error fetching league standings: " + eve.getMessage());
         }
 
-        return teamSearchCard;
+        return leagueStandingCard;
     }
 }

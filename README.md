@@ -4,11 +4,11 @@
 - Viet Nguyen, vietng04
 - Jungwoo Park, softjumbo99
 ## Table of Contents
-1. Summary
-2. Key Features
-3. Installation Instructions
-4. Usage Guide
-5. License
+1. [Summary](#Summary)
+2. [Key Features](#key-features)
+3. [Installation Instructions](#installation-instructions)
+4. [Usage Guide](#usage-guide)
+5. [License](#License)
 ## Summary
 - Purpose:
 - This project is a nfl-focused data visualization tool that allows users to search for their favorite teams and access comprehensive information about their performance. 
@@ -36,7 +36,7 @@
 4. Standings
 - All team standings in the current season
 ## License
-This project is licensed under the MIT License. For more details, see the LICENSE file.
+This project is licensed under the MIT License. For more details, see the [LICENSE file](LICENSE).
 ## Tasks
 - Team task: **Team Search and Selection**
   - As a sports fan, I want to search for and select my favorite soccer team easily so that I can view their stats and relevant data for the current season.

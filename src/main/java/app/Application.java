@@ -2,7 +2,9 @@ package app.gui;
 
 import app.Config;
 import interface_adapter.TeamSearchViewModel;
+import interface_adapter.matchresults.MatchResultsController;
 import interface_adapter.matchresults.MatchResultsViewModel;
+import use_case.matchresults.MatchResultsInputData;
 import use_case.matchresults.MatchResultsUseCase;
 import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.teamsearch.TeamSearchUseCase;
@@ -137,13 +139,10 @@ public class Application {
 
         final JPanel inputPanel = new JPanel(new GridLayout(2, 2));
         final JTextField teamNameField = new JTextField(20);
-        final JButton searchButton = new JButton(MatchResultsViewModel.SEARCH_BUTTON_LABEL);
         final JButton submit = new JButton(MatchResultsViewModel.SUBMIT_BUTTON_LABEL);
-        final JLabel resultLabel = new JLabel();
 
         inputPanel.add(new JLabel(MatchResultsViewModel.TEAM_NAME_LABEL));
         inputPanel.add(teamNameField);
-        inputPanel.add(searchButton);
         inputPanel.add(submit);
 
         final JPanel resultsPanel = new JPanel(new BorderLayout());
@@ -160,23 +159,12 @@ public class Application {
         resultsPanel.add(noResultsLabel, BorderLayout.NORTH);
         resultsPanel.add(scrollPane, BorderLayout.CENTER);
 
-        // Search Button Logic
-        searchButton.addActionListener(event -> {
-            final String teamName = teamNameField.getText().trim();
-
-            if (teamName.isEmpty()) {
-                JOptionPane.showMessageDialog(jFrame, "Please enter a team name!");
-            }
-            else {
-                // Simulating search logic
-                resultLabel.setText("Results for team: " + teamName);
-                JOptionPane.showMessageDialog(jFrame, "Team " + teamName + " found!");
-            }
-        });
-
         // Match Results Button Logic
         submit.addActionListener(event -> {
             final String teamName = teamNameField.getText().trim();
+            final MatchResultsInputData matchResultsInputData = new MatchResultsInputData(teamName);
+            final MatchResultsController controller = new MatchResultsController(matchResultsInputData);
+            final String name = controller.execute(teamName);
 
             if (teamName.isEmpty()) {
                 JOptionPane.showMessageDialog(jFrame, "Please enter a team name to view match results!");
@@ -184,7 +172,7 @@ public class Application {
             }
 
             try {
-                ArrayList<Integer> gameIds = matchResultsUseCase.getGameId(teamName);
+                ArrayList<Integer> gameIds = matchResultsUseCase.getGameId(name);
 
                 if (gameIds.isEmpty()) {
                     noResultsLabel.setText("No match results found for team: " + teamName);

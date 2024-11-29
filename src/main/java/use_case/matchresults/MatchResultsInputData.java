@@ -9,6 +9,7 @@ public class MatchResultsInputData {
     public MatchResultsInputData(String teamName) {
         this.teamName = teamName;
     }
+
     public String getTeamName() {
         return teamName;
     }

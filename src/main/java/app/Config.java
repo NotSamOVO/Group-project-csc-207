@@ -1,12 +1,15 @@
 package app;
 
 import api.NFLTeamDataBase;
-import api.NFLDataBase;
+import use_case.leaguestanding.LeagueStandingUseCase;
 import use_case.matchresults.MatchResultsUseCase;
 import use_case.playerstatus.PlayerStatusUseCase;
-import use_case.leaguestanding.LeagueStandingUseCase;
 import use_case.teamsearch.TeamSearchUseCase;
 
+/**
+ * The Config class is responsible for creating and providing access to various use case objects.
+ * Each method in this class returns a new instance of a use case that interacts with the NFLTeamDataBase.
+ */
 public class Config {
     private final NFLTeamDataBase dataBase = new NFLTeamDataBase();
 
@@ -25,6 +28,7 @@ public class Config {
     public MatchResultsUseCase getMatchResultsUseCase() {
         return new MatchResultsUseCase(dataBase);
     }
+
     /**
      * Get the TeamSearchUseCase object.
      * @return TeamSearchUseCase object.

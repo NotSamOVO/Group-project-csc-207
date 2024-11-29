@@ -45,7 +45,6 @@ public class MatchResultsUseCase {
             final String visitorTeam = visitorTeamObj.getName();
             if (homeTeam.equals(teamName) || visitorTeam.equals(teamName)) {
                 check = true;
-                result.add(gameId);
             }
             if (check) {
                 result.add(gameId);

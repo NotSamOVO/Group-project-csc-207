@@ -1,12 +1,14 @@
 package app.gui;
 
 import app.Config;
-import interface_adapter.TeamSearchViewModel;
+import interface_adapter.team_search.TeamSearchController;
+import interface_adapter.team_search.TeamSearchViewModel;
 import interface_adapter.matchresults.MatchResultsController;
 import interface_adapter.matchresults.MatchResultsViewModel;
 import use_case.matchresults.MatchResultsOutputData;
 import use_case.matchresults.MatchResultsUseCase;
 import use_case.playerstatus.PlayerStatusUseCase;
+import use_case.teamsearch.TeamSearchOutputData;
 import use_case.teamsearch.TeamSearchUseCase;
 import use_case.leaguestanding.LeagueStandingUseCase;
 
@@ -35,6 +37,8 @@ public class Application {
         final MatchResultsController controller = new MatchResultsController(matchResultsUseCase);
         final MatchResultsViewModel viewModel = new MatchResultsViewModel(matchResultsUseCase);
         final TeamSearchUseCase teamSearchUseCase = config.getTeamSearchUseCase();
+        final TeamSearchController teamSearchController = new TeamSearchController(teamSearchUseCase);
+        final TeamSearchViewModel teamSearchViewModel = new TeamSearchViewModel(teamSearchUseCase);
         final PlayerStatusUseCase playerStatusUseCase = config.getPlayerStatusUseCase();
         final LeagueStandingUseCase leagueStandingUseCase = config.getLeagueStandingUseCase();
 
@@ -47,7 +51,7 @@ public class Application {
             final JPanel cardPanel = new JPanel(cardLayout);
 
             final JPanel defaultCard = createDefaultCard();
-            final JPanel teamSearchCard = createTeamSearchCard(frame, teamSearchUseCase);
+            final JPanel teamSearchCard = createTeamSearchCard(frame, teamSearchController, teamSearchViewModel);
             final JPanel matchResultsCard = createMatchResultsCard(frame, viewModel, controller);
             final JPanel playerStatusCard = createPlayerStatusCard(frame, playerStatusUseCase);
             final JPanel leageuStandingCard = createLeagueStandingCard(frame, leagueStandingUseCase);
@@ -101,7 +105,8 @@ public class Application {
     /**
      * Team Search Card: Allows user to search for a team.
      */
-    private static JPanel createTeamSearchCard(JFrame jFrame, TeamSearchUseCase teamSearchUseCase) {
+    private static JPanel createTeamSearchCard(JFrame jFrame, TeamSearchController controller,
+                                               TeamSearchViewModel viewModel) {
         final JPanel teamSearchCard = new JPanel();
         teamSearchCard.setLayout(new GridLayout(3, 2));
 
@@ -111,13 +116,19 @@ public class Application {
 
         searchButton.addActionListener(event -> {
             final String teamName = teamNameField.getText();
+            final boolean inputData = controller.searchTeam(teamName);
 
             if (teamName.isEmpty()) {
                 JOptionPane.showMessageDialog(jFrame, TeamSearchViewModel.TEAM_NAME_LABEL);
             }
+            else if (!inputData) {
+                JOptionPane.showMessageDialog(jFrame, "Team Not Found");
+            }
             else {
-                final String message = teamSearchUseCase.getTeamId(teamName);
-                JOptionPane.showMessageDialog(jFrame, message);
+                // Replace with actual team search logic
+                final TeamSearchOutputData message = viewModel.searchTeam(teamName);
+                JOptionPane.showMessageDialog(jFrame, message.getMessage());
+
             }
         });
 

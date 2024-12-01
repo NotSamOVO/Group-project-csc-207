@@ -19,7 +19,7 @@ public class TeamSearchUseCase {
     /**
      * get the team id by inputting team name.
      * @param teamName The name of the team.
-     * @return the id of the team. -1 if the team is not found.
+     * @return "Team Not Found" if the team is not found.
      */
     public String getTeamId(String teamName) {
         ArrayList<Team> allTeams = teamDatabase.getAllTeams();

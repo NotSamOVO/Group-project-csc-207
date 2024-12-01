@@ -46,7 +46,6 @@ public class Application {
             final CardLayout cardLayout = new CardLayout();
             final JPanel cardPanel = new JPanel(cardLayout);
 
-            // Creating individual cards (panels)
             final JPanel defaultCard = createDefaultCard();
             final JPanel teamSearchCard = createTeamSearchCard(frame, teamSearchUseCase);
             final JPanel matchResultsCard = createMatchResultsCard(frame, viewModel, controller);
@@ -59,7 +58,6 @@ public class Application {
             cardPanel.add(playerStatusCard, "PlayerStatusCard");
             cardPanel.add(leageuStandingCard, "LeagueStandingCard");
 
-            // Creating buttons for navigation
             final JButton teamSearchButton = new JButton("Team Search");
             teamSearchButton.addActionListener(event -> cardLayout.show(cardPanel, "TeamSearchCard"));
 
@@ -72,7 +70,6 @@ public class Application {
             final JButton leagueStandingButton = new JButton("League Standing");
             leagueStandingButton.addActionListener(event -> cardLayout.show(cardPanel, "LeagueStandingCard"));
 
-            // Adding buttons to the bottom panel
             final JPanel buttonPanel = new JPanel();
             buttonPanel.add(teamSearchButton);
             buttonPanel.add(matchResultsButton);
@@ -80,7 +77,6 @@ public class Application {
             buttonPanel.add(playerStatusButton);
             buttonPanel.add(leagueStandingButton);
 
-            // Adding components to the frame
             frame.getContentPane().add(cardPanel, BorderLayout.CENTER);
             frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
@@ -116,12 +112,10 @@ public class Application {
         searchButton.addActionListener(event -> {
             final String teamName = teamNameField.getText();
 
-            // Simulating team search logic
             if (teamName.isEmpty()) {
                 JOptionPane.showMessageDialog(jFrame, TeamSearchViewModel.TEAM_NAME_LABEL);
             }
             else {
-                // Replace with actual team search logic
                 final String message = teamSearchUseCase.getTeamId(teamName);
                 JOptionPane.showMessageDialog(jFrame, message);
             }
@@ -164,7 +158,6 @@ public class Application {
         resultsPanel.add(noResultsLabel, BorderLayout.NORTH);
         resultsPanel.add(scrollPane, BorderLayout.CENTER);
 
-        // Match Results Button Logic
         submit.addActionListener(event -> {
             final String teamName = teamNameField.getText().trim();
 
@@ -186,7 +179,6 @@ public class Application {
                     for (int i = 0; i < gameIds.size(); i++) {
                         int gameId = gameIds.get(i);
 
-                        // Use controller to fetch game details
                         MatchResultsOutputData outputData = viewModel.getGameDetails(gameId);
 
                         data[i][0] = outputData.getMatchup();
@@ -200,7 +192,6 @@ public class Application {
                         data[i][8] = outputData.getVenue();
                     }
 
-                    // Update table model
                     resultsTable.setModel(new DefaultTableModel(data, columnNames));
                     noResultsLabel.setText("Displaying match results for team: " + teamName);
                 }
@@ -221,7 +212,6 @@ public class Application {
         final JPanel playerStatusCard = new JPanel();
         playerStatusCard.setLayout(new BorderLayout());
 
-        // Input Panel
         final JPanel inputPanel = new JPanel(new GridLayout(4, 2, 10, 10));
         inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -244,7 +234,6 @@ public class Application {
         inputPanel.add(searchButton);
         inputPanel.add(errorLabel);
 
-        // Results Panel
         final JPanel resultPanel = new JPanel(new BorderLayout());
         resultPanel.setBorder(BorderFactory.createTitledBorder("Player Status Result"));
 
@@ -253,7 +242,6 @@ public class Application {
         final JScrollPane scrollPane = new JScrollPane(resultArea);
         resultPanel.add(scrollPane, BorderLayout.CENTER);
 
-        // Search Button Logic
         searchButton.addActionListener(event -> {
             String firstName = firstNameField.getText().trim();
             String lastName = lastNameField.getText().trim();
@@ -307,17 +295,14 @@ public class Application {
             inputPanel.add(teamNameField);
             inputPanel.add(searchButton);
 
-            // Table setup
             final String[] columnNames = {"Rank", "Team Name", "Wins", "Losses", "Ties", "Win %", "Home", "Away",
                     "DIV", "CONF", "PF", "PA", "DIFF"};
             final String[][] data = leagueStandingUseCase.getLeagueStanding();
 
-            // Panel for single-row search result
             final JPanel searchResultPanel = new JPanel(new BorderLayout());
             final JLabel searchResultLabel = new JLabel("Search Result");
             searchResultLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-            // Single-row search result table
             final DefaultTableModel searchTableModel = new DefaultTableModel(columnNames, 0);
             final JTable searchResultTable = new JTable(searchTableModel);
             searchResultTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -328,30 +313,24 @@ public class Application {
             searchResultPanel.add(searchResultLabel, BorderLayout.NORTH);
             searchResultPanel.add(searchTableScrollPane, BorderLayout.CENTER);
 
-            // Results panel to hold table and label
             final JPanel resultsPanel = new JPanel(new BorderLayout());
             final JLabel noResultsLabel = new JLabel(year + " NFL League Standings");
             noResultsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-            // JTable to display standings
             final JTable standingTable = new JTable(data, columnNames);
             standingTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
             standingTable.getColumnModel().getColumn(1).setPreferredWidth(300);
             standingTable.setFillsViewportHeight(true);
 
-            // Scroll pane for table
             final JScrollPane scrollPane = new JScrollPane(standingTable);
 
-            // Add components to the results panel
             resultsPanel.add(noResultsLabel, BorderLayout.NORTH);
             resultsPanel.add(scrollPane, BorderLayout.CENTER);
 
-            // Create a JSplitPane to allow dynamic resizing between search result and full table
             final JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, searchResultPanel, resultsPanel);
-            splitPane.setResizeWeight(0.3); // Allocate 30% of space to the top panel initially
-            splitPane.setDividerSize(5); // Thin divider
+            splitPane.setResizeWeight(0.3);
+            splitPane.setDividerSize(5);
 
-            // Add results panel to the main card
             leagueStandingCard.add(inputPanel, BorderLayout.NORTH);
             leagueStandingCard.add(splitPane, BorderLayout.CENTER);
 
@@ -365,10 +344,8 @@ public class Application {
                     return;
                 }
 
-                // Call getTeamStanding to get the specific team data
                 final String[] teamStanding = leagueStandingUseCase.getTeamStanding(teamName);
                 if (teamStanding != null) {
-                    // Add the result to the search result table
                     searchTableModel.addRow(teamStanding);
                 }
                 else {
@@ -378,7 +355,6 @@ public class Application {
 
         }
         catch (Exception eve) {
-            // Show error dialog in case of issues
             JOptionPane.showMessageDialog(jFrame, "Error fetching league standings: " + eve.getMessage());
         }
 

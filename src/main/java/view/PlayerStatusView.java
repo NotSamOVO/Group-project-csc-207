@@ -50,7 +50,6 @@ public class PlayerStatusView extends JPanel implements ActionListener {
         inputPanel.add(searchButton);
         inputPanel.add(backButton);
 
-        // Result Panel
         JPanel resultPanel = new JPanel(new BorderLayout());
         resultPanel.setBorder(BorderFactory.createTitledBorder("Player Status Result"));
 
@@ -58,11 +57,9 @@ public class PlayerStatusView extends JPanel implements ActionListener {
         JScrollPane resultScrollPane = new JScrollPane(resultArea);
         resultPanel.add(resultScrollPane, BorderLayout.CENTER);
 
-        // Add Panels to the Main Layout
         add(inputPanel, BorderLayout.NORTH);
         add(resultPanel, BorderLayout.CENTER);
 
-        // Set Button Actions
         searchButton.addActionListener(this);
         backButton.addActionListener(this);
     }

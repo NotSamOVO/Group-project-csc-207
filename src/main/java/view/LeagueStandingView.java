@@ -103,7 +103,6 @@ public class LeagueStandingView extends JPanel implements ActionListener {
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setHorizontalAlignment(SwingConstants.CENTER); // Center-align header text
 
-        // Apply the renderer to each column
         for (int column = 0; column < table.getColumnCount(); column++) {
             table.getColumnModel().getColumn(column).setHeaderRenderer(headerRenderer);
         }

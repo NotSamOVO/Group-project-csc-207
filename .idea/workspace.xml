@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82736d16-4d69-4f65-8bec-b5d786f90e5e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/team_search/TeamSearchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/use_case/teamsearch/TeamSearchOutputData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/interface_adapter/TeamSearchViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/interface_adapter/team_search/TeamSearchViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/teamsearch/PlayerStatusUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/teamsearch/TeamSearchInputData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/teamsearch/TeamSearchInputData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/use_case/teamsearch/TeamSearchUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/use_case/teamsearch/TeamSearchUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/TeamSearchView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/ViewManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/ViewManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/LeagueStandingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LeagueStandingView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +191,7 @@
       <workItem from="1732833095485" duration="8067000" />
       <workItem from="1732901084139" duration="12525000" />
       <workItem from="1733017723292" duration="2760000" />
-      <workItem from="1733086058854" duration="3063000" />
+      <workItem from="1733086058854" duration="3719000" />
     </task>
     <task id="LOCAL-00001" summary="tianle.xu">
       <option name="closed" value="true" />

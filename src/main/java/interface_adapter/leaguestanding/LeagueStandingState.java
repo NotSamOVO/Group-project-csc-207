@@ -6,21 +6,22 @@ package interface_adapter.leaguestanding;
 public class LeagueStandingState {
 
     private String[][] leaguestanding;
-    private String teamError;
+    private String[] teamstanding;
 
     public String[][] getLeaguestanding() {
         return leaguestanding;
+    }
+
+    public String[] getTeamStanding() {
+        return teamstanding;
+    }
+
+    public void setTeamstanding(String[] teamstanding) {
+        this.teamstanding = teamstanding;
     }
 
     public void setLeaguestanding(String[][] leaguestanding) {
         this.leaguestanding = leaguestanding;
     }
 
-    public String getTeamError() {
-        return teamError;
-    }
-
-    public void setTeamError(String teamError) {
-        this.teamError = teamError;
-    }
 }

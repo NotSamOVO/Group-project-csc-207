@@ -219,7 +219,7 @@ public class NFLTeamDataBase implements NFLDataBase {
         final OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         final Request request = new Request.Builder()
-                .url(BASE_URL + "/games?per_page=100?seasons[]=2022&seasons[]=2023")
+                .url(BASE_URL + "/games?per_page=100?seasons[]=2023&seasons[]=2024")
                 .addHeader("Authorization", API_KEY)
                 .method("GET", null)
                 .build();

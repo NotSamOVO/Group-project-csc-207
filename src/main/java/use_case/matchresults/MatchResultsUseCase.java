@@ -1,17 +1,16 @@
 package use_case.matchresults;
+
 import api.NFLDataBase;
 import api.NFLTeamDataBase;
 import entity.Game;
 import entity.Team;
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 /**
- * The MatchresultsOutputData class provides methods to retrieve and process
- * data related to NFL games, including game descriptions, scores, and dates.
+ * The MatchResultsUseCase class provides methods to retrieve and process
+ * data related to NFL games, including game descriptions, scores, dates,
+ * venues, and quarter-specific scores.
  */
 public class MatchResultsUseCase {
     private NFLDataBase nflDataBase;
@@ -26,10 +25,10 @@ public class MatchResultsUseCase {
     }
 
     /**
-     * Retrieves a formatted string representing the game matchup.
+     * Retrieves a list of game IDs for a specific team.
      *
-     * @return a list of gameId.
-     * @throws RuntimeException if the game data is malformed or missing.
+     * @param teamName the name of the team.
+     * @return a list of game IDs where the specified team participated.
      */
     public ArrayList<Integer> getGameId(String teamName) {
         final ArrayList<Game> allGames = nflDataBase.getAllGames();
@@ -45,7 +44,6 @@ public class MatchResultsUseCase {
             final String visitorTeam = visitorTeamObj.getName();
             if (homeTeam.equals(teamName) || visitorTeam.equals(teamName)) {
                 check = true;
-                result.add(gameId);
             }
             if (check) {
                 result.add(gameId);
@@ -138,12 +136,19 @@ public class MatchResultsUseCase {
         }
     }
 
+    /**
+     * Retrieves the score of the first quarter for the game.
+     *
+     * @param gameId the unique ID of the game.
+     * @return a string in the format "HomeQ1 - VisitorQ1".
+     * @throws RuntimeException if the game data is malformed or missing.
+     */
     public String getq1(int gameId) {
         final Game q1Game = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeq1 = q1Game.getHome_team_q1();
-            Integer visitorq1 = q1Game.getVisitor_team_q1();
+            final Integer homeq1 = q1Game.getHome_team_q1();
+            final Integer visitorq1 = q1Game.getVisitor_team_q1();
 
             return homeq1 + " - " + visitorq1;
         }
@@ -152,12 +157,19 @@ public class MatchResultsUseCase {
         }
     }
 
+    /**
+     * Retrieves the score of the second quarter for the game.
+     *
+     * @param gameId the unique ID of the game.
+     * @return a string in the format "HomeQ2 - VisitorQ2".
+     * @throws RuntimeException if the game data is malformed or missing.
+     */
     public String getq2(int gameId) {
         final Game q2Game = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeq2 = q2Game.getHome_team_q2();
-            Integer visitorq2 = q2Game.getVisitor_team_q2();
+            final Integer homeq2 = q2Game.getHome_team_q2();
+            final Integer visitorq2 = q2Game.getVisitor_team_q2();
 
             return homeq2 + " - " + visitorq2;
         }
@@ -166,12 +178,19 @@ public class MatchResultsUseCase {
         }
     }
 
+    /**
+     * Retrieves the score of the third quarter for the game.
+     *
+     * @param gameId the unique ID of the game.
+     * @return a string in the format "HomeQ3 - VisitorQ3".
+     * @throws RuntimeException if the game data is malformed or missing.
+     */
     public String getq3(int gameId) {
         final Game q3Game = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeq3 = q3Game.getHome_team_q3();
-            Integer visitorq3 = q3Game.getVisitor_team_q3();
+            final Integer homeq3 = q3Game.getHome_team_q3();
+            final Integer visitorq3 = q3Game.getVisitor_team_q3();
 
             return homeq3 + " - " + visitorq3;
         }
@@ -180,12 +199,19 @@ public class MatchResultsUseCase {
         }
     }
 
+    /**
+     * Retrieves the score of the fourth quarter for the game.
+     *
+     * @param gameId the unique ID of the game.
+     * @return a string in the format "HomeQ4 - VisitorQ4".
+     * @throws RuntimeException if the game data is malformed or missing.
+     */
     public String getq4(int gameId) {
         final Game q4Game = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeq4 = q4Game.getHome_team_q4();
-            Integer visitorq4 = q4Game.getVisitor_team_q4();
+            final Integer homeq4 = q4Game.getHome_team_q4();
+            final Integer visitorq4 = q4Game.getVisitor_team_q4();
 
             return homeq4 + " - " + visitorq4;
         }
@@ -194,12 +220,19 @@ public class MatchResultsUseCase {
         }
     }
 
+    /**
+     * Retrieves the score of overtime for the game, if applicable.
+     *
+     * @param gameId the unique ID of the game.
+     * @return a string in the format "HomeOT - VisitorOT" or "No Overtime" if no overtime occurred.
+     * @throws RuntimeException if the game data is malformed or missing.
+     */
     public String getot(int gameId) {
         final Game otGame = nflDataBase.getGame(gameId);
 
         try {
-            Integer homeot = otGame.getHome_team_ot();
-            Integer visitorot = otGame.getVisitor_team_ot();
+            final Integer homeot = otGame.getHome_team_ot();
+            final Integer visitorot = otGame.getVisitor_team_ot();
 
             if (homeot == 0 && visitorot == 0) {
                 return "No Overtime";

@@ -1,16 +1,17 @@
 package app.gui;
 
 import app.Config;
-import interface_adapter.team_search.TeamSearchController;
-import interface_adapter.team_search.TeamSearchViewModel;
 import interface_adapter.matchresults.MatchResultsController;
 import interface_adapter.matchresults.MatchResultsViewModel;
+import interface_adapter.team_search.TeamSearchController;
+import interface_adapter.team_search.TeamSearchViewModel;
+import use_case.leaguestanding.LeagueStandingUseCase;
 import use_case.matchresults.MatchResultsOutputData;
 import use_case.matchresults.MatchResultsUseCase;
 import use_case.playerstatus.PlayerStatusUseCase;
 import use_case.teamsearch.TeamSearchOutputData;
 import use_case.teamsearch.TeamSearchUseCase;
-import use_case.leaguestanding.LeagueStandingUseCase;
+import view.LeagueStandingView;
 
 import java.awt.*;
 import java.time.Year;
@@ -28,6 +29,7 @@ public class Application {
 
     /**
      * Main method to run the GUI.
+     *
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
@@ -120,11 +122,9 @@ public class Application {
 
             if (teamName.isEmpty()) {
                 JOptionPane.showMessageDialog(jFrame, TeamSearchViewModel.TEAM_NAME_LABEL);
-            }
-            else if (!inputData) {
+            } else if (!inputData) {
                 JOptionPane.showMessageDialog(jFrame, "Team Not Found");
-            }
-            else {
+            } else {
                 // Replace with actual team search logic
                 final TeamSearchOutputData message = viewModel.searchTeam(teamName);
                 JOptionPane.showMessageDialog(jFrame, message.getMessage());
@@ -183,8 +183,7 @@ public class Application {
                 if (!hasResults) {
                     noResultsLabel.setText("No match results found for team: " + teamName);
                     resultsTable.setModel(new DefaultTableModel(new Object[0][0], columnNames));
-                }
-                else {
+                } else {
                     ArrayList<Integer> gameIds = viewModel.getGameIds(teamName);
                     String[][] data = new String[gameIds.size()][9];
                     for (int i = 0; i < gameIds.size(); i++) {
@@ -288,7 +287,7 @@ public class Application {
     /**
      * League Standing Card: Displays league standings of the current year.
      *
-     * @param jFrame the parent frame.
+     * @param jFrame                the parent frame.
      * @param leagueStandingUseCase the use case for retrieving league standings.
      * @return a JPanel displaying league standings.
      */
@@ -296,79 +295,35 @@ public class Application {
         final JPanel leagueStandingCard = new JPanel(new BorderLayout());
         final int year = Year.now().getValue();
 
-        try {
-            final JPanel inputPanel = new JPanel(new FlowLayout());
-            final JLabel label = new JLabel("Enter Team Name:");
-            final JTextField teamNameField = new JTextField(20);
-            final JButton searchButton = new JButton("Search");
+        final LeagueStandingView leagueStandingView = new LeagueStandingView(leagueStandingUseCase, year);
 
-            inputPanel.add(label);
-            inputPanel.add(teamNameField);
-            inputPanel.add(searchButton);
+        // Input panel for team search
+        JPanel inputPanel = new JPanel(new FlowLayout());
+        JLabel label = new JLabel("Enter Team Name:");
+        JTextField teamNameField = new JTextField(20);
+        JButton searchButton = new JButton("Search");
+        inputPanel.add(label);
+        inputPanel.add(teamNameField);
+        inputPanel.add(searchButton);
 
-            final String[] columnNames = {"Rank", "Team Name", "Wins", "Losses", "Ties", "Win %", "Home", "Away",
-                    "DIV", "CONF", "PF", "PA", "DIFF"};
-            final String[][] data = leagueStandingUseCase.getLeagueStanding();
+        leagueStandingCard.add(inputPanel, BorderLayout.NORTH);
+        leagueStandingCard.add(leagueStandingView, BorderLayout.CENTER);
 
-            final JPanel searchResultPanel = new JPanel(new BorderLayout());
-            final JLabel searchResultLabel = new JLabel("Search Result");
-            searchResultLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        // Add search functionality
+        searchButton.addActionListener(evt -> {
+            String teamName = teamNameField.getText().trim();
 
-            final DefaultTableModel searchTableModel = new DefaultTableModel(columnNames, 0);
-            final JTable searchResultTable = new JTable(searchTableModel);
-            searchResultTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-            searchResultTable.getColumnModel().getColumn(1).setPreferredWidth(300);
-            searchResultTable.setFillsViewportHeight(true);
-            final JScrollPane searchTableScrollPane = new JScrollPane(searchResultTable);
+            if (teamName.isEmpty()) {
+                JOptionPane.showMessageDialog(jFrame, "Please enter a team name.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-            searchResultPanel.add(searchResultLabel, BorderLayout.NORTH);
-            searchResultPanel.add(searchTableScrollPane, BorderLayout.CENTER);
-
-            final JPanel resultsPanel = new JPanel(new BorderLayout());
-            final JLabel noResultsLabel = new JLabel(year + " NFL League Standings");
-            noResultsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-            final JTable standingTable = new JTable(data, columnNames);
-            standingTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-            standingTable.getColumnModel().getColumn(1).setPreferredWidth(300);
-            standingTable.setFillsViewportHeight(true);
-
-            final JScrollPane scrollPane = new JScrollPane(standingTable);
-
-            resultsPanel.add(noResultsLabel, BorderLayout.NORTH);
-            resultsPanel.add(scrollPane, BorderLayout.CENTER);
-
-            final JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, searchResultPanel, resultsPanel);
-            splitPane.setResizeWeight(0.3);
-            splitPane.setDividerSize(5);
-
-            leagueStandingCard.add(inputPanel, BorderLayout.NORTH);
-            leagueStandingCard.add(splitPane, BorderLayout.CENTER);
-
-            searchButton.addActionListener(evt -> {
-                final String teamName = teamNameField.getText().trim();
-                searchTableModel.setRowCount(0);
-
-                if (teamName.isEmpty()) {
-                    JOptionPane.showMessageDialog(jFrame,
-                            "Please enter a team name.", "Input Error", JOptionPane.ERROR_MESSAGE);
-                    return;
-                }
-
-                final String[] teamStanding = leagueStandingUseCase.getTeamStanding(teamName);
-                if (teamStanding != null) {
-                    searchTableModel.addRow(teamStanding);
-                }
-                else {
-                    JOptionPane.showMessageDialog(jFrame, "Team not found: " + teamName, "Search Result", JOptionPane.WARNING_MESSAGE);
-                }
-            });
-
-        }
-        catch (Exception eve) {
-            JOptionPane.showMessageDialog(jFrame, "Error fetching league standings: " + eve.getMessage());
-        }
+            if (!leagueStandingView.searchTeam(teamName, leagueStandingUseCase)) {
+                JOptionPane.showMessageDialog(jFrame, "Team not found: " + teamName, "Search Result", JOptionPane.WARNING_MESSAGE);
+            }
+        });
 
         return leagueStandingCard;
     }
 }
+

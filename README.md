@@ -37,7 +37,7 @@
 - All team standings in the current season
 - Enter the team name in the search bar
 - Terms
-- Win% : winning percentage, Home : home record, Away: away record, DIV: division record, CONF: conference record, PF: points for, PA: points against, DIFF: points difference
+  - Win% : winning percentage, Home : home record, Away: away record, DIV: division record, CONF: conference record, PF: points for, PA: points against, DIFF: points difference
 ## License
 This project is licensed under the MIT License. For more details, see the [LICENSE file](LICENSE).
 ## Tasks

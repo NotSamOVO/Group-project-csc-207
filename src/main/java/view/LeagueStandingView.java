@@ -27,7 +27,7 @@ public class LeagueStandingView extends JPanel {
 
         // Main standings table
         String[] columnNames = {"Rank", "Team Name", "Wins", "Losses", "Ties", "Win %", "Home", "Away", "DIV", "CONF", "PF", "PA", "DIFF"};
-        String[][] leagueData = controller.getLeagueStandings();
+        String[][] leagueData = controller.getLeagueStanding();
 
         mainTableModel = new DefaultTableModel(leagueData, columnNames);
         standingsTable = new JTable(mainTableModel);

@@ -12,7 +12,7 @@ import entity.Season;
  * The class for the league standing use case.
  */
 
-public final class LeagueStandingUseCase implements LeagueStandingInputBoundary {
+public final class LeagueStandingUseCase {
     private NFLTeamDataBase teamstandingDataBase;
     private int year = Year.now().getValue();
 
@@ -62,11 +62,6 @@ public final class LeagueStandingUseCase implements LeagueStandingInputBoundary 
         return data;
     }
 
-    /**
-     *  Get the league standing of the team current year.
-     * @param teamname Input Team Name
-     * @return The team performances in current year.
-     */
     public String[] getTeamStanding(String teamname) {
         final String[][] leagueStanding = getLeagueStanding();
         for (int i = 0; i < leagueStanding.length; i++) {

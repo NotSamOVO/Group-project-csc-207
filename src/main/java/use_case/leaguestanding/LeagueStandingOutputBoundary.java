@@ -1,11 +1,9 @@
 package use_case.leaguestanding;
 
 /**
- *  The output boundary for the League Standing Use case.
+ * Output boundary for presenting league standings.
  */
 public interface LeagueStandingOutputBoundary {
-    /**
-     * Switches to the Team Search View.
-     */
-    void switchTeamSearchView();
+    String[][] presentLeagueStandings(String[][] standings);
+    String[] presentTeamStanding(String[] teamStanding);
 }

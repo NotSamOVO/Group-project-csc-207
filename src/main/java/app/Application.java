@@ -1,6 +1,7 @@
 package app.gui;
 
 import app.Config;
+import interface_adapter.leaguestanding.LeagueStandingController;
 import interface_adapter.matchresults.MatchResultsController;
 import interface_adapter.matchresults.MatchResultsViewModel;
 import interface_adapter.team_search.TeamSearchController;
@@ -295,12 +296,18 @@ public class Application {
         final JPanel leagueStandingCard = new JPanel(new BorderLayout());
         final int year = Year.now().getValue();
 
-        final LeagueStandingView leagueStandingView = new LeagueStandingView(leagueStandingUseCase, year);
+        // Create controller
+        LeagueStandingController controller = new LeagueStandingController(leagueStandingUseCase);
 
+        // Create the view
+        LeagueStandingView leagueStandingView = new LeagueStandingView(controller, year);
+
+        // Input panel for searching
         JPanel inputPanel = new JPanel(new FlowLayout());
         JLabel label = new JLabel("Enter Team Name:");
         JTextField teamNameField = new JTextField(20);
         JButton searchButton = new JButton("Search");
+
         inputPanel.add(label);
         inputPanel.add(teamNameField);
         inputPanel.add(searchButton);
@@ -308,6 +315,7 @@ public class Application {
         leagueStandingCard.add(inputPanel, BorderLayout.NORTH);
         leagueStandingCard.add(leagueStandingView, BorderLayout.CENTER);
 
+        // Search button action
         searchButton.addActionListener(evt -> {
             String teamName = teamNameField.getText().trim();
 
@@ -316,7 +324,7 @@ public class Application {
                 return;
             }
 
-            if (!leagueStandingView.searchTeam(teamName, leagueStandingUseCase)) {
+            if (!leagueStandingView.searchTeam(teamName)) {
                 JOptionPane.showMessageDialog(jFrame, "Team not found: " + teamName, "Search Result", JOptionPane.WARNING_MESSAGE);
             }
         });
@@ -324,4 +332,5 @@ public class Application {
         return leagueStandingCard;
     }
 }
+
 

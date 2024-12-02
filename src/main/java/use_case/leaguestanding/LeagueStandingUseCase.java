@@ -12,7 +12,7 @@ import entity.Season;
  * The class for the league standing use case.
  */
 
-public final class LeagueStandingUseCase {
+public final class LeagueStandingUseCase implements LeagueStandingInputBoundary {
     private NFLTeamDataBase teamstandingDataBase;
     private int year = Year.now().getValue();
 

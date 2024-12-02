@@ -1,80 +1,74 @@
 package view;
 
+import interface_adapter.leaguestanding.LeagueStandingController;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-import use_case.leaguestanding.LeagueStandingUseCase;
-
 /**
- * View for league standing.
+ * View for displaying and interacting with league standings.
  */
 public class LeagueStandingView extends JPanel {
-
-    private final JTable fullStandingTable;
+    private final LeagueStandingController controller;
+    private final JTable standingsTable;
     private final JTable searchResultTable;
+    private final DefaultTableModel mainTableModel;
     private final DefaultTableModel searchTableModel;
 
-    private static final String[] COLUMN_NAMES = {
-            "Rank", "Team Name", "Wins", "Losses", "Ties", "Win %", "Home", "Away", "DIV", "CONF", "PF", "PA", "DIFF"
-    };
+    public LeagueStandingView(LeagueStandingController controller, int year) {
+        this.controller = controller;
+        setLayout(new BorderLayout());
 
-    public LeagueStandingView(LeagueStandingUseCase leagueStandingUseCase, int year) {
-        this.setLayout(new BorderLayout());
+        // Title label
+        JLabel titleLabel = new JLabel(year + " NFL League Standings");
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(titleLabel, BorderLayout.NORTH);
 
-        final String[][] data = leagueStandingUseCase.getLeagueStanding();
-        final DefaultTableModel fullTableModel = new DefaultTableModel(data, COLUMN_NAMES);
-        fullStandingTable = new JTable(fullTableModel);
-        configureTable(fullStandingTable);
+        // Main standings table
+        String[] columnNames = {"Rank", "Team Name", "Wins", "Losses", "Ties", "Win %", "Home", "Away", "DIV", "CONF", "PF", "PA", "DIFF"};
+        String[][] leagueData = controller.getLeagueStandings();
 
-        final JScrollPane fullTableScrollPane = new JScrollPane(fullStandingTable);
-        final JLabel standingsLabel = new JLabel(year + " NFL League Standings");
-        standingsLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        mainTableModel = new DefaultTableModel(leagueData, columnNames);
+        standingsTable = new JTable(mainTableModel);
+        standingsTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        standingsTable.getColumnModel().getColumn(1).setPreferredWidth(300);
+        standingsTable.setFillsViewportHeight(true);
+        JScrollPane standingsScrollPane = new JScrollPane(standingsTable);
 
-        JPanel standingsPanel = new JPanel(new BorderLayout());
-        standingsPanel.add(standingsLabel, BorderLayout.NORTH);
-        standingsPanel.add(fullTableScrollPane, BorderLayout.CENTER);
-
-        searchTableModel = new DefaultTableModel(COLUMN_NAMES, 0);
+        // Search result table
+        searchTableModel = new DefaultTableModel(columnNames, 0);
         searchResultTable = new JTable(searchTableModel);
-        configureTable(searchResultTable);
+        searchResultTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        searchResultTable.getColumnModel().getColumn(1).setPreferredWidth(300);
+        searchResultTable.setFillsViewportHeight(true);
+        JScrollPane searchScrollPane = new JScrollPane(searchResultTable);
 
-        final JScrollPane searchTableScrollPane = new JScrollPane(searchResultTable);
-        final JLabel searchResultLabel = new JLabel("Search Result");
-        searchResultLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-        JPanel searchPanel = new JPanel(new BorderLayout());
-        searchPanel.add(searchResultLabel, BorderLayout.NORTH);
-        searchPanel.add(searchTableScrollPane, BorderLayout.CENTER);
-
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, searchPanel, standingsPanel);
+        // Split pane to show both tables
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, searchScrollPane, standingsScrollPane);
         splitPane.setResizeWeight(0.3);
         splitPane.setDividerSize(5);
 
-        this.add(splitPane, BorderLayout.CENTER);
-    }
-
-    private void configureTable(JTable table) {
-        table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        table.getColumnModel().getColumn(1).setPreferredWidth(300);
-        table.setFillsViewportHeight(true);
+        add(splitPane, BorderLayout.CENTER);
     }
 
     /**
-     * Searches for a team and updates the search result table.
+     * Updates the search result table with the searched team's standing.
      *
-     * @param teamName The name of the team to search for.
-     * @param leagueStandingUseCase The use case instance to fetch standings data.
-     * @return True if the team was found, false otherwise.
+     * @param teamName the name of the team to search for.
+     * @return true if the team was found, false otherwise.
      */
-    public boolean searchTeam(String teamName, LeagueStandingUseCase leagueStandingUseCase) {
-        searchTableModel.setRowCount(0);
-        final String[] teamStanding = leagueStandingUseCase.getTeamStanding(teamName);
+    public boolean searchTeam(String teamName) {
+        String[] teamStanding = controller.getTeamStanding(teamName);
 
         if (teamStanding != null) {
+            searchTableModel.setRowCount(0);
             searchTableModel.addRow(teamStanding);
             return true;
         }
-        return false;
+        else {
+            searchTableModel.setRowCount(0);
+            return false;
+        }
     }
 }

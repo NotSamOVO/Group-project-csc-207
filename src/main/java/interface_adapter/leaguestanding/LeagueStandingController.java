@@ -3,20 +3,20 @@ package interface_adapter.leaguestanding;
 import use_case.leaguestanding.LeagueStandingInputBoundary;
 
 /**
- * Controller for the Legue Standing Use Case.
+ * Controller for handling league standing use case interactions.
  */
 public class LeagueStandingController {
+    private final LeagueStandingInputBoundary inputBoundary;
 
-    private final LeagueStandingInputBoundary userLegueStandingUseCaseInteractor;
-
-    public LeagueStandingController(LeagueStandingInputBoundary userLegueStandingUseCaseInteractor) {
-        this.userLegueStandingUseCaseInteractor = userLegueStandingUseCaseInteractor;
+    public LeagueStandingController(LeagueStandingInputBoundary inputBoundary) {
+        this.inputBoundary = inputBoundary;
     }
 
-    /**
-     * Executes the "switch to TeamSearchView" Use Case.
-     */
-    public void switchTeamSearchView() {
-        userLegueStandingUseCaseInteractor.switchTeamSearchView();
+    public String[][] getLeagueStandings() {
+        return inputBoundary.getLeagueStanding();
+    }
+
+    public String[] getTeamStanding(String teamName) {
+        return inputBoundary.getTeamStanding(teamName);
     }
 }

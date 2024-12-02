@@ -297,7 +297,6 @@ public class Application {
 
         final LeagueStandingView leagueStandingView = new LeagueStandingView(leagueStandingUseCase, year);
 
-        // Input panel for team search
         JPanel inputPanel = new JPanel(new FlowLayout());
         JLabel label = new JLabel("Enter Team Name:");
         JTextField teamNameField = new JTextField(20);
@@ -309,7 +308,6 @@ public class Application {
         leagueStandingCard.add(inputPanel, BorderLayout.NORTH);
         leagueStandingCard.add(leagueStandingView, BorderLayout.CENTER);
 
-        // Add search functionality
         searchButton.addActionListener(evt -> {
             String teamName = teamNameField.getText().trim();
 

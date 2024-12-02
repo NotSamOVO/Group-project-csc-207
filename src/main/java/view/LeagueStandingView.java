@@ -22,7 +22,6 @@ public class LeagueStandingView extends JPanel {
     public LeagueStandingView(LeagueStandingUseCase leagueStandingUseCase, int year) {
         this.setLayout(new BorderLayout());
 
-        // Full standings table
         final String[][] data = leagueStandingUseCase.getLeagueStanding();
         final DefaultTableModel fullTableModel = new DefaultTableModel(data, COLUMN_NAMES);
         fullStandingTable = new JTable(fullTableModel);
@@ -36,7 +35,6 @@ public class LeagueStandingView extends JPanel {
         standingsPanel.add(standingsLabel, BorderLayout.NORTH);
         standingsPanel.add(fullTableScrollPane, BorderLayout.CENTER);
 
-        // Search result table
         searchTableModel = new DefaultTableModel(COLUMN_NAMES, 0);
         searchResultTable = new JTable(searchTableModel);
         configureTable(searchResultTable);
@@ -49,7 +47,6 @@ public class LeagueStandingView extends JPanel {
         searchPanel.add(searchResultLabel, BorderLayout.NORTH);
         searchPanel.add(searchTableScrollPane, BorderLayout.CENTER);
 
-        // SplitPane for dynamic resizing
         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, searchPanel, standingsPanel);
         splitPane.setResizeWeight(0.3);
         splitPane.setDividerSize(5);

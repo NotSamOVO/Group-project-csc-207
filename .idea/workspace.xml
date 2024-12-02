@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82736d16-4d69-4f65-8bec-b5d786f90e5e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/LeagueStandingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/LeagueStandingView.java" afterDir="false" />
-    </list>
+    <list default="true" id="82736d16-4d69-4f65-8bec-b5d786f90e5e" name="Changes" comment="update for fixing checkstyle errors" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,6 +51,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Application.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.LeagueStandingUseCaseTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.MatchResultsUseCaseMockitoTest.testGetGameId_ValidTeamName.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.MatchResultsUseCaseTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.MatchResultsUseCaseTest.testGetGameDetails_GameNotFound.executor&quot;: &quot;Run&quot;,
@@ -63,6 +61,7 @@
     &quot;JUnit.MatchResultsUseCaseTest.testGetGameId_ValidTeamName.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PlayerStatusUseCaseMockitoTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.PlayerStatusUseCaseMockitoTest.testGetPlayerSuccessful.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Park&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -99,18 +98,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MatchResultsUseCaseTest.testGetGameDetails_GameNotFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LeagueStandingUseCaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="homework-5" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MatchResultsUseCaseTest.*" />
+          <option name="PATTERN" value="LeagueStandingTest.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="MatchResultsUseCaseTest" />
-      <option name="MAIN_CLASS_NAME" value="MatchResultsUseCaseTest.MatchResultsUseCaseTest" />
-      <option name="METHOD_NAME" value="testGetGameDetails_GameNotFound" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="LeagueStandingTest" />
+      <option name="MAIN_CLASS_NAME" value="LeagueStandingTest.LeagueStandingUseCaseTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,18 +148,18 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Application" />
+        <item itemvalue="JUnit.LeagueStandingUseCaseTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.MatchResultsUseCaseTest.testGetGameDetails_Successful" />
         <item itemvalue="JUnit.PlayerStatusUseCaseMockitoTest.testGetPlayerSuccessful" />
-        <item itemvalue="JUnit.MatchResultsUseCaseTest.testGetGameDetails_GameNotFound" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
       </set>
     </attachedChunks>
   </component>
@@ -192,6 +190,7 @@
       <workItem from="1732901084139" duration="12525000" />
       <workItem from="1733017723292" duration="2760000" />
       <workItem from="1733086058854" duration="3719000" />
+      <workItem from="1733157917913" duration="33000" />
     </task>
     <task id="LOCAL-00001" summary="tianle.xu">
       <option name="closed" value="true" />
@@ -361,7 +360,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732568289325</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="remove presenter">
+      <option name="closed" value="true" />
+      <created>1733146134634</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1733146134634</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update for fixing checkstyle errors">
+      <option name="closed" value="true" />
+      <created>1733147148981</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1733147148981</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,6 +444,8 @@
     <MESSAGE value="tianle.xu edditing error adding in toString for team and players" />
     <MESSAGE value="eddited application and database" />
     <MESSAGE value="tianle.xu edditing errors" />
-    <option name="LAST_COMMIT_MESSAGE" value="tianle.xu edditing errors" />
+    <MESSAGE value="remove presenter" />
+    <MESSAGE value="update for fixing checkstyle errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="update for fixing checkstyle errors" />
   </component>
 </project>
